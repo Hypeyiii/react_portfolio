@@ -28,15 +28,11 @@ function App() {
   const [isMobile, setisMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
-    // Función que se ejecuta cada vez que cambia el tamaño de la pantalla
     const handleSize = () => {
       setisMobile(window.innerWidth < 768);
     };
-
-    // Agregamos un event listener para el cambio de tamaño de la pantalla
     window.addEventListener('resize', handleSize);
 
-    // Limpiamos el event listener al desmontar el componente
     return () => {
       window.removeEventListener('resize', handleSize);
     };
@@ -49,16 +45,17 @@ function App() {
     <>
     <div className={`fixed top-0 md:right-0 md:left-0 mx-auto w-[350px] sm:w-[500px] md:w-[700px]
                    ${isMobile ? 'mt-0': 'mt-5'}`}>
-      <div className='backdrop-blur-sm mx-auto text-white flex items-start md:items-center justify-start md:justify-center
+      <div className='mx-auto text-white flex items-start md:items-center justify-start md:justify-center
          font-medium'>
         {isMobile ?
         <>
-          <button className='hover:bg-white/20 p-2 transition-all duration-300' onClick={handleMenuModal}>
-            <img src={menu} alt="Menu Icon" className='size-6'/>
+          <button className={`hover:bg-white/20 p-2 transition-all duration-300 
+                  ${isMobile ? "p-5" : "p-0"} `} onClick={handleMenuModal}>
+            <img src={menu} alt="Menu Icon" className='size-7'/>
           </button> 
             <div className='entrance menu h-screen w-screen text-white hidden fixed'
               onClick={handleMenuModal}>
-                <div className="fixed inset-0 bg-black opacity-50 h-screen"></div>
+                <div className="fixed inset-0 bg-black opacity-70 h-screen"></div>
               <ul className='flex flex-col gap-y-4 text-lg items-center justify-center absolute top-0 right-0 bottom-0 left-0'>
                 <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
                 active:scale-105 active:duration-0'>
