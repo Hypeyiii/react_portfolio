@@ -55,9 +55,9 @@ function App() {
           <button className='hover:bg-white/20 p-2 transition-all duration-300' onClick={handleMenuModal}>
             <img src={menu} alt="Menu Icon" className='size-6'/>
           </button> 
-            <div className='backdrop-blur-md z-40 menu h-screen w-screen text-white hidden fixed top-0 bottom-0'
+            <div className='entrance backdrop-blur-md z-40 menu h-screen w-screen text-white hidden fixed top-0 bottom-0'
               onClick={handleMenuModal}>
-              <ul className='entrance-container flex flex-col gap-y-4 text-lg items-center justify-center absolute top-0 right-0 bottom-0 left-0'>
+              <ul className='flex flex-col gap-y-4 text-lg items-center justify-center absolute top-0 right-0 bottom-0 left-0'>
                 <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
                 active:scale-105 active:duration-0'>
                   {languageMode ? "Home" : "Inicio"}
