@@ -46,7 +46,7 @@ function App() {
 
   return (
     <>
-    <div className='fixed top-0 left-0 right-0 mx-auto mt-5 w-[350px] md:w-[700px]'>
+    <div className='fixed top-0 left-0 right-0 mx-auto mt-5 w-[350px] sm:w-[500px] md:w-[700px]'>
       <div className='backdrop-blur-sm mx-auto text-white flex items-start md:items-center justify-start md:justify-center
          font-medium'>
         {isMobile ?
@@ -54,7 +54,7 @@ function App() {
             <button className='hover:bg-white/20 p-2 transition-all duration-300' onClick={handleMenuModal}>
             <img src={menu} alt="Menu Icon" className='size-6'/>
           </button> 
-      <div className='menu h-screen w-screen text-white hidden fixed top-0 bottom-0 backdrop-blur-sm'
+      <div className='z-40 menu h-screen w-screen text-white hidden fixed top-0 bottom-0 backdrop-blur-sm'
       onClick={handleMenuModal}>
       <ul className='entrance-container flex flex-col gap-y-4 text-lg items-center justify-center absolute top-0 right-0 bottom-0 left-0'>
         <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
@@ -129,16 +129,16 @@ function App() {
         </ul>}
       </div>
     </div>
-      <div className='mt-32 flex w-[350px] md:w-[700px] mx-auto flex-col px-2'>
+      <div className='mt-32 flex w-[350px] sm:w-[500px] md:w-[700px] mx-auto flex-col px-2'>
           <img src={avatar} alt="Avatar Logo" className='size-[100px] rounded-full shadow-2xl shadow-white/10'/>
         <div className='text-white mt-5 flex flex-row gap-x-5 md:gap-x-8 items-center justify-start'>
           <h1 className='font-semibold text-2xl md:text-3xl lg:text-5xl' data-translate='title' id='title'>
             {languageMode ? "Hello, I'm Isaac" : "Hola, Soy Isaac"}
           </h1>
-          <button className='p-1 md:p-2 border border-white/20 rounded-lg shadow-lg shadow-white/5 bg-black
-           text-white text-xs hover:bg-white/20 transition-all duration-300 md:font-semibold
-           active:scale-105 active:duration-75'>
-              {languageMode ? <h1>Hire me here</h1> : "Contratame aquí"}
+          <button className='p-2 border border-white/20 rounded-lg shadow-lg shadow-white/5 bg-black
+           text-white text-xs hover:bg-white/5 transition-all duration-300 md:font-semibold
+           active:scale-105 active:duration-75 font-semibold text-white/70 hover:text-white'>
+              {languageMode ? <h1>Hire me here</h1> : <h1>Contratame aquí</h1>}
            </button>
         </div>
         <div className='text-white mt-5 font-light text-sm md:text-lg xl:text-xl text-wrap' data-translate='description'>
@@ -148,7 +148,7 @@ function App() {
             :"Desarrollador FrontEnd e Ingeniero en Sistemas. De Nuevo León, México. Contribuyendo al Desarrollo y Programación de Aplicaciones Web."
             }
           </p>
-          <div className='mt-5 grid grid-cols-4 auto-rows-auto items-cente justify-center gap-x-2 md:gap-x-4'>
+          <div className='mt-5 grid grid-cols-3 sm:grid-cols-4 gap-y-2 auto-rows-auto items-cente justify-center gap-x-2 md:gap-x-4'>
               <a href="#">
                 <Button
                   logo={linkedin}
