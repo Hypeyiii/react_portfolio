@@ -9,8 +9,9 @@ import darkmode from './assets/DarkMode.svg'
 import darkmodeoff from './assets/DarkModeOff.svg'
 import language from './assets/language.svg'
 import languageoff from './assets/languageoff.svg'
-import { useState, useEffect } from 'react'
 import menu from './assets/menu.svg'
+import { useState, useEffect } from 'react'
+
 function App() {
   const [darkMode, setDarkMode] = useState(false)
 
@@ -51,46 +52,46 @@ function App() {
          font-medium'>
         {isMobile ?
         <>
-            <button className='hover:bg-white/20 p-2 transition-all duration-300' onClick={handleMenuModal}>
+          <button className='hover:bg-white/20 p-2 transition-all duration-300' onClick={handleMenuModal}>
             <img src={menu} alt="Menu Icon" className='size-6'/>
           </button> 
-      <div className='backdrop-blur-md z-40 menu h-screen w-screen text-white hidden fixed top-0 bottom-0'
-      onClick={handleMenuModal}>
-      <ul className='entrance-container flex flex-col gap-y-4 text-lg items-center justify-center absolute top-0 right-0 bottom-0 left-0'>
-        <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
-        active:scale-105 active:duration-0'>
-          {languageMode ? "Home" : "Inicio"}
-          </li></a>
-        <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
-          active:scale-105 active:duration-75'>
-            {languageMode ? "Education" : "Educación"}
-          </li></a>
-        <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
-          active:scale-105 active:duration-75'>
-              {languageMode ? "Technologies" : "Tecnologias"}
-            </li></a>
-        <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
-         active:scale-105 active:duration-75'>
-            {languageMode ? "Projects" : "Proyectos"}
-          </li></a>
-        <a href="#">
-          <li className='hover:bg-gray-400 p-2 rounded-full transition-all duration-300 active:scale-105 
-            active:duration-75' onClick={handleDarkMode}>
-              {darkMode ? <img src={darkmodeoff} alt="Dark Mode Off" className='size-6'/>
-               :
-               <img src={darkmode} alt="Dark Mode" className='size-6'/> }
-          </li>
-        </a>
-        <a href="#">
-          <li className='hover:bg-gray-400 p-2 rounded-full transition-all duration-300 active:scale-105 
-          active:duration-75' onClick={handleLanguage} id='language'>
-            {languageMode ? <img src={language} alt="Language Icon" className='size-6'/>
-            :
-            <img src={languageoff} alt="Language Icon" className='size-6'/>}
-          </li>
-        </a>
-      </ul>
-    </div>
+            <div className='backdrop-blur-md z-40 menu h-screen w-screen text-white hidden fixed top-0 bottom-0'
+              onClick={handleMenuModal}>
+              <ul className='entrance-container flex flex-col gap-y-4 text-lg items-center justify-center absolute top-0 right-0 bottom-0 left-0'>
+                <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
+                active:scale-105 active:duration-0'>
+                  {languageMode ? "Home" : "Inicio"}
+                  </li></a>
+                <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
+                  active:scale-105 active:duration-75'>
+                    {languageMode ? "Education" : "Educación"}
+                  </li></a>
+                <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
+                  active:scale-105 active:duration-75'>
+                      {languageMode ? "Technologies" : "Tecnologias"}
+                    </li></a>
+                <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
+                active:scale-105 active:duration-75'>
+                    {languageMode ? "Projects" : "Proyectos"}
+                  </li></a>
+                <a href="#">
+                  <li className='hover:bg-gray-400 p-2 rounded-full transition-all duration-300 active:scale-105 
+                    active:duration-75' onClick={handleDarkMode}>
+                      {darkMode ? <img src={darkmodeoff} alt="Dark Mode Off" className='size-6'/>
+                      :
+                      <img src={darkmode} alt="Dark Mode" className='size-6'/> }
+                  </li>
+                </a>
+                <a href="#">
+                  <li className='hover:bg-gray-400 p-2 rounded-full transition-all duration-300 active:scale-105 
+                  active:duration-75' onClick={handleLanguage} id='language'>
+                    {languageMode ? <img src={language} alt="Language Icon" className='size-6'/>
+                    :
+                    <img src={languageoff} alt="Language Icon" className='size-6'/>}
+                  </li>
+                </a>
+              </ul>
+          </div>
     </>
         :
         <ul className='flex flex-row gap-x-2 md:gap-x-4 text-xs md:text-lg items-center justify-center'>

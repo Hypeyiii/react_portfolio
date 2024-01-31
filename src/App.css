@@ -81,11 +81,11 @@
     }
   }
 
-  .entrance-container {
-    -webkit-animation: entrance-container 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-            animation: entrance-container 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  .entrance {
+    -webkit-animation: entrance 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: entrance 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   }
-@-webkit-keyframes entrance-container {
+@-webkit-keyframes entrance {
   0% {
     -webkit-transform: scaleX(0);
             transform: scaleX(0);
@@ -101,7 +101,7 @@
     opacity: 1;
   }
 }
-@keyframes entrance-container {
+@keyframes entrance {
   0% {
     -webkit-transform: scaleX(0);
             transform: scaleX(0);
