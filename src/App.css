@@ -1,3 +1,14 @@
+html{
+  scroll-behavior: smooth;
+}
+body{
+  font-family: 'Onest', sans-serif;
+}
+.darBg{
+  --tw-bg-opacity: 1;
+  background-color: rgb(10 10 10 / var(--tw-bg-opacity));
+  background-image: radial-gradient(ellipse 80% 80% at 50% -20%,rgba(120,119,198,0.3),rgba(255,255,255,0));
+}
 .title{
      animation: Color 4s linear infinite;
     -webkit-animation: Color 4s ease-in-out infinite;

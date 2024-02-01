@@ -1,5 +1,6 @@
 'use client';
 import './App.css'
+import './index.css'
 import avatar from './assets/avatar.jpg'
 import ButtonCompany from './Components/Button'
 import { RiMenuUnfoldFill, RiMenuFoldLine  } from "react-icons/ri";
@@ -46,9 +47,18 @@ function App() {
 
   return (
     <>
+    <div className="fixed left-0 top-0 -z-10 h-full w-full">
+      <div className="relative h-full w-full ">
+      {darkMode ?
+      <div className="absolute top-0 z-[-2] h-screen w-screen bg-white bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]"></div>
+      :
+      <div className="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+      }
+      </div>
+    </div>
     <div className={`z-50 fixed top-0 md:right-0 md:left-0 mx-auto w-[350px] sm:w-[500px] md:w-[700px]
                    ${isMobile ? 'mt-0': 'mt-5'}`}>
-      <div className='mx-auto text-white/85 flex items-start md:items-center justify-start md:justify-center
+      <div className='mx-auto  flex items-start md:items-center justify-start md:justify-center
          font-medium'>
         {isMobile ?
         <>
@@ -60,7 +70,7 @@ function App() {
             <div className='entrance menu h-screen w-screen hidden fixed'
               onClick={handleMenuModal}>
                 <div className="fixed inset-0 bg-black opacity-70 h-screen"></div>
-                  <ul className='flex flex-col gap-y-4 text-lg items-center justify-center absolute top-0 right-0 bottom-0 left-0'>
+                  <ul className={`flex flex-col gap-y-4 text-lg items-center justify-center absolute top-0 right-0 bottom-0 left-0 text-white/85`}>
                     <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
                     active:scale-105 active:duration-0'>
                       {languageMode ? "Home" : "Inicio"}
@@ -99,9 +109,9 @@ function App() {
               </div>
     </>
         :
-        <ul className='backdrop-blur-sm bg-black/30 rounded-full px-2 flex flex-row gap-x-2 md:gap-x-4 text-xs md:text-base items-center justify-center'>
+        <ul className={`backdrop-blur-sm bg-black/30 rounded-full px-2 flex flex-row gap-x-2 md:gap-x-4 text-xs md:text-base items-center justify-center ${darkMode ? "text-dark" : "text-white/85"}`}>
           <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
-          active:scale-105 active:duration-0'>
+          active:scale-105 active:duration-300'>
             {languageMode ? "Home" : "Inicio"}
             </li></a>
           <a href="#education"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
