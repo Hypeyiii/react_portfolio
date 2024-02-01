@@ -2,7 +2,7 @@
 import './App.css'
 import avatar from './assets/avatar.jpg'
 import ButtonCompany from './Components/Button'
-import menu from './assets/menu.svg'
+import { RiMenuUnfoldFill, RiMenuFoldLine  } from "react-icons/ri";
 import { FaWhatsapp, FaLinkedin, FaGithub, FaDiscord } from 'react-icons/fa';
 import { BiLogoGmail } from "react-icons/bi";
 import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
@@ -52,52 +52,51 @@ function App() {
          font-medium'>
         {isMobile ?
         <>
-          <button className={` absolute z-40 p-2 transition-all duration-300 
-                  ${isMobile ? "p-5" : "p-0"} ${isMenu ? "" : "bg-black bg-opacity-80"} `} onClick={handleMenuModal}>
-            <img src={menu} alt="Menu Icon" className='size-7'/>
+          <button className={` absolute z-40 transition-all duration-300 
+                  ${isMobile ? "p-4" : "p-0"} ${isMenu ? "" : " bg-black/30 bg-opacity-50"} `}
+                   onClick={handleMenuModal}>
+            {isMenu ? <RiMenuFoldLine className='size-6'/> : <RiMenuUnfoldFill className='size-6'/>}
           </button> 
             <div className='entrance menu h-screen w-screen hidden fixed'
               onClick={handleMenuModal}>
                 <div className="fixed inset-0 bg-black opacity-70 h-screen"></div>
-              <ul className='flex flex-col gap-y-4 text-lg items-center justify-center absolute top-0 right-0 bottom-0 left-0'>
-                <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
-                active:scale-105 active:duration-0'>
-                  {languageMode ? "Home" : "Inicio"}
-                  </li></a>
-                <a href="#education"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
-                  active:scale-105 active:duration-75'>
-                    {languageMode ? "Education" : "Educación"}
-                  </li></a>
-                <a href="#technologies"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
-                  active:scale-105 active:duration-75'>
-                      {languageMode ? "Technologies" : "Tecnologias"}
-                    </li></a>
-                <a href="#projects"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
-                active:scale-105 active:duration-75'>
-                    {languageMode ? "Projects" : "Proyectos"}
-                  </li></a>
-                <a href="#darkmode">
-                  <li className='hover:bg-gray-400 p-2 rounded-full transition-all duration-300 active:scale-105 
-                    active:duration-75' onClick={handleDarkMode}>
-                      {darkMode ? 
-                      <MdDarkMode className='size-6'/>
-                      :
-                      <MdOutlineDarkMode className='size-6'/>
-                       }
-                  </li>
-                </a>
-                <a href="#language">
-                  <li className='hover:bg-gray-400 p-2 rounded-full transition-all duration-300 active:scale-105 
-                  active:duration-75' onClick={handleLanguage} id='language'>
-                    {languageMode ?
-                     <TbLanguage className='size-6'/>
-                    :
-                    <TbLanguageOff className='size-6'/>
-                    }
-                  </li>
-                </a>
-              </ul>
-          </div>
+                  <ul className='flex flex-col gap-y-4 text-lg items-center justify-center absolute top-0 right-0 bottom-0 left-0'>
+                    <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
+                    active:scale-105 active:duration-0'>
+                      {languageMode ? "Home" : "Inicio"}
+                      </li></a>
+                    <a href="#education"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
+                      active:scale-105 active:duration-75'>
+                        {languageMode ? "Education" : "Educación"}
+                      </li></a>
+                    <a href="#technologies"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
+                      active:scale-105 active:duration-75'>
+                          {languageMode ? "Technologies" : "Tecnologias"}
+                        </li></a>
+                    <a href="#projects"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
+                    active:scale-105 active:duration-75'>
+                        {languageMode ? "Projects" : "Proyectos"}
+                      </li></a>
+                    <a href="#darkmode">
+                      <li className='md:hover:bg-gray-400 p-2 rounded-full transition-all duration-300 active:scale-105 
+                        active:duration-75' onClick={handleDarkMode}>
+                          {darkMode ? 
+                          <MdDarkMode className='size-6'/> : <MdOutlineDarkMode className='size-6'/>
+                          }
+                      </li>
+                    </a>
+                    <a href="#language">
+                      <li className='md:hover:bg-gray-400 p-2 rounded-full transition-all duration-300 active:scale-105 
+                      active:duration-75' onClick={handleLanguage} id='language'>
+                        {languageMode ?
+                        <TbLanguage className='size-6'/>
+                        :
+                        <TbLanguageOff className='size-6'/>
+                        }
+                      </li>
+                    </a>
+                  </ul>
+              </div>
     </>
         :
         <ul className='backdrop-blur-sm bg-black/30 rounded-full px-2 flex flex-row gap-x-2 md:gap-x-4 text-xs md:text-base items-center justify-center'>
@@ -204,14 +203,24 @@ function App() {
         <Timeline.Item>
           <Timeline.Point/>
           <Timeline.Content className='md:gap-y-2 flex flex-col items-start justify-center'>
-            <Timeline.Time className='text-xs md:text-xl text-white/80'>Actualmente...</Timeline.Time>
-            <Timeline.Title className='text-base md:text-2xl text-white'>Desarrollador y Estudiante</Timeline.Title>
+            <Timeline.Time className='text-xs md:text-xl text-white/80'>
+              {languageMode ? "Currently..." : "Actualmente..."}
+            </Timeline.Time>
+            <Timeline.Title className='text-base md:text-2xl text-white'>
+              {languageMode ? "Developer and Student" : "Desarrollador y Estudiante"}
+            </Timeline.Title>
             <Timeline.Body className='text-sm md:text-lg text-white/70'>
-            Cursando 6to semestre en la carrera de Ingeniero Administrador de Sistemas (IAS). Desarrollando Web´ s de manera didactica y apasionada.
+              {languageMode ? 
+              "Studying the 6th semester in the Systems Administrator Engineer career. Developing websites in a didactic and passionate way."
+              :
+              "Cursando 6to semestre en la carrera de Ingeniero Administrador de Sistemas (IAS). Desarrollando Web´ s de manera didactica y apasionada."
+             }
             </Timeline.Body>
             <button className='flex flex-row gap-x-2 items-center justify-center p-2 bg-black border border-white/20 hover:bg-white/5 rounded-xl
             transition-all duration-300 text-white/60 hover:text-white active:scale-105 active:duration-75 text-xs md:text-sm'>
-              Learn More
+              {
+                languageMode ? "Learn more" : "Saber más"
+              }
               <HiArrowNarrowRight className="ml-2 h-3 w-3" />
             </button>
           </Timeline.Content>
