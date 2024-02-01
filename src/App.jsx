@@ -9,9 +9,12 @@ import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
 import { TbLanguageOff, TbLanguage } from "react-icons/tb";
 import { Timeline } from 'flowbite-react';
 import { HiArrowNarrowRight} from 'react-icons/hi';
+import { IoMdSchool } from "react-icons/io";
 import { useState, useEffect } from 'react'
 
 function App() {
+  const [isMenu, setIsMenu] = useState(false)
+
   const [darkMode, setDarkMode] = useState(false)
 
   const handleDarkMode = () => {
@@ -37,6 +40,7 @@ function App() {
     };
   }, []);
   const handleMenuModal = () => {
+    setIsMenu(!isMenu);
     document.querySelector('.menu').classList.toggle('hidden');
   }
 
@@ -48,8 +52,8 @@ function App() {
          font-medium'>
         {isMobile ?
         <>
-          <button className={`absolute z-40 hover:bg-white/20 p-2 transition-all duration-300 
-                  ${isMobile ? "p-5" : "p-0"} `} onClick={handleMenuModal}>
+          <button className={` absolute z-40 p-2 transition-all duration-300 
+                  ${isMobile ? "p-5" : "p-0"} ${isMenu ? "" : "bg-black bg-opacity-80"} `} onClick={handleMenuModal}>
             <img src={menu} alt="Menu Icon" className='size-7'/>
           </button> 
             <div className='entrance menu h-screen w-screen hidden fixed'
@@ -60,19 +64,19 @@ function App() {
                 active:scale-105 active:duration-0'>
                   {languageMode ? "Home" : "Inicio"}
                   </li></a>
-                <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
+                <a href="#education"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
                   active:scale-105 active:duration-75'>
                     {languageMode ? "Education" : "Educación"}
                   </li></a>
-                <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
+                <a href="#technologies"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
                   active:scale-105 active:duration-75'>
                       {languageMode ? "Technologies" : "Tecnologias"}
                     </li></a>
-                <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
+                <a href="#projects"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
                 active:scale-105 active:duration-75'>
                     {languageMode ? "Projects" : "Proyectos"}
                   </li></a>
-                <a href="#">
+                <a href="#darkmode">
                   <li className='hover:bg-gray-400 p-2 rounded-full transition-all duration-300 active:scale-105 
                     active:duration-75' onClick={handleDarkMode}>
                       {darkMode ? 
@@ -82,7 +86,7 @@ function App() {
                        }
                   </li>
                 </a>
-                <a href="#">
+                <a href="#language">
                   <li className='hover:bg-gray-400 p-2 rounded-full transition-all duration-300 active:scale-105 
                   active:duration-75' onClick={handleLanguage} id='language'>
                     {languageMode ?
@@ -101,19 +105,19 @@ function App() {
           active:scale-105 active:duration-0'>
             {languageMode ? "Home" : "Inicio"}
             </li></a>
-          <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
+          <a href="#education"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
             active:scale-105 active:duration-75'>
               {languageMode ? "Education" : "Educación"}
             </li></a>
-          <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
+          <a href="#technologies"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
             active:scale-105 active:duration-75'>
                 {languageMode ? "Technologies" : "Tecnologias"}
               </li></a>
-          <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
+          <a href="#projects"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
            active:scale-105 active:duration-75'>
               {languageMode ? "Projects" : "Proyectos"}
             </li></a>
-          <a href="#">
+          <a href="#darkmode">
             <li className='hover:bg-gray-400 p-2 rounded-full transition-all duration-300 active:scale-105 
               active:duration-75' onClick={handleDarkMode}>
                 {darkMode ?
@@ -123,7 +127,7 @@ function App() {
                  }
             </li>
           </a>
-          <a href="#">
+          <a href="#languages">
             <li className='hover:bg-gray-400 p-2 rounded-full transition-all duration-300 active:scale-105 
             active:duration-75' onClick={handleLanguage} id='language'>
               {languageMode ? 
@@ -189,8 +193,14 @@ function App() {
           </div>
         </div>
       </div>
-      <div className='flex items-center justify-center mx-auto w-[350px] sm:w-[500px] md:w-[700px] px-4 mt-32 mb-32'>
-        <Timeline className='text-white z-10'>
+      <div id='education' className='flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[700px] px-2 mt-32 mb-32'>
+        <div className='flex flex-row gap-x-2 mb-8 text-white/90 items-center justify-center'>
+        <IoMdSchool className='size-8'/>
+          <h2 className='font-semibold text-xl md:text-2xl xl:text-3xl' data-translate='education'>
+            {languageMode ? "Education and Experience" : "Educación y Experiencia"}
+          </h2>
+        </div>
+        <Timeline className='text-white ml-[6px]'>
         <Timeline.Item>
           <Timeline.Point/>
           <Timeline.Content className='md:gap-y-2 flex flex-col items-start justify-center'>
@@ -209,20 +219,34 @@ function App() {
         <Timeline.Item>
           <Timeline.Point />
           <Timeline.Content className='md:gap-y-2 flex flex-col items-start justify-center'>
-            <Timeline.Time className='text-xs md:text-xl text-white/80'>Diciembre, 2021</Timeline.Time>
-            <Timeline.Title className='text-base md:text-2xl text-white'>Entrando en el mundo del desarrollo</Timeline.Title>
+            <Timeline.Time className='text-xs md:text-xl text-white/80'>
+              {languageMode ? "December, 2021" : "Diciembre, 2021"}
+            </Timeline.Time>
+            <Timeline.Title className='text-base md:text-2xl text-white'>
+              {languageMode ? "Start of Web Development" : "Inicio del Desarrollo Web"}
+            </Timeline.Title>
             <Timeline.Body className='text-sm md:text-lg text-white/70'>
-              Empecé a adentrarme en el mundo del Desarrollo Web, cursando materias y aprendiendo Tecnologías didacticamente.           
+              {languageMode ? 
+              "I started to delve into the world of Web Development, taking courses and learning technologies in a didactic manner." 
+              : 
+              "Empecé a adentrarme en el mundo del Desarrollo Web, cursando materias y aprendiendo Tecnologías didacticamente."}           
             </Timeline.Body>
           </Timeline.Content>
         </Timeline.Item>
         <Timeline.Item>
           <Timeline.Point />
           <Timeline.Content className='md:gap-y-2 flex flex-col items-start justify-center'>
-            <Timeline.Time className='text-xs md:text-xl text-white/80'>Agosto, 2021</Timeline.Time>
-            <Timeline.Title className='text-base md:text-2xl text-white'>Ingreso al Estudio Superior</Timeline.Title>
+            <Timeline.Time className='text-xs md:text-xl text-white/80'>
+              {languageMode ? "August, 2021" : "Agosto, 2021"}
+            </Timeline.Time>
+            <Timeline.Title className='text-base md:text-2xl text-white'>
+              {languageMode ? "Entry to the University" : "Ingreso a la Universidad"}
+            </Timeline.Title>
             <Timeline.Body className='text-sm md:text-lg text-white/70'>
-             Ingreso a la Faculdad de Ingeniería Mecácnica y Eléctrica (FIME) en la carrera de Ingeniero Administrador de Sistemas (IAS).
+              {languageMode ? 
+              "I entered the University to study Systems Engineering, where I learned the basics of programming and computer systems." 
+              : 
+              "Ingresé a la Universidad para estudiar Ingeniería en Sistemas, donde aprendí las bases de la programación y sistemas computacionales."}
             </Timeline.Body>
           </Timeline.Content>
         </Timeline.Item>
