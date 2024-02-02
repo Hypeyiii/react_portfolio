@@ -50,8 +50,9 @@ function App() {
     <div className="fixed left-0 top-0 -z-10 h-full w-full">
       <div className="relative h-full w-full ">
       {darkMode ?
-        <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"><div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]"></div></div>      :
-      <div className="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+        <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"><div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]"></div></div>      
+        :
+        <div className="relative h-full w-full bg-black"><div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div><div className="absolute left-0 right-0 top-[-10%] h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#000)]"></div></div>
       }
       </div>
     </div>
@@ -61,8 +62,8 @@ function App() {
          font-medium'>
         {isMobile ?
         <>
-          <button className={` absolute z-40 transition-all duration-300 
-                  ${isMobile ? "p-4" : "p-0"} ${isMenu ? "" : " bg-black/30 bg-opacity-50"} `}
+          <button className={`absolute z-40 transition-all duration-300 
+                  ${isMobile ? "p-4" : "p-0"} ${isMenu ? "" : " bg-black/30 bg-opacity-50"} ${darkMode ? "text-black bg-white/30" : "text-white/85 bg-black/30"}`}
                    onClick={handleMenuModal}>
             {isMenu ? <RiMenuFoldLine className='size-6'/> : <RiMenuUnfoldFill className='size-6'/>}
           </button> 
@@ -108,9 +109,10 @@ function App() {
               </div>
     </>
         :
-        <ul className={`backdrop-blur-sm bg-black/30 rounded-full px-2 flex flex-row gap-x-2 md:gap-x-4 text-xs md:text-base items-center justify-center ${darkMode ? "text-dark" : "text-white/85"}`}>
-          <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
-          active:scale-105 active:duration-300'>
+        <ul className={`backdrop-blur-sm bg-black/30 rounded-full px-2 flex flex-row gap-x-2 md:gap-x-4 text-xs md:text-base items-center justify-center 
+                      ${darkMode ? "text-dark" : "text-white/85"}`}>
+          <a href="#"><li className={`hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
+          active:scale-105 active:duration-300`}>
             {languageMode ? "Home" : "Inicio"}
             </li></a>
           <a href="#education"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
@@ -170,6 +172,7 @@ function App() {
           <div className='mt-5 grid grid-cols-3 sm:grid-cols-5 gap-y-2 auto-rows-auto items-center justify-center gap-x-2 md:gap-x-3'>
               <a href="#">
                 <ButtonCompany
+                className='hover:bg-white'
                 contactBy="LinkedIn">
                   <FaLinkedin className='size-[15px]' alt="Icon"/>
                 </ButtonCompany>
