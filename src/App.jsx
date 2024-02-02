@@ -1,8 +1,8 @@
 'use client';
 import './App.css'
-import './index.css'
 import avatar from './assets/avatar.jpg'
 import ButtonCompany from './Components/Button'
+import ButtonLightMode from './Components/ButtonLightMode.jsx'
 import { RiMenuUnfoldFill, RiMenuFoldLine  } from "react-icons/ri";
 import { FaWhatsapp, FaLinkedin, FaGithub, FaDiscord } from 'react-icons/fa';
 import { BiLogoGmail } from "react-icons/bi";
@@ -47,11 +47,11 @@ function App() {
 
   return (
     <>
-    <div className="fixed left-0 top-0 -z-10 h-full w-full">
-      {darkMode ?
+    <div className="fixed left-0 top-0 -z-10 h-screen w-screen">
+    {darkMode ?
         <div className="absolute inset-0 -z-10 h-full w-full bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-900 via-gray-50 to-gray-900"></div>     
         :
-      <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-600 via-gray-950 to-gray-600"></div>
+      <div className="absolute inset-0 -z-10 h-full w-full bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-600 via-gray-950 to-gray-600"></div>
       }
     </div>
     <div className={`z-50 fixed top-0 md:right-0 md:left-0 mx-auto w-[350px] sm:w-[500px] md:w-[700px]
@@ -154,9 +154,9 @@ function App() {
           <h1 className='title font-semibold text-2xl md:text-3xl lg:text-5xl' data-translate='title' id='title'>
             {languageMode ? "Hello, I'm Isaac" : "Hola, Soy Isaac"}
           </h1>
-          <button className='p-2 border border-white/20 rounded-lg shadow-lg shadow-white/5 bg-black
-           text-white text-xs hover:bg-white/5 transition-all duration-300 md:font-semibold
-           active:scale-105 active:duration-75 font-semibold text-white/70 hover:text-white'>
+          <button className={`p-2 border rounded-lg shadow-lg shadow-white/5 bg-black border-white/20 
+           text-white text-xs transition-all duration-300 md:font-semibold
+           active:scale-105 active:duration-75 font-semibold text-white/70 hover:text-white ${darkMode ? "hover:bg-black/70" : "hover:bg-white/5"}`}>
               {languageMode ? "Hire me here" : 'Contrátame aquí'}
            </button>
         </div>
@@ -169,35 +169,84 @@ function App() {
           </p>
           <div className='mt-5 grid grid-cols-3 sm:grid-cols-5 gap-y-2 auto-rows-auto items-center justify-center gap-x-2 md:gap-x-3'>
               <a href="#">
+                {
+                darkMode ?
+                <ButtonLightMode
+                  className='hover:bg-white'
+                  contactBy="LinkedIn">
+                  <FaLinkedin className='size-[15px]' alt="Icon"/>
+                </ButtonLightMode>
+                :
                 <ButtonCompany
-                className='hover:bg-white'
-                contactBy="LinkedIn">
+                  className='hover:bg-white'
+                  contactBy="LinkedIn">
                   <FaLinkedin className='size-[15px]' alt="Icon"/>
                 </ButtonCompany>
+                }
               </a>
                 <a href="#">
+                {
+                darkMode ?
+                <ButtonLightMode
+                  className='hover:bg-white'
+                  contactBy="GitHub">
+                  <FaGithub className='size-[15px]' alt="Icon"/>
+                </ButtonLightMode>
+                :
                 <ButtonCompany
-                contactBy="GitHub">
-                  <FaGithub  className='size-[15px] ' alt="Icon"/>
+                  className='hover:bg-white'
+                  contactBy="GitHub">
+                  <FaGithub className='size-[15px]' alt="Icon"/>
                 </ButtonCompany>
+                }
               </a>
               <a href="#">
+              {
+                darkMode ?
+                <ButtonLightMode
+                  className='hover:bg-white'
+                  contactBy="Discord">
+                  <FaDiscord className='size-[15px]' alt="Icon"/>
+                </ButtonLightMode>
+                :
                 <ButtonCompany
-                contactBy="Discord">
-                  <FaDiscord className='size-[15px] ' alt="Icon"/>
+                  className='hover:bg-white'
+                  contactBy="Discord">
+                  <FaDiscord className='size-[15px]' alt="Icon"/>
                 </ButtonCompany>
+                }
               </a>
               <a href="#">
+              {
+                darkMode ?
+                <ButtonLightMode
+                  className='hover:bg-white'
+                  contactBy="Gmail">
+                  <BiLogoGmail className='size-[15px]' alt="Icon"/>
+                </ButtonLightMode>
+                :
                 <ButtonCompany
-                contactBy="Gmail">
-                  <BiLogoGmail className='size-[15px] ' alt="Icon"/>
+                  className='hover:bg-white'
+                  contactBy="Gmail">
+                  <BiLogoGmail className='size-[15px]' alt="Icon"/>
                 </ButtonCompany>
+                }
               </a>
               <a href="#">
+              {
+                darkMode ?
+                <ButtonLightMode
+                  className='hover:bg-white'
+                  contactBy="WhatsApp">
+                  <FaWhatsapp className='size-[15px]' alt="Icon"/>
+                </ButtonLightMode>
+                :
                 <ButtonCompany
-                contactBy="WhatsApp">
-                  <FaWhatsapp className='size-[15px] ' alt="Icon"/>
+                  className='hover:bg-white'
+                  contactBy="WhatsApp">
+                  <FaWhatsapp className='size-[15px]' alt="Icon"/>
                 </ButtonCompany>
+                }
               </a>
           </div>
         </div>
@@ -226,8 +275,8 @@ function App() {
               "Cursando 6to semestre en la carrera de Ingeniero Administrador de Sistemas (IAS). Desarrollando Web´ s de manera didactica y apasionada."
              }
             </Timeline.Body>
-            <button className='flex flex-row gap-x-2 items-center justify-center p-2 bg-black border border-white/20 hover:bg-white/5 rounded-xl
-            transition-all duration-300 text-white/60 hover:text-white active:scale-105 active:duration-75 text-xs md:text-sm'>
+            <button className={`flex flex-row gap-x-2 items-center justify-center p-2 bg-black border border-white/20 rounded-xl
+            transition-all duration-300 text-white/60 hover:text-white active:scale-105 active:duration-75 text-xs md:text-sm`}>
               {
                 languageMode ? "Learn more" : "Saber más"
               }
