@@ -265,9 +265,9 @@ function App() {
             </Timeline.Title>
             <Timeline.Body className={`text-sm md:text-lg ${darkMode ? "text-black/70" : "text-white/70"}`}>
               {languageMode ? 
-              "I entered the Faculty of Mechanical and Electrical Engineering (FIME) in the Systems Administrator Engineer career (IAS)." 
+              "I entered the University to study Systems Engineering, where I learned the basics of programming and computer systems." 
               : 
-              "Ingreso a la Faculdad de Ingeniería Mecácnica y Eléctrica (FIME) en la carrera de Ingeniero Administrador de Sistemas (IAS)."}
+              "Ingresé a la Universidad para estudiar Ingeniería en Sistemas, donde aprendí las bases de la programación y sistemas computacionales."}
             </Timeline.Body>
           </Timeline.Content>
         </Timeline.Item>
