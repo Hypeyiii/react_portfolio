@@ -50,10 +50,11 @@ function App() {
     <div className="fixed left-0 top-0 -z-10 h-full w-full">
       <div className="relative h-full w-full ">
       {darkMode ?
-        <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"><div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]"></div></div>      
+        <div className="absolute inset-0 -z-10 h-full w-full bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-900 via-gray-100 to-gray-900"></div>     
         :
-        <div className="relative h-full w-full bg-black"><div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div><div className="absolute left-0 right-0 top-[-10%] h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#000)]"></div></div>
+        <div className="relative h-full w-full bg-black"><div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black"></div></div>
       }
+      
       </div>
     </div>
     <div className={`z-50 fixed top-0 md:right-0 md:left-0 mx-auto w-[350px] sm:w-[500px] md:w-[700px]
@@ -110,7 +111,7 @@ function App() {
     </>
         :
         <ul className={`backdrop-blur-sm bg-black/30 rounded-full px-2 flex flex-row gap-x-2 md:gap-x-4 text-xs md:text-base items-center justify-center 
-                      ${darkMode ? "text-dark" : "text-white/85"}`}>
+                      ${darkMode ? "text-white" : "text-white/85"}`}>
           <a href="#"><li className={`hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
           active:scale-105 active:duration-300`}>
             {languageMode ? "Home" : "Inicio"}
