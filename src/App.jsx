@@ -50,8 +50,7 @@ function App() {
     <div className="fixed left-0 top-0 -z-10 h-full w-full">
       <div className="relative h-full w-full ">
       {darkMode ?
-      <div className="absolute top-0 z-[-2] h-screen w-screen bg-white bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]"></div>
-      :
+        <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"><div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]"></div></div>      :
       <div className="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
       }
       </div>
@@ -161,7 +160,7 @@ function App() {
               {languageMode ? "Hire me here" : 'Contrátame aquí'}
            </button>
         </div>
-        <div className='text-white/90 mt-5 font-light text-sm md:text-lg xl:text-xl text-wrap' data-translate='description'>
+        <div className={`${darkMode ? "text-black" : "text-white/90"} mt-5 font-light text-sm md:text-lg xl:text-xl text-wrap`} data-translate='description'>
           <p>
             {languageMode ? 
             "FrontEnd Developer and Systems Engineer. From Nuevo León, Mexico. Contributing to the Development and Programming of Web Applications." 
@@ -203,23 +202,23 @@ function App() {
         </div>
       </div>
       <div id='education' className='flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[700px] px-2 mt-32 mb-32'>
-        <div className='flex flex-row gap-x-2 mb-8 text-white/90 items-center justify-center'>
+        <div className={`flex flex-row gap-x-2 mb-8 items-center justify-center ${darkMode ? "text-black/90" : "text-white/90"}`}>
         <IoMdSchool className='size-8'/>
-          <h2 className='font-semibold text-xl md:text-2xl xl:text-3xl' data-translate='education'>
+          <h2 className={`font-semibold text-xl md:text-2xl xl:text-3xl`} data-translate='education'>
             {languageMode ? "Education and Experience" : "Educación y Experiencia"}
           </h2>
         </div>
-        <Timeline className='text-white ml-[6px]'>
+        <Timeline className='text-black ml-[6px]'>
         <Timeline.Item>
           <Timeline.Point/>
           <Timeline.Content className='md:gap-y-2 flex flex-col items-start justify-center'>
-            <Timeline.Time className='text-xs md:text-xl text-white/80'>
+            <Timeline.Time className={`text-xs md:text-xl ${darkMode ? "text-black/80" : "text-white/80"}`}>
               {languageMode ? "Currently..." : "Actualmente..."}
             </Timeline.Time>
-            <Timeline.Title className='text-base md:text-2xl text-white'>
+            <Timeline.Title className={`text-base md:text-2xl ${darkMode ? "text-black" : "text-white"}`}>
               {languageMode ? "Developer and Student" : "Desarrollador y Estudiante"}
             </Timeline.Title>
-            <Timeline.Body className='text-sm md:text-lg text-white/70'>
+            <Timeline.Body className={`text-sm md:text-lg ${darkMode ? "text-black/70" : "text-white/70"}`}>
               {languageMode ? 
               "Studying the 6th semester in the Systems Administrator Engineer career. Developing websites in a didactic and passionate way."
               :
@@ -236,15 +235,15 @@ function App() {
           </Timeline.Content>
         </Timeline.Item>
         <Timeline.Item>
-          <Timeline.Point />
+          <Timeline.Point/>
           <Timeline.Content className='md:gap-y-2 flex flex-col items-start justify-center'>
-            <Timeline.Time className='text-xs md:text-xl text-white/80'>
+            <Timeline.Time className={`text-xs md:text-xl ${darkMode ? "text-black/80" : "text-white/80"}`}>
               {languageMode ? "December, 2021" : "Diciembre, 2021"}
             </Timeline.Time>
-            <Timeline.Title className='text-base md:text-2xl text-white'>
+            <Timeline.Title className={`text-base md:text-2xl ${darkMode ? "text-black" : "text-white"}`}>
               {languageMode ? "Start of Web Development" : "Inicio del Desarrollo Web"}
             </Timeline.Title>
-            <Timeline.Body className='text-sm md:text-lg text-white/70'>
+            <Timeline.Body className={`text-sm md:text-lg ${darkMode ? "text-black/70" : "text-white/70"}`}>
               {languageMode ? 
               "I started to delve into the world of Web Development, taking courses and learning technologies in a didactic manner." 
               : 
@@ -255,13 +254,13 @@ function App() {
         <Timeline.Item>
           <Timeline.Point />
           <Timeline.Content className='md:gap-y-2 flex flex-col items-start justify-center'>
-            <Timeline.Time className='text-xs md:text-xl text-white/80'>
+            <Timeline.Time className={`text-xs md:text-xl ${darkMode ? "text-black/80" : "text-white/80"}`}>
               {languageMode ? "August, 2021" : "Agosto, 2021"}
             </Timeline.Time>
-            <Timeline.Title className='text-base md:text-2xl text-white'>
+            <Timeline.Title className={`text-base md:text-2xl ${darkMode ? "text-black" : "text-white"}`}>
               {languageMode ? "Entry to the University" : "Ingreso a la Universidad"}
             </Timeline.Title>
-            <Timeline.Body className='text-sm md:text-lg text-white/70'>
+            <Timeline.Body className={`text-sm md:text-lg ${darkMode ? "text-black/70" : "text-white/70"}`}>
               {languageMode ? 
               "I entered the University to study Systems Engineering, where I learned the basics of programming and computer systems." 
               : 
