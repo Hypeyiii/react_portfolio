@@ -440,14 +440,14 @@ function App() {
       </div>
         }>
           <TechButtons
-            className={`bg-[#256aa2] text-white/90 border-black/60 `} 
+            className={`text-white/90 bg-[#183d5d] ${darkMode ? "border-black/50" : "border-white/20"}`} 
             buttonText={"React.Js"}>
-            <FaReact className='size-5 animate-spin-slow'/>
+            <FaReact className='size-5 animate-spin-slow text-blue-600'/>
           </TechButtons> 
           <TechButtons
-            className={`bg-[#003159] text-white/90 border-white/20 `} 
+            className={`bg-[#1c496e] text-white/90 ${darkMode ? "border-black/50" : "border-white/20"}`} 
             buttonText={"Tailwind"}>
-            <SiTailwindcss className='size-5'/>
+            <SiTailwindcss className='size-5 text-[#2298BD]'/>
           </TechButtons>
       </Projects>  
   </div>
