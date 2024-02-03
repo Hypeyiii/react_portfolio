@@ -340,7 +340,7 @@ function App() {
       <div className={`flex flex-row gap-x-2 mb-8 items-center justify-center ${darkMode ? "text-black/90" : "text-white/90"}`}>
         <MdBiotech className='size-8'/>
           <h2 className={`font-semibold text-xl md:text-2xl xl:text-3xl`} data-translate='education'>
-            {languageMode ? "Technologies" : "Technologías"}
+            {languageMode ? "Technologies" : "Tecnologías"}
           </h2>
       </div>
       <div className='grid grid-cols-4 md:grid-cols-5 auto-rows-auto gap-x-4 w-full gap-y-4'>
