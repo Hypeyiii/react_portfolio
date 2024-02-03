@@ -4,15 +4,20 @@ import avatar from './assets/avatar.jpg'
 import ButtonCompany from './Components/Button'
 import ButtonLightMode from './Components/ButtonLightMode.jsx'
 import Technologie from './Components/Technologie.jsx';
+import Projects from './Components/Project.jsx';
+import TechButtons from './Components/TechButton.jsx';
+import ViewButton from './Components/ViewButton.jsx';
+import firstProject from './assets/Project-1.png'
 import { RiMenuUnfoldFill, RiMenuFoldLine  } from "react-icons/ri";
-import { FaWhatsapp, FaLinkedin, FaGithub, FaDiscord, FaHtml5, FaCss3Alt, FaBootstrap, FaReact, FaNode, FaGitAlt, FaJava } from 'react-icons/fa';
+import { FaWhatsapp, FaLinkedin, FaGithub, FaDiscord, FaHtml5, FaCss3Alt, FaBootstrap, 
+         FaReact, FaNode, FaGitAlt, FaJava, FaProjectDiagram } from 'react-icons/fa';
 import { BiLogoGmail } from "react-icons/bi";
 import { MdDarkMode, MdOutlineLightMode, MdBiotech} from "react-icons/md";
 import { TbLanguageOff, TbLanguage } from "react-icons/tb";
 import { SiMysql, SiTailwindcss} from "react-icons/si";
 import { HiArrowNarrowRight} from 'react-icons/hi';
 import { IoMdSchool } from "react-icons/io";
-import { IoLogoJavascript } from "react-icons/io5";
+import { IoEye, IoLogoJavascript } from "react-icons/io5";
 import { Timeline } from 'flowbite-react';
 import { useState, useEffect } from 'react'
 
@@ -59,7 +64,7 @@ function App() {
         from-gray-600 via-gray-950 to-gray-600"></div>
       }
     </div>
-    <div className={`z-50 fixed top-0 md:right-0 md:left-0 mx-auto w-[350px] sm:w-[500px] md:w-[700px]
+    <div className={`z-50 fixed top-0 md:right-0 md:left-0 mx-auto w-[350px] sm:w-[500px] md:w-[900px]
                    ${isMobile ? 'mt-0': 'mt-5'}`}>
         {isMobile ?
         <>
@@ -122,28 +127,28 @@ function App() {
         <ul className={`backdrop-blur-sm bg-black/30 rounded-full flex flex-row gap-x-2 md:gap-x-4 text-xs md:text-sm items-center justify-center 
                       ${darkMode ? "text-white" : "text-white/85"}`}>
           <a href="#"><li className={`p-3 rounded-full transition-all duration-300 
-          active:scale-105 active:duration-300 ${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`}>
+                      ${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`}>
             {languageMode ? "Home" : "Inicio"}
             </li></a>
           <a href="#education"><li className={`p-3 rounded-full transition-all duration-300 
-          active:scale-105 active:duration-300 ${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`}>
+                      ${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`}>
               {languageMode ? "Education" : "Educación"}
             </li></a>
           <a href="#technologies"><li className={`p-3 rounded-full transition-all duration-300 
-          active:scale-105 active:duration-300 ${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`}>
+                      ${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`}>
                 {languageMode ? "Technologies" : "Tecnologias"}
               </li></a>
           <a href="#projects"><li className={`p-3 rounded-full transition-all duration-300 
-          active:scale-105 active:duration-300 ${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`}>
+                      ${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`}>
               {languageMode ? "Projects" : "Proyectos"}
             </li></a>
           <a href="#darkmode">
             <li className={`p-3 rounded-full transition-all duration-300 
-          active:scale-105 active:duration-300 ${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`} onClick={handleDarkMode}>
+                      ${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`} onClick={handleDarkMode}>
                 {darkMode ?
-                <MdOutlineLightMode className='size-6'/>
+                <MdOutlineLightMode className='size-5'/>
                  :
-                 <MdDarkMode className='size-6'/>
+                 <MdDarkMode className='size-5'/>
                  }
             </li>
           </a>
@@ -151,16 +156,16 @@ function App() {
             <li className={`p-3 rounded-full transition-all duration-300 
           active:scale-105 active:duration-300 ${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`} onClick={handleLanguage} id='language'>
               {languageMode ? 
-              <TbLanguage className='size-6'/>
+              <TbLanguage className='size-5'/>
               :
-              <TbLanguageOff className='size-6'/>
+              <TbLanguageOff className='size-5'/>
               }
             </li>
           </a>
         </ul>
       </div>}
     </div>
-      <div className='mt-32 flex w-[350px] sm:w-[500px] md:w-[700px] mx-auto flex-col px-2'>
+      <div className='mt-32 flex w-[350px] sm:w-[500px] md:w-[900px] mx-auto flex-col px-2'>
         <div>
           <div>
           <img src={avatar} alt="Avatar Logo" className='size-[100px] rounded-full shadow-2xl shadow-white/10'/>
@@ -267,7 +272,7 @@ function App() {
           </div>
         </div>
       </div>
-      <div id='education' className='flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[700px] px-2 mt-32 mb-32'>
+      <div id='education' className='flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[900px] px-2 mt-32 mb-24'>
         <div className={`flex flex-row gap-x-2 mb-8 items-center justify-center ${darkMode ? "text-black/90" : "text-white/90"}`}>
         <IoMdSchool className='size-8'/>
           <h2 className={`font-semibold text-xl md:text-2xl xl:text-3xl`} data-translate='education'>
@@ -336,55 +341,163 @@ function App() {
         </Timeline.Item>
       </Timeline>
     </div>
-    <div className='flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[700px] px-2 mt-32 mb-32'>
-      <div className={`flex flex-row gap-x-2 mb-8 items-center justify-center ${darkMode ? "text-black/90" : "text-white/90"}`}>
+    <div className='flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[900px] px-2 mb-24 md:mt-32'>
+      <div className={`flex flex-row gap-x-2 mb-4 items-center justify-center ${darkMode ? "text-black/90" : "text-white/90"}`}>
         <MdBiotech className='size-8'/>
-          <h2 className={`font-semibold text-xl md:text-2xl xl:text-3xl`} data-translate='education'>
+          <h1 className={`font-semibold text-xl md:text-2xl xl:text-3xl`} data-translate='education'>
             {languageMode ? "Technologies" : "Tecnologías"}
-          </h2>
+          </h1>
       </div>
-      <div className='grid grid-cols-4 md:grid-cols-5 auto-rows-auto gap-x-4 w-full gap-y-4'>
-          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+      <p className={`mb-4 text-xs md:text-base ${darkMode ? "text-black/70" : "text-white/70"}`}>
+            {
+              languageMode ? "The skills, tools and technologies I use to bring your products to life" 
+              : 
+              "Las habilidades, herramientas y tecnologías que utilizo para dar vida a tus productos"
+            }
+          </p>
+      <div className='grid grid-cols-4 md:grid-cols-5 auto-rows-auto gap-x-4 w-full gap-y-4 mb-4'>
+          <Technologie className={`p-2 rounded-xl border
+               ${darkMode ? "text-black/70 hover:text-black border-black/50 hover:border-black/70 hover:bg-white bg-white/60"
+                : "text-white/70 hover:text-white border-white/30 hover:border-white/50 hover:bg-black bg-black/60"}`}
             techName={"HTML"}>
-            <FaHtml5 className='size-8 md:size-12'/>
+            <FaHtml5 className='size-6 md:size-12'/>
           </Technologie>
-          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+          <Technologie className={`p-2 border rounded-xl bg-transparent 
+            ${darkMode ? "text-black/70 hover:text-black border-black/50 hover:border-black/70 hover:bg-white bg-white/60"
+            : "text-white/60 hover:text-white border-white/30 hover:border-white/30 hover:bg-black bg-black/60"}`}
             techName={"CSS"}>
-            <FaCss3Alt className='size-8 md:size-12'/>
+            <FaCss3Alt className='size-6 md:size-12'/>
           </Technologie>
-          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+          <Technologie className={`p-2 border rounded-xl bg-transparent 
+            ${darkMode ? "text-black/70 hover:text-black border-black/50 hover:border-black/70 hover:bg-white bg-white/60"
+            : "text-white/60 hover:text-white border-white/30 hover:border-white/30 hover:bg-black bg-black/60"}`}
             techName={"JavaScript"}>
-            <IoLogoJavascript className='size-8 md:size-12'/>
+            <IoLogoJavascript className='size-6 md:size-12'/>
           </Technologie>
-          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+          <Technologie className={`p-2 border rounded-xl bg-transparent 
+            ${darkMode ? "text-black/70 hover:text-black border-black/50 hover:border-black/70 hover:bg-white bg-white/60"
+            : "text-white/60 hover:text-white border-white/30 hover:border-white/30 hover:bg-black bg-black/60"}`}
             techName={"Tailwind"}>
-            <SiTailwindcss className='size-8 md:size-12'/>
+            <SiTailwindcss className='size-6 md:size-12'/>
           </Technologie>
-          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+          <Technologie className={`p-2 border rounded-xl bg-transparent 
+            ${darkMode ? "text-black/70 hover:text-black border-black/50 hover:border-black/70 hover:bg-white bg-white/60"
+            : "text-white/60 hover:text-white border-white/30 hover:border-white/30 hover:bg-black bg-black/60"}`}
             techName={"Bootstrap"}>
-            <FaBootstrap className='size-8 md:size-12'/>
+            <FaBootstrap className='size-6 md:size-12'/>
           </Technologie>
-          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+          <Technologie className={`p-2 border rounded-xl bg-transparent
+            ${darkMode ? "text-black/70 hover:text-black border-black/50 hover:border-black/70 hover:bg-white bg-white/60"
+            : "text-white/60 hover:text-white border-white/30 hover:border-white/30 hover:bg-black bg-black/60"}`}
             techName={"React"}>
-            <FaReact className='size-8 md:size-12 animate-spin-slow'/>
+            <FaReact className='size-6 md:size-12 animate-spin-slow'/>
           </Technologie>
-          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+          <Technologie className={`p-2 border rounded-xl bg-transparent 
+            ${darkMode ? "text-black/70 hover:text-black border-black/50 hover:border-black/70 hover:bg-white bg-white/60"
+            : "text-white/60 hover:text-white border-white/30 hover:border-white/30 hover:bg-black bg-black/60"}`}
             techName={"NodeJS"}>
-            <FaNode className='size-8 md:size-12'/>
+            <FaNode className='size-6 md:size-12'/>
           </Technologie>
-          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+          <Technologie className={`p-2 border rounded-xl bg-transparent 
+            ${darkMode ? "text-black/70 hover:text-black border-black/50 hover:border-black/70 hover:bg-white bg-white/60"
+            : "text-white/60 hover:text-white border-white/30 hover:border-white/30 hover:bg-black bg-black/60"}`}
             techName={"MySQL"}>
-            <SiMysql className='size-8 md:size-12'/>
+            <SiMysql className='size-6 md:size-12'/>
           </Technologie>
-          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+          <Technologie className={`p-2 border rounded-xl bg-transparent 
+            ${darkMode ? "text-black/70 hover:text-black border-black/50 hover:border-black/70 hover:bg-white bg-white/60"
+            : "text-white/60 hover:text-white border-white/30 hover:border-white/30 hover:bg-black bg-black/60"}`}
             techName={"Git"}>
-            <FaGitAlt className='size-8 md:size-12'/>
+            <FaGitAlt className='size-6 md:size-12'/>
           </Technologie>
-          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+          <Technologie className={`p-2 border rounded-xl bg-transparent 
+            ${darkMode ? "text-black/70 hover:text-black border-black/50 hover:border-black/70 hover:bg-white bg-white/60"
+            : "text-white/60 hover:text-white border-white/30 hover:border-white/30 hover:bg-black bg-black/60"}`}
             techName={"Java"}>
-            <FaJava className='size-8 md:size-12'/>
+            <FaJava className='size-6 md:size-12'/>
           </Technologie>
       </div>
+        <div className='flex flex-col gap-y-2'>
+        <h1 className={`font-bold text-base md:text-2xl ${darkMode ? "text-black" : "text-white"}`}>
+              {languageMode ? "Currently working on:" : 'Actualmente trabajando en:'}
+        </h1>
+        <p className={`text-xs md:text-sm ${darkMode ? "text-black/60" : "text-white/60"}`}>
+          {languageMode ? 
+          "I am currently working on a project with React, NodeJS and MySQL, developing a web application for a small business."
+          :
+          "Actualmente estoy trabajando en un proyecto con React, NodeJS y MySQL, desarrollando una aplicación web para un pequeño negocio."
+          }
+        </p>
+        </div>
+  </div>
+  
+  <div className='flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[900px] px-2 mb-24'>
+      <div className={`flex flex-row gap-x-2 mb-4 items-center justify-center ${darkMode ? "text-black/90" : "text-white/90"}`}>
+      <FaProjectDiagram className='size-6'/>
+      <h1 className={`font-semibold text-xl md:text-2xl xl:text-3xl`} data-translate='education'>
+            {languageMode ? "Projects" : "Proyectos"}
+          </h1>
+      </div>
+      <p className={`mb-6 text-xs md:text-base ${darkMode ? "text-black/70" : "text-white/70"}`}>
+        {languageMode ? 
+        "Some of the projects I have developed and collaborated on" 
+        :
+        "Algunos de los proyectos que he desarrollado y colaborado"
+        }
+      </p>
+      <Projects
+        projectImg={firstProject}
+        techTitleClass={`${darkMode ? "text-black/90" : "text-white/90"}`}
+        projectName={
+          languageMode ? "Mariana´ s Accesories - E-commerce Website" : "Mariana Accesorios - Sitio Web E-commerce"
+        }
+        techDescriptionClass={`${darkMode ? "text-black/60" : "text-white/70"}`}
+        projectDescription={
+          languageMode ? 
+          "E-commerce website developed with React, TailwindCSS and Firebase, where you can buy jewellry accessories" :
+          "Sitio web E-commerce desarrollado con React, TailwindCSS y Firebase, donde puedes comprar accesorios de joyeria"
+        }
+        ViewButtons={
+          <div className='grid grid-cols-3 gap-x-4'>
+            <div className='col-span-1'>
+              <ViewButton 
+                viewButtonClass={
+                  darkMode ? "text-black/60 bg-white/60 hover:bg-white border-white/60 hover:text-black hover:border-black" 
+                  : 
+                  "text-white/40 hover:text-white bg-black/60 hover:bg-black border-black/40"
+                }
+                textViewButton={
+                  languageMode ? "Code" : "Código"
+                }>
+                <FaGithub className='size-5'/>
+              </ViewButton>
+            </div>
+            <div className='col-span-1 flex'>
+              <ViewButton 
+                viewButtonClass={
+                  darkMode ? "text-black/60 bg-white/60 hover:bg-white border-white/60 hover:text-black hover:border-black" 
+                  : 
+                  "text-white/40 hover:text-white bg-black/60 hover:bg-black border-black/40"
+                }
+                textViewButton={
+                  languageMode ? "View" : "Ver"
+                }>
+                <IoEye className='size-5'/>
+              </ViewButton>
+            </div>
+      </div>
+        }>
+          <TechButtons
+            className={`bg-[#256aa2] text-white/90 border-black/60 `} 
+            buttonText={"React.Js"}>
+            <FaReact className='size-5 animate-spin-slow'/>
+          </TechButtons> 
+          <TechButtons
+            className={`bg-[#003159] text-white/90 border-white/20 `} 
+            buttonText={"Tailwind"}>
+            <SiTailwindcss className='size-5'/>
+          </TechButtons>
+      </Projects>  
   </div>
 
     </>
