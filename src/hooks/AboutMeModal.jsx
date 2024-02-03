@@ -1,13 +1,14 @@
-const AboutMeModal = ({ onClose, children, animationModal, aboutMeText , aboutMeModalClass, bgClass}) => {
+const AboutMeModal = ({ onClose, children, animationModal, aboutMeText , aboutMeModalClass, bgClass, presentationText, presentationClass}) => {
     return (
       <div className={`${aboutMeModalClass} w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] mx-auto fixed inset-0 z-40 bg-none px-4 flex justify-center
-      items-center text-pretty`}>
+      items-center`}>
         <div className={`fixed inset-0 ${bgClass}`} onClick={onClose}></div>
-        <div className="flex flex-col md:flex-row justify-center items-center m-auto w-auto h-auto">
-            <div className={`z-50 p-4 text-sm sm:text-xl ${animationModal}`}>
-              {aboutMeText}
+        <div className="flex flex-col md:flex-row justify-center items-center m-auto w-auto h-auto gap-4">
+            <div className={`z-50 text-xs sm:text-lg text-pretty gap-y-1 flex flex-col ${animationModal}`}>
+              <h1 className={`${presentationClass} text-sm sm:text-xl text-pretty`}>{presentationText}</h1>
+              <h1>{aboutMeText}</h1>
             </div>
-            <div className={`z-50 p-4 ${animationModal}`}>
+            <div className={`z-50`}>
               {children}
             </div>
         </div>

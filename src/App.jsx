@@ -499,12 +499,14 @@ function App() {
       animationModal={`modal ${isAboutMeModal ? "modalIn" : "modalOut"}`}
       onClose={closeAboutMeModal}
       img={avatar}
+      presentationClass={`font-bold ${darkMode ? "text-black" : "text-white"}`}
+      presentationText={languageMode ? "Hello, my name is Isaac Frias " : "Hola, mi nombre es Isaac Frias "}
       aboutMeText=
-        {languageMode ? "My name is Isaac Alessandro Frias Salinas, I am currently 19 years old, I was born in Monterrey, Nuevo León on August 31, 2004, and I am a student of engineering passionate about web development and programming. Today I am learning new technologies and tools for the development of web applications."
+        {languageMode ? "I am currently 19 years old, I was born in Monterrey, Nuevo León on August 31, 2004, and I am a student of engineering passionate about web development and programming. Today I am learning new technologies and tools for the development of web applications."
       :
-        "Mi nombre es Isaac Alessandro Frias Salinas, actualmente tengo 19 años, nací en Monterrey, Nuevo León un 31 de agosto del 2004, y soy un estudiante de ingeniería apasionado por el desarrollo web y la programación. A día de hoy me encuentro aprendiendo nuevas tecnologías y herramientas para el desarrollo de aplicaciones web."}
-        aboutMeModalClass={`font-semibold ${darkMode ? "text-black" : "text-white"}`}
-        bgClass={`${darkMode ? "bg-white/80" : "bg-black/80"}`}
+        "Actualmente tengo 19 años, nací en Monterrey, Nuevo León un 31 de agosto del 2004, y soy un estudiante de ingeniería apasionado por el desarrollo web y la programación. A día de hoy me encuentro aprendiendo nuevas tecnologías y herramientas para el desarrollo de aplicaciones web."}
+        aboutMeModalClass={`font-light ${darkMode ? "text-black/80" : "text-white/80"}`}
+        bgClass={`${darkMode ? "backdrop-blur-sm bg-white/50" : "backdrop-blur-sm bg-black/50"}`}
         >
         <img src={avatar} alt ="Imagen" className={`w-full rounded-full size-[150px] md:size-auto`}
         />
