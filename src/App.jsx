@@ -3,14 +3,17 @@ import './App.css'
 import avatar from './assets/avatar.jpg'
 import ButtonCompany from './Components/Button'
 import ButtonLightMode from './Components/ButtonLightMode.jsx'
+import Technologie from './Components/Technologie.jsx';
 import { RiMenuUnfoldFill, RiMenuFoldLine  } from "react-icons/ri";
-import { FaWhatsapp, FaLinkedin, FaGithub, FaDiscord } from 'react-icons/fa';
+import { FaWhatsapp, FaLinkedin, FaGithub, FaDiscord, FaHtml5, FaCss3Alt, FaBootstrap, FaReact, FaNode, FaGitAlt, FaJava } from 'react-icons/fa';
 import { BiLogoGmail } from "react-icons/bi";
-import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
+import { MdDarkMode, MdOutlineLightMode, MdBiotech} from "react-icons/md";
 import { TbLanguageOff, TbLanguage } from "react-icons/tb";
-import { Timeline } from 'flowbite-react';
+import { SiMysql, SiTailwindcss} from "react-icons/si";
 import { HiArrowNarrowRight} from 'react-icons/hi';
 import { IoMdSchool } from "react-icons/io";
+import { IoLogoJavascript } from "react-icons/io5";
+import { Timeline } from 'flowbite-react';
 import { useState, useEffect } from 'react'
 
 function App() {
@@ -60,9 +63,9 @@ function App() {
                    ${isMobile ? 'mt-0': 'mt-5'}`}>
         {isMobile ?
         <>
-        <div className={`fixed w-full h-[56px] flex flex-row justify-between items-center px-6 backdrop-blur-md
-         ${isMenu ? "bg-transparent" : "transition-all duration-300"} ${darkMode ? "text-black" : "text-white/85"}`}>
-          <button className={`z-50 relative transition-all duration-300`}
+        <div className={`fixed w-full h-[56px] flex flex-row justify-between items-center px-6
+         ${isMenu ? "bg-transparent" : "backdrop-blur-md"} ${darkMode ? "text-black" : "text-white/85"}`}>
+          <button className={`z-50 relative`}
                    onClick={handleMenuModal}>
             {isMenu ? <RiMenuFoldLine className='size-6'/> : <RiMenuUnfoldFill className='size-6'/>}
           </button>
@@ -329,8 +332,59 @@ function App() {
         </Timeline.Item>
       </Timeline>
     </div>
+    <div className='flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[700px] px-2 mt-32 mb-32'>
+      <div className={`flex flex-row gap-x-2 mb-8 items-center justify-center ${darkMode ? "text-black/90" : "text-white/90"}`}>
+        <MdBiotech className='size-8'/>
+          <h2 className={`font-semibold text-xl md:text-2xl xl:text-3xl`} data-translate='education'>
+            {languageMode ? "Technologies" : "Technologías"}
+          </h2>
+      </div>
+      <div className='grid grid-cols-4 md:grid-cols-5 auto-rows-auto gap-x-4 w-full gap-y-4'>
+          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+            techName={"HTML"}>
+            <FaHtml5 className='size-8 md:size-12'/>
+          </Technologie>
+          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+            techName={"CSS"}>
+            <FaCss3Alt className='size-8 md:size-12'/>
+          </Technologie>
+          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+            techName={"JavaScript"}>
+            <IoLogoJavascript className='size-8 md:size-12'/>
+          </Technologie>
+          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+            techName={"Tailwind"}>
+            <SiTailwindcss className='size-8 md:size-12'/>
+          </Technologie>
+          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+            techName={"Bootstrap"}>
+            <FaBootstrap className='size-8 md:size-12'/>
+          </Technologie>
+          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+            techName={"React"}>
+            <FaReact className='size-8 md:size-12'/>
+          </Technologie>
+          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+            techName={"NodeJS"}>
+            <FaNode className='size-8 md:size-12'/>
+          </Technologie>
+          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+            techName={"MySQL"}>
+            <SiMysql className='size-8 md:size-12'/>
+          </Technologie>
+          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+            techName={"Git"}>
+            <FaGitAlt className='size-8 md:size-12'/>
+          </Technologie>
+          <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
+            techName={"Java"}>
+            <FaJava className='size-8 md:size-12'/>
+          </Technologie>
+      </div>
+  </div>
+
     </>
   )
-}
+} 
 
 export default App;
