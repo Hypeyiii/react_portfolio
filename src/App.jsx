@@ -6,6 +6,9 @@ import Technologie from './Components/Technologie.jsx';
 import Projects from './Components/Project.jsx';
 import TechButtons from './Components/TechButton.jsx';
 import ViewButton from './Components/ViewButton.jsx';
+import Footer from './Footer.jsx';
+import ImageModal from './hooks/ImageModal.jsx';
+import AboutMeModal from './hooks/AboutMeModal.jsx';
 import firstProject from './assets/Project-1.png'
 import { RiMenuUnfoldFill, RiMenuFoldLine  } from "react-icons/ri";
 import { FaWhatsapp, FaLinkedin, FaGithub, FaDiscord, FaHtml5, FaCss3Alt, FaBootstrap, 
@@ -20,14 +23,24 @@ import { Timeline } from 'flowbite-react';
 import { useState, useEffect } from 'react'
 
 function App() {
+
+  const [isAboutMeModal, setIsAboutMeModal] = useState(false);
+
+  const openAboutMeModal = () => {
+    setIsAboutMeModal(true);
+  }
+  const closeAboutMeModal = () => {
+    setIsAboutMeModal(false);
+  }
+
   const [modalOpen, setModalOpen] = useState(false);
 
-  const closeModal = () => {
-    setModalOpen(false);
-  }
   const openModal = () => {
     setModalOpen(true);
   }
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   const [isMenu, setIsMenu] = useState(false)
 
@@ -75,7 +88,10 @@ function App() {
                    ${isMobile ? 'mt-0': 'mt-1'}`}>
         {isMobile ?
         <>
-        <div className={`fixed w-full h-[56px] flex flex-row justify-between items-center px-6
+          {isAboutMeModal ? "" 
+          :
+          <>
+          <div className={`fixed w-full h-[56px] flex flex-row justify-between items-center px-6
          ${isMenu ? "bg-transparent" : "backdrop-blur-md"} ${darkMode ? "text-black" : "text-white/85"}`}>
           <button className={`z-50 relative`}
                    onClick={handleMenuModal}>
@@ -84,7 +100,9 @@ function App() {
           <h1 className='text-2xl font-bold'>
             {isMenu ? "" : "IF"}
           </h1>
-        </div>
+          </div>
+          </>
+          }
             <div className='entrance menu h-screen w-screen hidden fixed'
               onClick={handleMenuModal}>
                 <div className="fixed inset-0 bg-black opacity-70 h-screen"></div>
@@ -174,15 +192,16 @@ function App() {
     </div>
       <div className='mt-32 flex w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] mx-auto flex-col px-2'>
         <div>
-          <div>
           <img src={avatar} alt="Avatar Logo" className='size-[100px] rounded-full shadow-2xl shadow-white/10' onClick={openModal}/>
-          </div>
         </div>
         {modalOpen && (
-        <div className="modal z-50 fixed inset-0 flex items-center justify-center backdrop-blur-sm" onClick={closeModal}>
-            <img src={avatar} alt="Imagen Modal" className='fade-in size-[250px] md:size-[325px] rounded-full' />
-        </div>
-      )}
+          <ImageModal
+            animationModal={`modal ${modalOpen ? "modalIn" : "modalOut"}`}
+            onClose={closeModal}
+            img={avatar}>
+              <img src={avatar} alt="Imagen" className={`w-full rounded-full size-[250px] md:size-[325px]`}/>
+          </ImageModal>
+        )}
         <div className='text-white mt-5 flex flex-row gap-x-5 md:gap-x-8 items-center justify-start'>
           <h1 className={`font-bold text-2xl md:text-3xl lg:text-5xl ${darkMode ? "text-black" : "text-white"}`}>
             {languageMode ? "Hello, I'm Isaac" : "Hola, Soy Isaac"}
@@ -465,7 +484,32 @@ function App() {
           </TechButtons>
       </Projects>  
   </div>
-
+  <Footer
+    className={darkMode ? "text-black/70" : "text-white/70"}
+    footerText={languageMode ? "© 2024 Isaac Frias. All the Rights Reserved" : "© 2024 Isaac Frias. Derechos Reservados "}
+    aboutRef={"#inicio"}
+    contactRef={"mailto:isaacfrias868@gmal.com"}
+    about={languageMode ? "About me" : "Acerca de mi"}
+    meModal={openAboutMeModal}
+    contact={languageMode ? "Contact" : "Contacto"}
+    aboutClass={`hover:underline ${darkMode ? "text-black/70 hover:text-black" : "text-white/70 hover:text-white"}`}
+  />
+  {isAboutMeModal && (
+    <AboutMeModal
+      animationModal={`modal ${isAboutMeModal ? "modalIn" : "modalOut"}`}
+      onClose={closeAboutMeModal}
+      img={avatar}
+      aboutMeText=
+        {languageMode ? "My name is Isaac Alessandro Frias Salinas, I am currently 19 years old, I was born in Monterrey, Nuevo León on August 31, 2004, and I am a student of engineering passionate about web development and programming. Today I am learning new technologies and tools for the development of web applications."
+      :
+        "Mi nombre es Isaac Alessandro Frias Salinas, actualmente tengo 19 años, nací en Monterrey, Nuevo León un 31 de agosto del 2004, y soy un estudiante de ingeniería apasionado por el desarrollo web y la programación. A día de hoy me encuentro aprendiendo nuevas tecnologías y herramientas para el desarrollo de aplicaciones web."}
+        aboutMeModalClass={`font-semibold ${darkMode ? "text-black" : "text-white"}`}
+        bgClass={`${darkMode ? "bg-white/80" : "bg-black/80"}`}
+        >
+        <img src={avatar} alt ="Imagen" className={`w-full rounded-full size-[150px] md:size-auto`}
+        />
+    </AboutMeModal>
+  )}
     </>
   )
 } 
