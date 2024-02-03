@@ -9,18 +9,26 @@ import ViewButton from './Components/ViewButton.jsx';
 import firstProject from './assets/Project-1.png'
 import { RiMenuUnfoldFill, RiMenuFoldLine  } from "react-icons/ri";
 import { FaWhatsapp, FaLinkedin, FaGithub, FaDiscord, FaHtml5, FaCss3Alt, FaBootstrap, 
-         FaReact, FaNode, FaGitAlt, FaJava, FaProjectDiagram } from 'react-icons/fa';
+         FaReact, FaNode, FaGitAlt, FaJava, FaProjectDiagram, FaAngleRight } from 'react-icons/fa';
 import { BiLogoGmail } from "react-icons/bi";
 import { MdDarkMode, MdOutlineLightMode, MdBiotech} from "react-icons/md";
 import { TbLanguageOff, TbLanguage } from "react-icons/tb";
 import { SiMysql, SiTailwindcss} from "react-icons/si";
-import { HiArrowNarrowRight} from 'react-icons/hi';
 import { IoMdSchool } from "react-icons/io";
 import { IoEye, IoLogoJavascript } from "react-icons/io5";
 import { Timeline } from 'flowbite-react';
 import { useState, useEffect } from 'react'
 
 function App() {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const closeModal = () => {
+    setModalOpen(false);
+  }
+  const openModal = () => {
+    setModalOpen(true);
+  }
+
   const [isMenu, setIsMenu] = useState(false)
 
   const [darkMode, setDarkMode] = useState(false)
@@ -64,7 +72,7 @@ function App() {
       }
     </div>
     <div className={`z-50 fixed top-0 md:right-0 md:left-0 mx-auto
-                   ${isMobile ? 'mt-0': 'mt-5'}`}>
+                   ${isMobile ? 'mt-0': 'mt-1'}`}>
         {isMobile ?
         <>
         <div className={`fixed w-full h-[56px] flex flex-row justify-between items-center px-6
@@ -167,9 +175,14 @@ function App() {
       <div className='mt-32 flex w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] mx-auto flex-col px-2'>
         <div>
           <div>
-          <img src={avatar} alt="Avatar Logo" className='size-[100px] rounded-full shadow-2xl shadow-white/10'/>
+          <img src={avatar} alt="Avatar Logo" className='size-[100px] rounded-full shadow-2xl shadow-white/10' onClick={openModal}/>
           </div>
         </div>
+        {modalOpen && (
+        <div className="modal z-50 fixed inset-0 flex items-center justify-center backdrop-blur-sm" onClick={closeModal}>
+            <img src={avatar} alt="Imagen Modal" className='fade-in size-[250px] md:size-[325px] rounded-full' />
+        </div>
+      )}
         <div className='text-white mt-5 flex flex-row gap-x-5 md:gap-x-8 items-center justify-start'>
           <h1 className={`font-bold text-2xl md:text-3xl lg:text-5xl ${darkMode ? "text-black" : "text-white"}`}>
             {languageMode ? "Hello, I'm Isaac" : "Hola, Soy Isaac"}
@@ -246,13 +259,14 @@ function App() {
               "Cursando 6to semestre en la carrera de Ingeniero Administrador de Sistemas (IAS). Desarrollando Web´ s de manera didactica y apasionada."
              }
             </Timeline.Body>
-            <button className={`flex flex-row gap-x-2 items-center justify-center p-2 bg-black border border-white/20 rounded-xl
-            transition-all duration-300 text-white/60 hover:text-white active:scale-105 active:duration-75 text-xs md:text-sm`}>
+            <a href='https://www.uanl.mx/oferta/ingeniero-administrador-de-sistemas/' target='_blank' rel='noopener noreferrer' 
+              className={`flex flex-row gap-x-1 items-center justify-center p-2 bg-black border border-white/20 rounded-xl
+              transition-all duration-300 text-white/60 hover:text-white active:scale-105 active:duration-75 text-xs md:text-sm`}>
               {
                 languageMode ? "Learn more" : "Saber más"
               }
-              <HiArrowNarrowRight className="ml-2 h-3 w-3" />
-            </button>
+              <FaAngleRight/>
+            </a>
           </Timeline.Content>
         </Timeline.Item>
         <Timeline.Item>
