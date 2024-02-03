@@ -6,7 +6,7 @@ import ButtonLightMode from './Components/ButtonLightMode.jsx'
 import { RiMenuUnfoldFill, RiMenuFoldLine  } from "react-icons/ri";
 import { FaWhatsapp, FaLinkedin, FaGithub, FaDiscord } from 'react-icons/fa';
 import { BiLogoGmail } from "react-icons/bi";
-import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
+import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { TbLanguageOff, TbLanguage } from "react-icons/tb";
 import { Timeline } from 'flowbite-react';
 import { HiArrowNarrowRight} from 'react-icons/hi';
@@ -49,22 +49,27 @@ function App() {
     <>
     <div className="fixed left-0 top-0 -z-10 h-screen w-screen">
     {darkMode ?
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-900 via-gray-50 to-gray-900"></div>     
+        <div className="absolute inset-0 -z-10 h-full w-full bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))]
+         from-gray-900 via-gray-50 to-gray-900"></div>     
         :
-      <div className="absolute inset-0 -z-10 h-full w-full bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-600 via-gray-950 to-gray-600"></div>
+        <div className="absolute inset-0 -z-10 h-full w-full bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))]
+        from-gray-600 via-gray-950 to-gray-600"></div>
       }
     </div>
     <div className={`z-50 fixed top-0 md:right-0 md:left-0 mx-auto w-[350px] sm:w-[500px] md:w-[700px]
                    ${isMobile ? 'mt-0': 'mt-5'}`}>
-      <div className='mx-auto  flex items-start md:items-center justify-start md:justify-center
-         font-medium'>
         {isMobile ?
         <>
-          <button className={`absolute z-40 transition-all duration-300 
-                  ${isMobile ? "p-4" : "p-0"} ${isMenu ? "" : " bg-black/30 bg-opacity-50"} ${darkMode ? "text-black bg-white/30" : "text-white/85 bg-black/30"}`}
+        <div className={`fixed w-full h-[56px] flex flex-row justify-between items-center px-6 backdrop-blur-md
+         ${isMenu ? "bg-transparent" : "transition-all duration-300"} ${darkMode ? "text-black" : "text-white/85"}`}>
+          <button className={`z-50 relative transition-all duration-300`}
                    onClick={handleMenuModal}>
             {isMenu ? <RiMenuFoldLine className='size-6'/> : <RiMenuUnfoldFill className='size-6'/>}
-          </button> 
+          </button>
+          <h1 className='text-2xl font-bold'>
+            {isMenu ? "" : "IF"}
+          </h1>
+        </div>
             <div className='entrance menu h-screen w-screen hidden fixed'
               onClick={handleMenuModal}>
                 <div className="fixed inset-0 bg-black opacity-70 h-screen"></div>
@@ -89,7 +94,9 @@ function App() {
                       <li className='md:hover:bg-gray-400 p-2 rounded-full transition-all duration-300 active:scale-105 
                         active:duration-75' onClick={handleDarkMode}>
                           {darkMode ? 
-                          <MdDarkMode className='size-6'/> : <MdOutlineDarkMode className='size-6'/>
+                          <MdOutlineLightMode className='size-6'/>
+                          :
+                          <MdDarkMode className='size-6'/> 
                           }
                       </li>
                     </a>
@@ -107,37 +114,39 @@ function App() {
               </div>
     </>
         :
-        <ul className={`backdrop-blur-sm bg-black/30 rounded-full px-2 flex flex-row gap-x-2 md:gap-x-4 text-xs md:text-base items-center justify-center 
+        <div className='mx-auto flex items-start md:items-center justify-start md:justify-center
+         font-medium'>
+        <ul className={`backdrop-blur-sm bg-black/30 rounded-full flex flex-row gap-x-2 md:gap-x-4 text-xs md:text-sm items-center justify-center 
                       ${darkMode ? "text-white" : "text-white/85"}`}>
-          <a href="#"><li className={`hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
-          active:scale-105 active:duration-300`}>
+          <a href="#"><li className={`p-3 rounded-full transition-all duration-300 
+          active:scale-105 active:duration-300 ${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`}>
             {languageMode ? "Home" : "Inicio"}
             </li></a>
-          <a href="#education"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
-            active:scale-105 active:duration-75'>
+          <a href="#education"><li className={`p-3 rounded-full transition-all duration-300 
+          active:scale-105 active:duration-300 ${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`}>
               {languageMode ? "Education" : "Educación"}
             </li></a>
-          <a href="#technologies"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
-            active:scale-105 active:duration-75'>
+          <a href="#technologies"><li className={`p-3 rounded-full transition-all duration-300 
+          active:scale-105 active:duration-300 ${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`}>
                 {languageMode ? "Technologies" : "Tecnologias"}
               </li></a>
-          <a href="#projects"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
-           active:scale-105 active:duration-75'>
+          <a href="#projects"><li className={`p-3 rounded-full transition-all duration-300 
+          active:scale-105 active:duration-300 ${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`}>
               {languageMode ? "Projects" : "Proyectos"}
             </li></a>
           <a href="#darkmode">
-            <li className='hover:bg-gray-400 p-2 rounded-full transition-all duration-300 active:scale-105 
-              active:duration-75' onClick={handleDarkMode}>
+            <li className={`p-3 rounded-full transition-all duration-300 
+          active:scale-105 active:duration-300 ${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`} onClick={handleDarkMode}>
                 {darkMode ?
-                 <MdDarkMode className='size-6'/>
+                <MdOutlineLightMode className='size-6'/>
                  :
-                 <MdOutlineDarkMode  className='size-6'/>
+                 <MdDarkMode className='size-6'/>
                  }
             </li>
           </a>
           <a href="#languages">
-            <li className='hover:bg-gray-400 p-2 rounded-full transition-all duration-300 active:scale-105 
-            active:duration-75' onClick={handleLanguage} id='language'>
+            <li className={`p-3 rounded-full transition-all duration-300 
+          active:scale-105 active:duration-300 ${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`} onClick={handleLanguage} id='language'>
               {languageMode ? 
               <TbLanguage className='size-6'/>
               :
@@ -145,8 +154,8 @@ function App() {
               }
             </li>
           </a>
-        </ul>}
-      </div>
+        </ul>
+      </div>}
     </div>
       <div className='mt-32 flex w-[350px] sm:w-[500px] md:w-[700px] mx-auto flex-col px-2'>
           <img src={avatar} alt="Avatar Logo" className='size-[100px] rounded-full shadow-2xl shadow-white/10'/>
