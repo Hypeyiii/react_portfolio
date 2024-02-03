@@ -161,9 +161,13 @@ function App() {
       </div>}
     </div>
       <div className='mt-32 flex w-[350px] sm:w-[500px] md:w-[700px] mx-auto flex-col px-2'>
+        <div>
+          <div>
           <img src={avatar} alt="Avatar Logo" className='size-[100px] rounded-full shadow-2xl shadow-white/10'/>
+          </div>
+        </div>
         <div className='text-white mt-5 flex flex-row gap-x-5 md:gap-x-8 items-center justify-start'>
-          <h1 className='title font-semibold text-2xl md:text-3xl lg:text-5xl' data-translate='title' id='title'>
+          <h1 className={`font-bold text-2xl md:text-3xl lg:text-5xl ${darkMode ? "text-black" : "text-white"}`}>
             {languageMode ? "Hello, I'm Isaac" : "Hola, Soy Isaac"}
           </h1>
           <button className={`p-2 border rounded-lg shadow-lg shadow-white/5 bg-black border-white/20 
@@ -362,7 +366,7 @@ function App() {
           </Technologie>
           <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
             techName={"React"}>
-            <FaReact className='size-8 md:size-12'/>
+            <FaReact className='size-8 md:size-12 animate-spin-slow'/>
           </Technologie>
           <Technologie className={` ${darkMode ? "text-black/80 hover:text-black" : "text-white/60 hover:text-white"}`}
             techName={"NodeJS"}>
