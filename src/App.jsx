@@ -2,7 +2,6 @@
 import './App.css'
 import avatar from './assets/avatar.jpg'
 import ButtonCompany from './Components/Button'
-import ButtonLightMode from './Components/ButtonLightMode.jsx'
 import Technologie from './Components/Technologie.jsx';
 import Projects from './Components/Project.jsx';
 import TechButtons from './Components/TechButton.jsx';
@@ -152,7 +151,7 @@ function App() {
                  }
             </li>
           </a>
-          <a href="#languages">
+          <a href='#language'>
             <li className={`p-3 rounded-full transition-all duration-300 
           active:scale-105 active:duration-300 ${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`} onClick={handleLanguage} id='language'>
               {languageMode ? 
@@ -175,11 +174,12 @@ function App() {
           <h1 className={`font-bold text-2xl md:text-3xl lg:text-5xl ${darkMode ? "text-black" : "text-white"}`}>
             {languageMode ? "Hello, I'm Isaac" : "Hola, Soy Isaac"}
           </h1>
-          <button className={`p-2 border rounded-lg shadow-lg shadow-white/5 bg-black border-white/20 
-           text-white text-xs transition-all duration-300 md:font-semibold
-           active:scale-105 active:duration-75 font-semibold text-white/70 hover:text-white ${darkMode ? "hover:bg-black/70" : "hover:bg-white/5"}`}>
-              {languageMode ? "Hire me here" : 'Contrátame aquí'}
-           </button>
+            <a href="https://www.linkedin.com/in/isaac-frias-56002428a/" target="_blank" rel="noopener noreferrer"
+            className={`p-2 border rounded-lg shadow-lg shadow-white/5 bg-black border-white/20 text-white text-xs 
+                        transition-all duration-300 md:font-semibold active:scale-105 active:duration-75 font-semibold text-white/70
+                        hover:text-white ${darkMode ? "hover:bg-black/70" : "hover:bg-white/5"}`}>
+                {languageMode ? "Hire me here" : 'Contrátame aquí'}
+            </a >
         </div>
         <div className={`${darkMode ? "text-black" : "text-white/90"} mt-5 font-light text-sm md:text-lg xl:text-xl text-wrap`} data-translate='description'>
           <p>
@@ -189,86 +189,36 @@ function App() {
             }
           </p>
           <div className='mt-5 grid grid-cols-3 sm:grid-cols-5 gap-y-2 auto-rows-auto items-center justify-center gap-x-2 md:gap-x-3'>
-              <a href="#">
-                {
-                darkMode ?
-                <ButtonLightMode
-                  className='hover:bg-white'
-                  contactBy="LinkedIn">
-                  <FaLinkedin className='size-[15px]' alt="Icon"/>
-                </ButtonLightMode>
-                :
                 <ButtonCompany
-                  className='hover:bg-white'
+                  className={`${darkMode ? " text-white/60 hover:text-white bg-black/80" : "text-white/50 hover:text-white bg-black/50"}`}
+                  href={"https://www.linkedin.com/in/isaac-frias-56002428a/"}
                   contactBy="LinkedIn">
                   <FaLinkedin className='size-[15px]' alt="Icon"/>
                 </ButtonCompany>
-                }
-              </a>
-                <a href="#">
-                {
-                darkMode ?
-                <ButtonLightMode
-                  className='hover:bg-white'
-                  contactBy="GitHub">
-                  <FaGithub className='size-[15px]' alt="Icon"/>
-                </ButtonLightMode>
-                :
                 <ButtonCompany
-                  className='hover:bg-white'
+                  href={"https://github.com/Hypeyiii"}
+                  className={`${darkMode ? " text-white/60 hover:text-white bg-black/80" : "text-white/50 hover:text-white bg-black/50"}`}
                   contactBy="GitHub">
                   <FaGithub className='size-[15px]' alt="Icon"/>
                 </ButtonCompany>
-                }
-              </a>
-              <a href="#">
-              {
-                darkMode ?
-                <ButtonLightMode
-                  className='hover:bg-white'
-                  contactBy="Discord">
-                  <FaDiscord className='size-[15px]' alt="Icon"/>
-                </ButtonLightMode>
-                :
                 <ButtonCompany
-                  className='hover:bg-white'
+                  href={"https://discord.com/users/IsaacFrias#0001"}
+                  className={`${darkMode ? " text-white/60 hover:text-white bg-black/80" : "text-white/50 hover:text-white bg-black/50"}`}
                   contactBy="Discord">
                   <FaDiscord className='size-[15px]' alt="Icon"/>
                 </ButtonCompany>
-                }
-              </a>
-              <a href="#">
-              {
-                darkMode ?
-                <ButtonLightMode
-                  className='hover:bg-white'
-                  contactBy="Gmail">
-                  <BiLogoGmail className='size-[15px]' alt="Icon"/>
-                </ButtonLightMode>
-                :
                 <ButtonCompany
-                  className='hover:bg-white'
+                  href={"mailto:isaacfrias868@gmail.com"}
+                  className={`${darkMode ? " text-white/60 hover:text-white bg-black/80" : "text-white/50 hover:text-white bg-black/50"}`}
                   contactBy="Gmail">
                   <BiLogoGmail className='size-[15px]' alt="Icon"/>
                 </ButtonCompany>
-                }
-              </a>
-              <a href="#">
-              {
-                darkMode ?
-                <ButtonLightMode
-                  className='hover:bg-white'
-                  contactBy="WhatsApp">
-                  <FaWhatsapp className='size-[15px]' alt="Icon"/>
-                </ButtonLightMode>
-                :
                 <ButtonCompany
-                  className='hover:bg-white'
+                  href={"https://wa.me/8129394069"}
+                  className={`${darkMode ? " text-white/60 hover:text-white bg-black/80" : "text-white/50 hover:text-white bg-black/50"}`}
                   contactBy="WhatsApp">
                   <FaWhatsapp className='size-[15px]' alt="Icon"/>
                 </ButtonCompany>
-                }
-              </a>
           </div>
         </div>
       </div>
@@ -341,7 +291,7 @@ function App() {
         </Timeline.Item>
       </Timeline>
     </div>
-    <div className='flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] px-2 mb-24 md:mt-32'>
+    <div id='technologies' className='flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] px-2 mb-24 md:mt-32'>
       <div className={`flex flex-row gap-x-2 mb-4 items-center justify-center ${darkMode ? "text-black/90" : "text-white/90"}`}>
         <MdBiotech className='size-8'/>
           <h1 className={`font-semibold text-xl md:text-2xl xl:text-3xl`} data-translate='education'>
@@ -431,7 +381,7 @@ function App() {
         </div>
   </div>
   
-  <div className='flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] px-2 mb-24'>
+  <div id='projects' className='flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] px-2 mb-24'>
       <div className={`flex flex-row gap-x-2 mb-4 items-center justify-center ${darkMode ? "text-black/90" : "text-white/90"}`}>
       <FaProjectDiagram className='size-6'/>
       <h1 className={`font-semibold text-xl md:text-2xl xl:text-3xl`} data-translate='education'>
@@ -454,13 +404,14 @@ function App() {
         techDescriptionClass={`${darkMode ? "text-black/60" : "text-white/70"}`}
         projectDescription={
           languageMode ? 
-          "E-commerce website developed with React, TailwindCSS and Firebase, where you can buy jewellry accessories" :
-          "Sitio web E-commerce desarrollado con React, TailwindCSS y Firebase, donde puedes comprar accesorios de joyeria"
+          "E-commerce website developed with React, TailwindCSS and Firebase, where you can buy jewellry accessories (still in process)" :
+          "Sitio web E-commerce desarrollado con React, TailwindCSS y Firebase, donde puedes comprar accesorios de joyeria (aún en proceso)"
         }
         ViewButtons={
           <div className='grid grid-cols-3 gap-x-4'>
             <div className='col-span-1'>
               <ViewButton 
+                href={"https://github.com/Hypeyiii/Mariana-Accesorios"}
                 viewButtonClass={
                   darkMode ? "text-black/60 bg-white/60 hover:bg-white border-white/60 hover:text-black hover:border-black" 
                   : 
@@ -474,6 +425,7 @@ function App() {
             </div>
             <div className='col-span-1 flex'>
               <ViewButton 
+                href={"https://mariana-accesorios.vercel.app/"}
                 viewButtonClass={
                   darkMode ? "text-black/60 bg-white/60 hover:bg-white border-white/60 hover:text-black hover:border-black" 
                   : 

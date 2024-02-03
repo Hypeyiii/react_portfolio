@@ -1,10 +1,10 @@
-const ViewButton = ({children, textViewButton, viewButtonClass}) =>{
+const ViewButton = ({children, textViewButton, viewButtonClass, href}) =>{
     return (
-        <button className={`${viewButtonClass} items-center justify-center flex flex-row gap-x-2 p-2 rounded-lg border
+        <a href={href} target="_blank" rel="noopener noreferrer" className={`${viewButtonClass} items-center justify-center flex flex-row gap-x-2 p-2 rounded-lg border
         duration-300 transition-all`}>
             {children}
-            <h1 className={``}>{textViewButton}</h1>
-        </button>
+            <h1>{textViewButton}</h1>
+        </a>
     )
 };
 export default ViewButton;
