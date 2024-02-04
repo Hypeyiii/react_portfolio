@@ -100,7 +100,7 @@ function App() {
                    onClick={handleMenuModal}>
             {isMenu ? <RiMenuFoldLine className='size-6'/> : <RiMenuUnfoldFill className='size-6'/>}
           </button>
-          <h1 className='text-2xl font-bold'>
+          <h1 className='text-2xl font-bold animate-pulse'>
             {isMenu ? "" : "IF"}
           </h1>
           </div>
