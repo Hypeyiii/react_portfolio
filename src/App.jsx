@@ -75,16 +75,6 @@ function App() {
     setIsMenu(!isMenu);
     document.querySelector('.menu').classList.toggle('hidden');
   }
-  const [isEs , setIsEs] = useState(false);
-  const handleEs = () => {
-    setIsEs(true);
-  }
-
-  const [isEn , setIsEn] = useState(false);
-  const handleEn = () => {
-    setIsEn(true);
-  }
-
   return (
     <>
     <div className="fixed left-0 top-0 -z-10 h-full w-full">
@@ -129,9 +119,7 @@ function App() {
         darkModeLogo={darkMode ? <MdOutlineLightMode className='size-6'/> : <MdDarkMode className='size-6'/>}
         languageLogo={languageMode ? <TbLanguage className='size-6'/> : <TbLanguageOff className='size-6'/>}
         handleDarkMode={handleDarkMode}
-        handleLanguage={handleLanguage}
-        handleEs={handleEs}
-        handleEn={handleEn}/>
+        handleLanguage={handleLanguage}/>
       </>
       }
     </div>
