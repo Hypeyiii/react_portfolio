@@ -7,7 +7,7 @@ const ImageModal = ({ onClose, children, animationModal, buttonText, buttonClass
           <a
             onClick={onClick}
              className={`cursor-pointer p-2 border rounded-lg shadow-lg shadow-white/5 bg-black border-white/20 text-white text-xs 
-                        transition-all duration-300 md:font-semibold active:scale-105 active:duration-75 font-semibold text-white/70
+                        transition-all duration-300 md:font-semibold active:scale-105 active:duration-75 text-white/70
                         hover:text-white ${buttonClass}`}>
                     {buttonText}
             </a >

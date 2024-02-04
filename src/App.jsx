@@ -90,16 +90,13 @@ function App() {
         from-gray-700 via-black to-gray-700"></div>
       }
     </div>
-    <div className={`z-50 top-0 md:right-0 md:left-0 mx-auto
-                   ${isMobile ? 'mt-0 absolute': 'mt-1 fixed'}`}>
+    <div className={`z-50 fixed top-0 md:right-0 md:left-0 mx-auto
+                   ${isMobile ? 'mt-0': 'mt-1'}`}>
         {isMobile ?
         <>
-          {isAboutMeModal ? "" 
-          :
-          <>
           <div className={`fixed w-full h-[56px] flex flex-row justify-between items-center px-6
          ${isMenu ? "bg-transparent" : "backdrop-blur-md"} ${darkMode ? "text-black" : "text-white/85"}`}>
-          <button className={`z-50 relative`}
+          <button className={`relative`}
                    onClick={handleMenuModal}>
             {isMenu ? <RiMenuFoldLine className='size-6'/> : <RiMenuUnfoldFill className='size-6'/>}
           </button>
@@ -107,8 +104,6 @@ function App() {
             {isMenu ? "" : "IF"}
           </h1>
           </div>
-          </>
-          }
             <div className='entrance menu h-screen w-screen hidden fixed'
               onClick={handleMenuModal} onScroll={closeMenuModal}>
                 <div className="fixed inset-0 bg-black opacity-70 h-screen"></div>
@@ -206,7 +201,7 @@ function App() {
             onClose={closeModal}
             img={avatar}
             buttonText={
-              languageMode ? "Knowm more about me" : "Conoce más de mi"
+              languageMode ? "More about me" : "Más sobre mí"
             
             }
             buttonClass={`${darkMode ? "hover:bg-black" : "hover:bg-white/5"}`}
