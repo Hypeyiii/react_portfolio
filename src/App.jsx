@@ -205,8 +205,10 @@ function App() {
             
             }
             buttonClass={`${darkMode ? "hover:bg-black" : "hover:bg-white/5"}`}
-            onClick={openAboutMeModal}>
-              <img src={avatar} alt="Imagen" className={`w-full rounded-full size-48 md:size-80`}/>
+            onClick={openAboutMeModal}
+            closeButtonText={languageMode ? "Close" : "Cerrar"}
+            >
+              <img src={avatar} alt="Imagen" className={`rounded-full size-48 md:size-80`}/>
           </ImageModal>
         )}
         <div className='text-white mt-5 flex flex-row gap-x-5 md:gap-x-8 items-center justify-start'>
