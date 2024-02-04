@@ -14,10 +14,12 @@ import Tech from './Tech.jsx';
 import Introduction from './Introduction.jsx';
 import firstProject from './assets/Project-1.png'
 import secondProject from './assets/Project-2.png'
+import modalavatar from './assets/modalavatar.jpg'
 import Java from './assets/java.svg'
+import react from './assets/react.svg'
 import NeatBeans from './assets/netbeans.svg'
 import { RiMenuUnfoldFill, RiMenuFoldLine  } from "react-icons/ri";
-import { FaGithub, FaReact, FaProjectDiagram } from 'react-icons/fa';
+import { FaGithub, FaProjectDiagram } from 'react-icons/fa';
 import { MdDarkMode, MdOutlineLightMode} from "react-icons/md";
 import { TbLanguageOff, TbLanguage } from "react-icons/tb";
 import { SiTailwindcss} from "react-icons/si";
@@ -122,6 +124,9 @@ function App() {
       }
     </div>
     <Introduction
+    avatar={
+      darkMode ? modalavatar : avatar
+    }
       onOpen={openModal}
       modalOpen={modalOpen && (
         <ImageModal
@@ -136,7 +141,7 @@ function App() {
           onClick={openAboutMeModal}
           closeButtonText={languageMode ? "Close" : "Cerrar"}
           >
-            <img src={avatar} alt="Imagen" className={`rounded-full size-48 md:size-80`}/>
+            <img src={darkMode ? modalavatar : avatar} alt="Imagen" className={`rounded-full size-48 md:size-80`}/>
         </ImageModal>
     )}
       nameClass={`${darkMode ? "text-black" : "text-white"}`}
@@ -253,12 +258,12 @@ function App() {
       </div>
         }>
           <TechButtons
-            className={`text-white/90 bg-[#183d5d] ${darkMode ? "border-black/50" : "border-white/20"}`} 
+            className={`text-white/90 bg-[#000000] ${darkMode ? "border-black/20" : "border-white/20"}`} 
             buttonText={"React.Js"}>
-            <FaReact className='size-5 animate-spin-slow text-blue-600'/>
+            <img src={react} alt="NeatBeans Icon" className='size-5 animate-spin-slow' />
           </TechButtons> 
           <TechButtons
-            className={`bg-[#1c496e] text-white/90 ${darkMode ? "border-black/50" : "border-white/20"}`} 
+            className={`bg-[#000000] text-white/90 ${darkMode ? "border-black/50" : "border-white/20"}`} 
             buttonText={"Tailwind"}>
             <SiTailwindcss className='size-5 text-[#2298BD]'/>
           </TechButtons>
@@ -330,7 +335,9 @@ function App() {
         bgClass={`${darkMode ? "opacity-95 bg-gradient-to-tr from-slate-600 via-black to-slate-600" : 
         "opacity-80 bg-gradient-to-br from-slate-900 via-white to-slate-900"}`}
   >
-        <img src={avatar} alt ="Imagen" className={`rounded-full size-40 md:size-48 float-right`}/>
+        <img src={
+          darkMode ? avatar : modalavatar
+        } alt ="Imagen" className={`rounded-full size-40 md:size-48 float-right`}/>
     </AboutMeModal>
   )}
   </div>
