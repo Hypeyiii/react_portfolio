@@ -29,13 +29,6 @@ function App() {
 
   const [isAboutMeModal, setIsAboutMeModal] = useState(false);
 
-  const openAboutMeModal = () => {
-    setIsAboutMeModal(true);
-  }
-  const closeAboutMeModal = () => {
-    setIsAboutMeModal(false);
-  }
-
   const [modalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
@@ -44,6 +37,14 @@ function App() {
   const closeModal = () => {
     setModalOpen(false);
   };
+  const openAboutMeModal = () => {
+      setIsAboutMeModal(true);
+      setModalOpen(false);
+  }
+  const closeAboutMeModal = () => {
+    setIsAboutMeModal(false);
+  }
+
 
   const [isMenu, setIsMenu] = useState(false)
 
@@ -78,7 +79,6 @@ function App() {
   const closeMenuModal = () => {
     setIsMenu(false);
   }
-
   return (
     <>
     <div className="fixed left-0 top-0 -z-10 h-screen w-screen">
@@ -204,7 +204,13 @@ function App() {
           <ImageModal
             animationModal={`modal ${modalOpen ? "modalIn" : "modalOut"}`}
             onClose={closeModal}
-            img={avatar}>
+            img={avatar}
+            buttonText={
+              languageMode ? "Knowm more about me" : "Conoce más de mi"
+            
+            }
+            buttonClass={`${darkMode ? "hover:bg-black" : "hover:bg-white/5"}`}
+            onClick={openAboutMeModal}>
               <img src={avatar} alt="Imagen" className={`w-full rounded-full size-48 md:size-80`}/>
           </ImageModal>
         )}
@@ -213,7 +219,7 @@ function App() {
             {languageMode ? "Hello, I'm Isaac" : "Hola, Soy Isaac"}
           </h1>
             <a href="https://www.linkedin.com/in/isaac-frias-56002428a/" target="_blank" rel="noopener noreferrer"
-            className={`p-2 border rounded-lg shadow-lg shadow-white/5 bg-black border-white/20 text-white text-xs 
+             className={`p-2 border rounded-lg shadow-lg shadow-white/5 bg-black border-white/20 text-white text-xs 
                         transition-all duration-300 md:font-semibold active:scale-105 active:duration-75 font-semibold text-white/70
                         hover:text-white ${darkMode ? "hover:bg-black/70" : "hover:bg-white/5"}`}>
                 {languageMode ? "Hire me here" : 'Contrátame aquí'}
