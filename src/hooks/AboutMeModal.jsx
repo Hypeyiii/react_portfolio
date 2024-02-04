@@ -1,3 +1,6 @@
+import { FaNode, FaReact } from "react-icons/fa";
+import { SiExpress, SiPostgresql, SiSocketdotio } from "react-icons/si";
+
 const AboutMeModal = ({ onClose, children, aboutMeText , aboutMeModalClass, bgClass, presentationText, presentationClass, aboutMeClass}) => {
     return (
       <div className={`${aboutMeModalClass} w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] mx-auto fixed inset-0 z-40 bg-none px-4 flex justify-center
@@ -5,19 +8,17 @@ const AboutMeModal = ({ onClose, children, aboutMeText , aboutMeModalClass, bgCl
         <div className={`fixed inset-0 ${bgClass}`} onClick={onClose}></div>
         <div className={`${aboutMeClass} flex flex-col md:flex-row justify-center items-center m-auto w-auto h-auto gap-4`}>
             <div className={`z-50 text-xs sm:text-lg text-pretty gap-y-1 flex flex-col `}>
-              <h1 className={`${presentationClass} text-sm sm:text-xl text-pretty`}>{presentationText}</h1>
+              <h1 className={`${presentationClass} text-sm sm:text-xl`}>{presentationText}</h1>
               <h1>{aboutMeText}</h1>
-              <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+              <ul className="flex items-center justify-start gap-x-4 mt-1">
+                <li><FaReact className="size-4 md:size-6 animate-spin-slow"/></li>
+                <li><SiExpress className="size-4 md:size-6"/></li>
+                <li><SiPostgresql className="size-4 md:size-6"/></li>
+                <li><SiSocketdotio className="size-4 md:size-6"/></li>
+                <li><FaNode className="size-6 md:size-8"/></li>
               </ul>
             </div>
-            <div className={`z-50`}>
-              {children}
-            </div>
+            {children}
         </div>
       </div>
     );

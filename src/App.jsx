@@ -87,7 +87,7 @@ function App() {
          from-gray-900 via-gray-50 to-gray-900"></div>     
         :
         <div className="absolute inset-0 -z-10 h-full w-full bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))]
-        from-gray-600 via-gray-950 to-gray-600"></div>
+        from-gray-700 via-black to-gray-700"></div>
       }
     </div>
     <div className={`z-50 top-0 md:right-0 md:left-0 mx-auto
@@ -198,14 +198,14 @@ function App() {
     </div>
       <div className='mt-32 flex w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] mx-auto flex-col px-2'>
         <div className='relative flex cursor-pointer size-[100px] md:size-[125px] rounded-full shadow-2xl shadow-white/10 motion-reduce:animate-pulse'>
-          <img src={avatar} alt="Avatar Logo" className='w-full h-full rounded-full' onClick={openModal}/>
+          <img src={avatar} alt="Avatar Logo" className='rounded-full' onClick={openModal}/>
         </div>
         {modalOpen && (
           <ImageModal
             animationModal={`modal ${modalOpen ? "modalIn" : "modalOut"}`}
             onClose={closeModal}
             img={avatar}>
-              <img src={avatar} alt="Imagen" className={`w-full rounded-full size-[100px] md:size-[325px]`}/>
+              <img src={avatar} alt="Imagen" className={`w-full rounded-full size-48 md:size-80`}/>
           </ImageModal>
         )}
         <div className='text-white mt-5 flex flex-row gap-x-5 md:gap-x-8 items-center justify-start'>
@@ -549,13 +549,13 @@ function App() {
       aboutMeClass={`fade-in`}
       presentationText={languageMode ? "Hello, my name is Isaac Frias " : "Hola, mi nombre es Isaac Frias "}
       aboutMeText=
-        {languageMode ? "I am currently 19 years old, I was born in Monterrey, Nuevo León on August 31, 2004, and I am a student of engineering passionate about web development and programming. Today I am learning new technologies and tools for the development of web applications."
+        {languageMode ? "I am currently 19 years old, I was born in Monterrey, Nuevo León on August 31, 2004, and I am a student of engineering passionate about web development and programming. Today I am learning new and mastering technologies and tools for the development of web applications."
       :
-        "Actualmente tengo 19 años, nací en Monterrey, Nuevo León un 31 de agosto del 2004, y soy un estudiante de ingeniería apasionado por el desarrollo web y la programación. A día de hoy me encuentro aprendiendo nuevas tecnologías y herramientas para el desarrollo de aplicaciones web."}
-        aboutMeModalClass={`font-light ${darkMode ? "text-white/80" : "text-black/80"}`}
+        "Actualmente tengo 19 años, nací en Monterrey, Nuevo León un 31 de agosto del 2004, y soy un estudiante de ingeniería apasionado por el desarrollo web y la programación. A día de hoy me encuentro aprendiendo y perfeccionando nuevas tecnologías y herramientas para el desarrollo de aplicaciones web."}
+        aboutMeModalClass={`font-light ${darkMode ? "text-white/80" : "text-black/90"}`}
         bgClass={`${darkMode ? "backdrop-blur-sm bg-black/80" : "backdrop-blur-sm bg-white/35"}`}
         >
-        <img src={avatar} alt ="Imagen" className={`w-full rounded-full size-[100px] md:size-auto`}
+        <img src={avatar} alt ="Imagen" className={`rounded-full size-40 md:size-48 float-right`}
         />
     </AboutMeModal>
   )}
