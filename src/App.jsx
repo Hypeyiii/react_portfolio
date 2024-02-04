@@ -197,15 +197,15 @@ function App() {
       </div>}
     </div>
       <div className='mt-32 flex w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] mx-auto flex-col px-2'>
-        <div>
-          <img src={avatar} alt="Avatar Logo" className='size-[100px] rounded-full shadow-2xl shadow-white/10' onClick={openModal}/>
+        <div className='relative flex cursor-pointer size-[100px] md:size-[125px] rounded-full shadow-2xl shadow-white/10 motion-reduce:animate-pulse'>
+          <img src={avatar} alt="Avatar Logo" className='w-full h-full rounded-full' onClick={openModal}/>
         </div>
         {modalOpen && (
           <ImageModal
             animationModal={`modal ${modalOpen ? "modalIn" : "modalOut"}`}
             onClose={closeModal}
             img={avatar}>
-              <img src={avatar} alt="Imagen" className={`w-full rounded-full size-[250px] md:size-[325px]`}/>
+              <img src={avatar} alt="Imagen" className={`w-full rounded-full size-[100px] md:size-[325px]`}/>
           </ImageModal>
         )}
         <div className='text-white mt-5 flex flex-row gap-x-5 md:gap-x-8 items-center justify-start'>
@@ -532,14 +532,14 @@ function App() {
       </Projects>
   </div>
   <Footer
-    className={darkMode ? "text-black/70" : "text-white/70"}
-    footerText={languageMode ? "© 2024 Isaac Frias. All the Rights Reserved" : "© 2024 Isaac Frias. Derechos Reservados "}
-    aboutRef={"#inicio"}
-    contactRef={"mailto:isaacfrias868@gmal.com"}
-    about={languageMode ? "About me" : "Acerca de mi"}
-    meModal={openAboutMeModal}
-    contact={languageMode ? "Contact" : "Contacto"}
-    aboutClass={`hover:underline ${darkMode ? "text-black/70 hover:text-black" : "text-white/70 hover:text-white"}`}
+      className={darkMode ? "text-black/70" : "text-white/70"}
+      footerText={languageMode ? "© 2024 Isaac Frias. All the Rights Reserved" : "© 2024 Isaac Frias. Derechos Reservados "}
+      aboutRef={"#inicio"}
+      contactRef={"mailto:isaacfrias868@gmal.com"}
+      about={languageMode ? "Know more about me" : "Cónoceme más"}
+      meModal={openAboutMeModal}
+      contact={languageMode ? "Contact" : "Contacto"}
+      aboutClass={`hover:underline ${darkMode ? "text-black/70 hover:text-black" : "text-white/70 hover:text-white"}`}
   />
   {isAboutMeModal && (
     <AboutMeModal
@@ -555,7 +555,7 @@ function App() {
         aboutMeModalClass={`font-light ${darkMode ? "text-white/80" : "text-black/80"}`}
         bgClass={`${darkMode ? "backdrop-blur-sm bg-black/80" : "backdrop-blur-sm bg-white/35"}`}
         >
-        <img src={avatar} alt ="Imagen" className={`w-full rounded-full size-[150px] md:size-auto`}
+        <img src={avatar} alt ="Imagen" className={`w-full rounded-full size-[100px] md:size-auto`}
         />
     </AboutMeModal>
   )}
