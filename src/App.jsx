@@ -77,15 +77,13 @@ function App() {
   }
   return (
     <>
-    <div className="fixed left-0 top-0 -z-10 h-full w-full">
-    {darkMode ?
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))]
-         from-gray-900 via-gray-50 to-gray-900"></div>     
+    
+        <div className={`absolute w-full h-auto
+        ${darkMode ? "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-900 via-gray-50 to-gray-900"
         :
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))]
-        from-gray-700 via-black to-gray-700"></div>
-      }
-    </div>
+        "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-600 via-black to-gray-600"
+        }`}
+        >     
     <div className={`z-50 fixed top-0 md:right-0 md:left-0 mx-auto
                    ${isMobile ? 'mt-0': 'mt-1'}`}>
         {isMobile ?
@@ -335,6 +333,7 @@ function App() {
         <img src={avatar} alt ="Imagen" className={`rounded-full size-40 md:size-48 float-right`}/>
     </AboutMeModal>
   )}
+  </div>
     </>
   )
 } 
