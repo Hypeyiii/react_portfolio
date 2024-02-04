@@ -10,6 +10,9 @@ import Footer from './Footer.jsx';
 import ImageModal from './hooks/ImageModal.jsx';
 import AboutMeModal from './hooks/AboutMeModal.jsx';
 import firstProject from './assets/Project-1.png'
+import secondProject from './assets/Project-2.png'
+import Java from './assets/java.svg'
+import NeatBeans from './assets/netbeans.svg'
 import { RiMenuUnfoldFill, RiMenuFoldLine  } from "react-icons/ri";
 import { FaWhatsapp, FaLinkedin, FaGithub, FaDiscord, FaHtml5, FaCss3Alt, FaBootstrap, 
          FaReact, FaNode, FaGitAlt, FaJava, FaProjectDiagram, FaAngleRight } from 'react-icons/fa';
@@ -482,7 +485,48 @@ function App() {
             buttonText={"Tailwind"}>
             <SiTailwindcss className='size-5 text-[#2298BD]'/>
           </TechButtons>
-      </Projects>  
+      </Projects> 
+
+      <Projects
+        projectClass={`mt-10`}
+        projectImg={secondProject}
+        techTitleClass={`${darkMode ? "text-black/90" : "text-white/90"}`}
+        projectName="Asteroid Game"
+        techDescriptionClass={`${darkMode ? "text-black/60" : "text-white/70"}`}
+        projectDescription={
+          languageMode ? 
+          "Project Asteroids game for college, in the subject of object-oriented programming" :
+          "Juego de Asteroides de proyecto para la universidad, en la materia de programación orientada a objetos"
+        }
+        ViewButtons={
+          <div className='grid grid-cols-3 gap-x-4'>
+            <div className='col-span-1'>
+              <ViewButton 
+                href={"https://github.com/Hypeyiii/asteroid-game"}
+                viewButtonClass={
+                  darkMode ? "text-black/60 bg-white/60 hover:bg-white border-white/60 hover:text-black hover:border-black" 
+                  : 
+                  "text-white/40 hover:text-white bg-black/60 hover:bg-black border-black/40"
+                }
+                textViewButton={
+                  languageMode ? "Code" : "Código"
+                }>
+                <FaGithub className='size-5'/>
+              </ViewButton>
+            </div>
+      </div>
+        }>
+          <TechButtons
+            className={`text-white/90 bg-[#000000] ${darkMode ? "border-black/50" : "border-white/20"}`} 
+            buttonText={"Java"}>
+            <img src={Java} alt="Java Icon" className='size-5' />
+          </TechButtons> 
+          <TechButtons
+            className={`bg-[#000000] text-white/90 ${darkMode ? "border-black/50" : "border-white/20"}`} 
+            buttonText={"Netbeans"}>
+            <img src={NeatBeans} alt="NeatBeans Icon" className='size-5' />
+          </TechButtons>
+      </Projects>
   </div>
   <Footer
     className={darkMode ? "text-black/70" : "text-white/70"}
@@ -496,10 +540,10 @@ function App() {
   />
   {isAboutMeModal && (
     <AboutMeModal
-      animationModal={`modal ${isAboutMeModal ? "modalIn" : "modalOut"}`}
       onClose={closeAboutMeModal}
       img={avatar}
-      presentationClass={`font-bold ${darkMode ? "text-black" : "text-white"}`}
+      presentationClass={`modalIn font-bold ${darkMode ? "text-black" : "text-white"}`}
+      aboutMeClass={`modalIn`}
       presentationText={languageMode ? "Hello, my name is Isaac Frias " : "Hola, mi nombre es Isaac Frias "}
       aboutMeText=
         {languageMode ? "I am currently 19 years old, I was born in Monterrey, Nuevo León on August 31, 2004, and I am a student of engineering passionate about web development and programming. Today I am learning new technologies and tools for the development of web applications."
@@ -508,7 +552,7 @@ function App() {
         aboutMeModalClass={`font-light ${darkMode ? "text-black/80" : "text-white/80"}`}
         bgClass={`${darkMode ? "backdrop-blur-sm bg-white/50" : "backdrop-blur-sm bg-black/50"}`}
         >
-        <img src={avatar} alt ="Imagen" className={`w-full rounded-full size-[150px] md:size-auto`}
+        <img src={avatar} alt ="Imagen" className={`modalIn w-full rounded-full size-[150px] md:size-auto`}
         />
     </AboutMeModal>
   )}
