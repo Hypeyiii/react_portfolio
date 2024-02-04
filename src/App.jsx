@@ -542,17 +542,17 @@ function App() {
     <AboutMeModal
       onClose={closeAboutMeModal}
       img={avatar}
-      presentationClass={`modalIn font-bold ${darkMode ? "text-black" : "text-white"}`}
-      aboutMeClass={`modalIn`}
+      presentationClass={`font-bold ${darkMode ? "text-white" : "text-black"}`}
+      aboutMeClass={`fade-in`}
       presentationText={languageMode ? "Hello, my name is Isaac Frias " : "Hola, mi nombre es Isaac Frias "}
       aboutMeText=
         {languageMode ? "I am currently 19 years old, I was born in Monterrey, Nuevo León on August 31, 2004, and I am a student of engineering passionate about web development and programming. Today I am learning new technologies and tools for the development of web applications."
       :
         "Actualmente tengo 19 años, nací en Monterrey, Nuevo León un 31 de agosto del 2004, y soy un estudiante de ingeniería apasionado por el desarrollo web y la programación. A día de hoy me encuentro aprendiendo nuevas tecnologías y herramientas para el desarrollo de aplicaciones web."}
-        aboutMeModalClass={`font-light ${darkMode ? "text-black/80" : "text-white/80"}`}
-        bgClass={`${darkMode ? "backdrop-blur-sm bg-white/50" : "backdrop-blur-sm bg-black/50"}`}
+        aboutMeModalClass={`font-light ${darkMode ? "text-white/80" : "text-black/80"}`}
+        bgClass={`${darkMode ? "backdrop-blur-sm bg-black/80" : "backdrop-blur-sm bg-white/35"}`}
         >
-        <img src={avatar} alt ="Imagen" className={`modalIn w-full rounded-full size-[150px] md:size-auto`}
+        <img src={avatar} alt ="Imagen" className={`w-full rounded-full size-[150px] md:size-auto`}
         />
     </AboutMeModal>
   )}
