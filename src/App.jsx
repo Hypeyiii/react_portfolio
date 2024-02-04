@@ -75,6 +75,9 @@ function App() {
     setIsMenu(!isMenu);
     document.querySelector('.menu').classList.toggle('hidden');
   }
+  const closeMenuModal = () => {
+    setIsMenu(false);
+  }
 
   return (
     <>
@@ -87,8 +90,8 @@ function App() {
         from-gray-600 via-gray-950 to-gray-600"></div>
       }
     </div>
-    <div className={`z-50 fixed top-0 md:right-0 md:left-0 mx-auto
-                   ${isMobile ? 'mt-0': 'mt-1'}`}>
+    <div className={`z-50 top-0 md:right-0 md:left-0 mx-auto
+                   ${isMobile ? 'mt-0 absolute': 'mt-1 fixed'}`}>
         {isMobile ?
         <>
           {isAboutMeModal ? "" 
@@ -107,7 +110,7 @@ function App() {
           </>
           }
             <div className='entrance menu h-screen w-screen hidden fixed'
-              onClick={handleMenuModal}>
+              onClick={handleMenuModal} onScroll={closeMenuModal}>
                 <div className="fixed inset-0 bg-black opacity-70 h-screen"></div>
                   <ul className={`flex flex-col gap-y-4 text-lg items-center justify-center absolute top-0 right-0 bottom-0 left-0 text-white/85`}>
                     <a href="#"><li className='hover:bg-gray-500/85 p-2 rounded-full transition-all duration-300 
