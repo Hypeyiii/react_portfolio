@@ -7,7 +7,7 @@ function Introduction ({ nameText, nameClass, hireText, hireClass, introductionC
      companyButtonClass, onOpen, modalOpen, avatar}) {
 
   return (
-    <div className='mt-32 flex w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] mx-auto flex-col px-2'>
+    <div id='inicio' className='section mt-32 flex w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] mx-auto flex-col px-2'>
         <div className='relative flex cursor-pointer size-[100px] md:size-[125px] rounded-full shadow-2xl shadow-white/10 motion-reduce:animate-pulse'>
           <img src={avatar} alt="Avatar Logo" className='rounded-full' onClick={onOpen}/>
         </div>

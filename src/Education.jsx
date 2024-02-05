@@ -6,7 +6,7 @@ function Education ({containerClass, educationTitle, timeClass, titleClass, desc
                     firstTimeText, firstTitleText, firstDescriptionText, learMoreText, secondTimeText, secondTitleText, secondDescriptionText,
                     thirdDescriptionText, thirdTimeText, thirdTitleText}) {
   return (
-    <div id='education' className='flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] px-2 mt-32 mb-24'>
+    <div id='education' className='section flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] px-2 mt-32'>
         <div className={`flex flex-row gap-x-2 mb-8 items-center justify-center ${containerClass}`}>
         <IoMdSchool className='size-8'/>
           <h2 className={`font-semibold text-xl md:text-2xl xl:text-3xl`} data-translate='education'>

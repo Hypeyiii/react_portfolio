@@ -10,6 +10,7 @@ const ImageModal = ({ onClose, children, animationModal, buttonText, buttonClass
           {children}
           <div className="flex flex-row gap-x-4">
             <a
+              href="#AboutMeModal"
               onClick={onClick}
               className={`cursor-pointer p-2 border rounded-lg shadow-lg shadow-white/5 bg-black border-white/20 text-white text-xs 
                           transition-all duration-300 md:font-semibold active:scale-105 active:duration-75 text-white/70

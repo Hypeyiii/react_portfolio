@@ -6,7 +6,7 @@ import { SiJavascript, SiMysql, SiTailwindcss } from "react-icons/si";
 function Tech ({techTitle, techIntroduction, introductionClass, cardClass, currentlyTitle, 
                 currentlyText, currentlyTitleClass, currentlyTextClass, containerClass}) {
   return (
-    <div id='technologies' className='flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] px-2 mb-24 md:mt-32'>
+    <div id='technologies' className='section flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] px-2 md:mt-32'>
       <div className={`flex flex-row gap-x-2 mb-4 items-center justify-center ${containerClass}`}>
         <MdBiotech className='size-8'/>
           <h1 className={`font-semibold text-xl md:text-2xl xl:text-3xl`} data-translate='education'>

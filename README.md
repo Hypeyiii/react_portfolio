@@ -21,8 +21,9 @@ also i made an image modal and an about me modal</h4>
 
 
 ## Table of Contents
-
 - [License](#license)
+
+
 - [Contact](#contact)
 
 

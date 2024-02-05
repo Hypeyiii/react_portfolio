@@ -12,7 +12,7 @@ import MenuModal from './hooks/MenuModal.jsx';
 import Education from './Education.jsx';
 import Tech from './Tech.jsx';
 import Introduction from './Introduction.jsx';
-import firstProject from './assets/Project-1.png'
+import firstProject from './assets/Projects-1.png'
 import secondProject from './assets/Project-2.png'
 import coupleavatar from './assets/coupleavatar.jpg'
 import Java from './assets/java.svg'
@@ -51,8 +51,64 @@ function App() {
   const [darkMode, setDarkMode] = useState(false)
 
   const handleDarkMode = () => {
-    setDarkMode(!darkMode);
+    setDarkMode(!darkMode)
   }
+
+  useEffect(() => {
+    if (darkMode === true) {
+      const handleScroll = () => {
+        var sections = document.querySelectorAll('.section');
+        var navItems = document.querySelectorAll('.item');
+  
+        sections.forEach(function(section, index) {
+          var top = section.offsetTop;
+          var bottom = top + section.offsetHeight;
+  
+          if (window.scrollY >= top && window.scrollY < bottom) {
+            navItems.forEach(function(item) {
+              item.classList.remove('darkMode');
+            });
+            navItems[index].classList.add('darkMode');
+          }
+        });
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }
+  }, [darkMode]);
+
+  useEffect(() => {
+    if (darkMode === false) {
+      const handleScroll = () => {
+        var sections = document.querySelectorAll('.section');
+        var navItems = document.querySelectorAll('.item');
+  
+        sections.forEach(function(section, index) {
+          var top = section.offsetTop;
+          var bottom = top + section.offsetHeight;
+  
+          if (window.scrollY >= top && window.scrollY < bottom) {
+            navItems.forEach(function(item) {
+              item.classList.remove('active-nav-item');
+            });
+            navItems[index].classList.add('active-nav-item');
+          }
+        });
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }
+  }, [darkMode]);
+  
+  
 
   const [languageMode, setLanguageMode] = useState(false)
 
@@ -77,6 +133,7 @@ function App() {
     setIsMenu(!isMenu);
     document.querySelector('.menu').classList.toggle('hidden');
   }
+
   return (
     <>
     
@@ -91,41 +148,39 @@ function App() {
         {isMobile ?
         <>
         <MenuModal
-        onClick={handleMenuModal}
-        buttonsvg={isMenu ? <RiMenuFoldLine className='size-6'/> : <RiMenuUnfoldFill className='size-6'/>}
-        containerClass={`${isMenu ? "bg-transparent" : "backdrop-blur-md"} ${darkMode ? "text-black" : "text-white/85"}`}
-        onClose={handleMenuModal}
-        home={languageMode ? "Home" : "Inicio"}
-        education={languageMode ? "Education" : "Educación"}
-        technologies={languageMode ? "Technologies" : "Tecnologias"}
-        projects={languageMode ? "Projects" : "Proyectos"}
-        handleDarkMode={handleDarkMode}
-        handleLanguage={handleLanguage}
-        darkmodeLogo={darkMode ? <MdOutlineLightMode className='size-6'/> : <MdDarkMode className='size-6'/>}
-        languageLogo={languageMode ? <TbLanguage className='size-6'/> : <TbLanguageOff className='size-6'/>}
-        listHover={`${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`}
+          onClick={handleMenuModal}
+          buttonsvg={isMenu ? <RiMenuFoldLine className='size-6'/> : <RiMenuUnfoldFill className='size-6'/>}
+          containerClass={`${isMenu ? "bg-transparent" : "backdrop-blur-md"} ${darkMode ? "text-black" : "text-white/85"}`}
+          onClose={handleMenuModal}
+          home={languageMode ? "Home" : "Inicio"}
+          education={languageMode ? "Education" : "Educación"}
+          technologies={languageMode ? "Technologies" : "Tecnologias"}
+          projects={languageMode ? "Projects" : "Proyectos"}
+          handleDarkMode={handleDarkMode}
+          handleLanguage={handleLanguage}
+          darkmodeLogo={darkMode ? <MdOutlineLightMode className='size-6'/> : <MdDarkMode className='size-6'/>}
+          languageLogo={languageMode ? <TbLanguage className='size-6'/> : <TbLanguageOff className='size-6'/>}
+          listHover={`${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`}
         />
     </>
         :
         <>
         <Menu
-        listDarkMode={`${darkMode ? "text-white" : "text-white/85"}`}
-        itemsHover={`${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`}
-        home={languageMode ? "Home" : "Inicio"}
-        education={languageMode ? "Education" : "Educación"}
-        technologies={languageMode ? "Technologies" : "Tecnologias"}
-        projects={languageMode ? "Projects" : "Proyectos"}
-        darkModeLogo={darkMode ? <MdOutlineLightMode className='size-6'/> : <MdDarkMode className='size-6'/>}
-        languageLogo={languageMode ? <TbLanguage className='size-6'/> : <TbLanguageOff className='size-6'/>}
-        handleDarkMode={handleDarkMode}
-        handleLanguage={handleLanguage}/>
+          listDarkMode={`${darkMode ? "text-white" : "text-white/85"}`}
+          itemsHover={`${darkMode ? "hover:text-[#0a1ca9] " : "hover:text-[#5cf0ff] "}`}
+          home={languageMode ? "Home" : "Inicio"}
+          education={languageMode ? "Education" : "Educación"}
+          technologies={languageMode ? "Technologies" : "Tecnologias"}
+          projects={languageMode ? "Projects" : "Proyectos"}
+          darkModeLogo={darkMode ? <MdOutlineLightMode className='size-6'/> : <MdDarkMode className='size-6'/>}
+          languageLogo={languageMode ? <TbLanguage className='size-6'/> : <TbLanguageOff className='size-6'/>}
+          handleDarkMode={handleDarkMode}
+          handleLanguage={handleLanguage}/>
       </>
       }
     </div>
     <Introduction
-    avatar={
-      avatar
-    }
+      avatar={avatar}
       onOpen={openModal}
       modalOpen={modalOpen && (
         <ImageModal
@@ -184,32 +239,29 @@ function App() {
           }
       />
       <Tech
-      containerClass={`${darkMode ? "text-black/90" : "text-white/90"}`}
-      techTitle={languageMode ? "Technologies" : "Tecnologías"}
-      techIntroduction={languageMode ? "The skills, tools and technologies I use to bring your products to life" : 
-                                        "Las habilidades, herramientas y tecnologías que utilizo para dar vida a tus productos"}
-      introductionClass={`${darkMode ? "text-black/70" : "text-white/70"}`}
-      cardClass={`${darkMode ? "text-black/70 hover:text-black border-black/50 hover:border-black/70 hover:bg-white" : 
-                              "text-white/60 hover:text-white border-white/30 hover:border-white/30 hover:bg-black"}`}
-      currentlyTitle={languageMode ? "Currently working on:" : 'Actualmente trabajando en:'}
-      currentlyText={languageMode ? "I am currently working on a project with React, NodeJS and MySQL, developing a web application for a small business." : 
-                                    "Actualmente estoy trabajando en un proyecto con React, NodeJS y MySQL, desarrollando una aplicación web para un pequeño negocio."}
-      currentlyTitleClass={`${darkMode ? "text-black" : "text-white"}`}
-      currentlyTextClass={`${darkMode ? "text-black/60" : "text-white/60"}`}
+        containerClass={`${darkMode ? "text-black/90" : "text-white/90"}`}
+        techTitle={languageMode ? "Technologies" : "Tecnologías"}
+        techIntroduction={languageMode ? "The skills, tools and technologies I use to bring your products to life" : 
+                                          "Las habilidades, herramientas y tecnologías que utilizo para dar vida a tus productos"}
+        introductionClass={`${darkMode ? "text-black/70" : "text-white/70"}`}
+        cardClass={`${darkMode ? "text-black/70 hover:text-black border-black/50 hover:border-black/70 hover:bg-white" : 
+                                "text-white/60 hover:text-white border-white/30 hover:border-white/30 hover:bg-black"}`}
+        currentlyTitle={languageMode ? "Currently working on:" : 'Actualmente trabajando en:'}
+        currentlyText={languageMode ? "I am currently working on a project with React, NodeJS and MySQL, developing a web application for a small business." : 
+                                      "Actualmente estoy trabajando en un proyecto con React, NodeJS y MySQL, desarrollando una aplicación web para un pequeño negocio."}
+        currentlyTitleClass={`${darkMode ? "text-black" : "text-white"}`}
+        currentlyTextClass={`${darkMode ? "text-black/60" : "text-white/60"}`}
       />
-  <div id='projects' className='flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] px-2 mb-24'>
+
+  <div id='projects' className='section flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] px-2 mt-32'>
       <div className={`flex flex-row gap-x-2 mb-4 items-center justify-center ${darkMode ? "text-black/90" : "text-white/90"}`}>
       <FaProjectDiagram className='size-6'/>
-      <h1 className={`font-semibold text-xl md:text-2xl xl:text-3xl`} data-translate='education'>
-            {languageMode ? "Projects" : "Proyectos"}
-          </h1>
+        <h1 className={`font-semibold text-xl md:text-2xl xl:text-3xl`} data-translate='education'>
+          {languageMode ? "Projects" : "Proyectos"}
+        </h1>
       </div>
       <p className={`mb-6 text-xs md:text-base ${darkMode ? "text-black/70" : "text-white/70"}`}>
-        {languageMode ? 
-        "Some of the projects I have developed and collaborated on" 
-        :
-        "Algunos de los proyectos que he desarrollado y colaborado"
-        }
+          {languageMode ? "Some of the projects I have developed and collaborated on"  : "Algunos de los proyectos que he desarrollado y colaborado" }
       </p>
       <Projects
         projectImg={firstProject}
@@ -239,21 +291,21 @@ function App() {
                 <FaGithub className='size-5'/>
               </ViewButton>
             </div>
-            <div className='col-span-1 flex'>
-              <ViewButton 
-                href={"https://mariana-accesorios.vercel.app/"}
-                viewButtonClass={
-                  darkMode ? "text-black/60 bg-white/60 hover:bg-white border-white/60 hover:text-black hover:border-black" 
-                  : 
-                  "text-white/40 hover:text-white bg-black/60 hover:bg-black border-black/40"
-                }
-                textViewButton={
-                  languageMode ? "View" : "Ver"
-                }>
-                <IoEye className='size-5'/>
-              </ViewButton>
-            </div>
-      </div>
+              <div className='col-span-1 flex'>
+                <ViewButton 
+                  href={"https://mariana-accesorios.vercel.app/"}
+                  viewButtonClass={
+                    darkMode ? "text-black/60 bg-white/60 hover:bg-white border-white/60 hover:text-black hover:border-black" 
+                    : 
+                    "text-white/40 hover:text-white bg-black/60 hover:bg-black border-black/40"
+                  }
+                  textViewButton={
+                    languageMode ? "View" : "Ver"
+                  }>
+                  <IoEye className='size-5'/>
+                </ViewButton>
+              </div>
+          </div>
         }>
           <TechButtons
             className={`text-white/90 bg-[#000000] ${darkMode ? "border-black/20" : "border-white/20"}`} 
@@ -267,7 +319,7 @@ function App() {
           </TechButtons>
       </Projects> 
 
-      <Projects
+    <Projects
         projectClass={`mt-10`}
         projectImg={secondProject}
         techTitleClass={`${darkMode ? "text-black/90" : "text-white/90"}`}
@@ -294,7 +346,7 @@ function App() {
                 <FaGithub className='size-5'/>
               </ViewButton>
             </div>
-      </div>
+          </div>
         }>
           <TechButtons
             className={`text-white/90 bg-[#000000] ${darkMode ? "border-black/50" : "border-white/20"}`} 
@@ -311,7 +363,7 @@ function App() {
   <Footer
       className={darkMode ? "text-black/70" : "text-white/70"}
       footerText={languageMode ? "© 2024 Isaac Frias. All the Rights Reserved" : "© 2024 Isaac Frias. Derechos Reservados "}
-      aboutRef={"#inicio"}
+      aboutRef={"#AboutMeModal"}
       contactRef={"mailto:isaacfrias868@gmal.com"}
       about={languageMode ? "Know more about me" : "Cónoceme más"}
       meModal={openAboutMeModal}
@@ -320,25 +372,32 @@ function App() {
   />
   {isAboutMeModal && (
     <AboutMeModal
-      onClose={closeAboutMeModal}
-      img={avatar}
-      presentationClass={`font-bold ${darkMode ? "text-white" : "text-black"}`}
-      aboutMeClass={`fade-in`}
-      presentationText={languageMode ? "Hello, my name is Isaac Frias " : "Hola, mi nombre es Isaac Frias "}
-      aboutMeText=
-        {languageMode ? "I am currently 19 years old, I was born in Monterrey, Nuevo León on August 31, 2004, and I am a student of engineering passionate about web development and programming. Today I am learning new and mastering technologies and tools for the development of web applications."
-      :
-        "Actualmente tengo 19 años, nací en Monterrey, Nuevo León un 31 de agosto del 2004, y soy un estudiante de ingeniería apasionado por el desarrollo web y la programación. A día de hoy me encuentro aprendiendo y perfeccionando nuevas tecnologías y herramientas para el desarrollo de aplicaciones web."}
+        onClose={closeAboutMeModal}
+        img={avatar}
+        presentationClass={`font-bold ${darkMode ? "text-white" : "text-black"}`}
+        aboutMeClass={`fade-in`}
+        presentationText={languageMode ? "Hello, my name is Isaac Frias " : "Hola, mi nombre es Isaac Frias "}
+        aboutMeText=
+          {languageMode ?
+           <p>
+              I am currently 19 years old, I was born in Monterrey, Nuevo León on August 31, 2004, and I am a student of engineering passionate about web development
+              and programming. Today I am learning new and mastering technologies and tools for the development of web applications.
+           </p>
+        :
+            <p>
+              Actualmente tengo 19 años, nací en Monterrey, Nuevo León el 31 de Agosto del 2004, y soy estudiante de ingeniería apasionado por el desarrollo web y la programación. 
+              Hoy en día estoy aprendiendo nuevas y dominando tecnologías y herramientas para el desarrollo de aplicaciones web.
+            </p>
+          }
         aboutMeModalClass={`font-light ${darkMode ? "text-white/80" : "text-black/90"}`}
         bgClass={`${darkMode ? "opacity-95 bg-gradient-to-br from-slate-600 via-black to-slate-600" : 
         "opacity-90 bg-gradient-to-tr from-black via-white to-black"}`}
-  >
-        <img src={coupleavatar} alt ="Imagen" className={`rounded-full size-40 md:size-48`}/>
+    >
+          <img src={coupleavatar} alt ="Imagen" className={`rounded-full size-40 md:size-48`}/>
     </AboutMeModal>
   )}
   </div>
     </>
   )
 } 
-
 export default App;
