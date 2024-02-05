@@ -1,6 +1,6 @@
 
-function MenuModal({onClick, onClose,  isMenu, home, education, technologies, projects, handleDarkMode, handleLanguage, darkmodeLogo,
-                   languageLogo, buttonsvg, text, containerClass, listHover}){      
+function MenuModal({onClick, onClose, home, education, technologies, projects, handleDarkMode, handleLanguage, darkmodeLogo,
+                   languageLogo, buttonsvg, containerClass, listHover}){      
   return(
     <>
      <div className={`${containerClass} fixed w-full h-[56px] flex flex-row justify-between items-center px-6`}>
@@ -8,7 +8,7 @@ function MenuModal({onClick, onClose,  isMenu, home, education, technologies, pr
             {buttonsvg}
           </button>
           <h1 className='text-2xl font-bold animate-pulse'>
-            {text}
+            I <span className="text-lg">&</span> f
           </h1>
           </div>
             <div className='entrance menu h-screen w-screen hidden fixed'

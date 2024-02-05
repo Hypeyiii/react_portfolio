@@ -17,9 +17,9 @@ function Introduction ({ nameText, nameClass, hireText, hireClass, introductionC
             {nameText}
           </h1>
             <a href="https://www.linkedin.com/in/isaac-frias-56002428a/" target="_blank" rel="noopener noreferrer"
-             className={`p-2 border rounded-lg shadow-lg shadow-white/5 bg-black border-white/20 text-white text-xs 
-                        transition-all duration-300 md:font-semibold active:scale-105 active:duration-75 font-semibold text-white/70
-                        hover:text-white ${hireClass}`}>
+             className={`p-2 border rounded-lg shadow-lg shadow-white/5 bg-black/80 border-white/20 text-xs 
+                        transition-all duration-300 active:scale-105 active:duration-75  text-white/60
+                        hover:text-white hover:bg-black`}>
                 {hireText}
             </a >
         </div>
@@ -41,7 +41,7 @@ function Introduction ({ nameText, nameClass, hireText, hireClass, introductionC
                   <FaGithub className='size-[15px]' alt="Icon"/>
                 </ButtonCompany>
                 <ButtonCompany
-                  href={"sip:isaac.friaslns@uanl.edu.mx"}
+                  href={"isaac.friaslns@uanl.edu.mx"}
                   className={`${companyButtonClass}`}
                   contactBy="Teams">
                   <SiMicrosoftteams className='size-[15px]' alt="Icon"/>

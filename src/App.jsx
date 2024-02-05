@@ -15,6 +15,7 @@ import Introduction from './Introduction.jsx';
 import firstProject from './assets/Project-1.png'
 import secondProject from './assets/Project-2.png'
 import modalavatar from './assets/modalavatar.jpg'
+import coupleavatar from './assets/coupleavatar.jpg'
 import Java from './assets/java.svg'
 import react from './assets/react.svg'
 import NeatBeans from './assets/netbeans.svg'
@@ -93,7 +94,6 @@ function App() {
         <MenuModal
         onClick={handleMenuModal}
         buttonsvg={isMenu ? <RiMenuFoldLine className='size-6'/> : <RiMenuUnfoldFill className='size-6'/>}
-        text={isMenu ? "" : "IF"}
         containerClass={`${isMenu ? "bg-transparent" : "backdrop-blur-md"} ${darkMode ? "text-black" : "text-white/85"}`}
         onClose={handleMenuModal}
         home={languageMode ? "Home" : "Inicio"}
@@ -147,7 +147,6 @@ function App() {
       nameClass={`${darkMode ? "text-black" : "text-white"}`}
       nameText={languageMode ? "Hello, I'm Isaac" : "Hola, Soy Isaac"}
       hireText={languageMode ? "Hire me here" : 'Contrátame aquí'}
-      hireClass={`${darkMode ? "hover:bg-black/70" : "hover:bg-white/5"}`}
       introductionClass={`${darkMode ? "text-black/90" : "text-white/90"}`}
       introductionText={languageMode ? 
         "FrontEnd Developer and Systems Engineer. From Nuevo León, Mexico. Contributing to the Development and Programming of Web Applications." 
@@ -173,7 +172,7 @@ function App() {
           secondTimeText={languageMode ? "December, 2021" : "Diciembre, 2021"}
           secondTitleText={languageMode ? "Start of Web Development" : "Inicio del Desarrollo Web"}
           secondDescriptionText={languageMode ? 
-            "I started to delve into the world of Web Development, taking courses and learning technologies in a didactic manner." 
+            "I started to delve into the world of Web Development, taking courses and learning technologies in a didactic way." 
             : 
             "Empecé a adentrarme en el mundo del Desarrollo Web, cursando materias y aprendiendo Tecnologías didacticamente."
           }
@@ -335,9 +334,7 @@ function App() {
         bgClass={`${darkMode ? "opacity-95 bg-gradient-to-tr from-slate-600 via-black to-slate-600" : 
         "opacity-80 bg-gradient-to-br from-slate-900 via-white to-slate-900"}`}
   >
-        <img src={
-          darkMode ? avatar : modalavatar
-        } alt ="Imagen" className={`rounded-full size-40 md:size-48 float-right`}/>
+        <img src={coupleavatar} alt ="Imagen" className={`rounded-full size-40 md:size-48`}/>
     </AboutMeModal>
   )}
   </div>
