@@ -14,7 +14,6 @@ import Tech from './Tech.jsx';
 import Introduction from './Introduction.jsx';
 import firstProject from './assets/Project-1.png'
 import secondProject from './assets/Project-2.png'
-import modalavatar from './assets/modalavatar.jpg'
 import coupleavatar from './assets/coupleavatar.jpg'
 import Java from './assets/java.svg'
 import react from './assets/react.svg'

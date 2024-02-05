@@ -8,14 +8,14 @@
 <h3>I made this portfolio to lear how can i get hire for a company
 
 This is the introduction of my porfolio</h3>
-![alt text](image.png)
+![alt text](ReadMeImages/image.png)
 
 <h3>I made a dark mode and a language mode that altarnates between english and spanish
 also i made an image modal and an about me modal</h3>
 
-![alt text](image-1.png) 
+![alt text](ReadMeImages/image-1.png) 
 
-![alt text](image-3.png)
+![alt text](ReadMeImages/image-3.png)
 
 
 ## Table of Contents
