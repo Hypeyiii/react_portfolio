@@ -1,6 +1,7 @@
 import ButtonCompany from './Components/Button';
-import { FaDiscord, FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 import { BiLogoGmail } from 'react-icons/bi';
+import { SiMicrosoftteams } from 'react-icons/si';
 
 function Introduction ({ nameText, nameClass, hireText, hireClass, introductionClass, introductionText,
      companyButtonClass, onOpen, modalOpen, avatar}) {
@@ -40,10 +41,10 @@ function Introduction ({ nameText, nameClass, hireText, hireClass, introductionC
                   <FaGithub className='size-[15px]' alt="Icon"/>
                 </ButtonCompany>
                 <ButtonCompany
-                  href={"https://discord.com/users/IsaacFrias#0001"}
+                  href={"sip:isaac.friaslns@uanl.edu.mx"}
                   className={`${companyButtonClass}`}
-                  contactBy="Discord">
-                  <FaDiscord className='size-[15px]' alt="Icon"/>
+                  contactBy="Teams">
+                  <SiMicrosoftteams className='size-[15px]' alt="Icon"/>
                 </ButtonCompany>
                 <ButtonCompany
                   href={"mailto:isaacfrias868@gmail.com"}
