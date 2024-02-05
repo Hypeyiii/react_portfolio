@@ -1,8 +1,33 @@
-# React + Vite
+# Project Name
+<h1>This is my official portafolio made with React.js </h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Currently, two official plugins are available:
+## Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<h3>I made this portfolio to lear how can i get hire for a company
+
+This is the introduction of my porfolio</h3>
+![alt text](image.png)
+
+<h3>I made a dark mode and a language mode that altarnates between english and spanish
+also i made an image modal and an about me modal</h3>
+
+![alt text](image-1.png) 
+
+![alt text](image-3.png)
+
+
+## Table of Contents
+
+- [License](#license)
+- [Contact](#contact)
+
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Contact
+
+(mailto:isaacfrias868@gmail.com).

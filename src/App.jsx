@@ -125,7 +125,7 @@ function App() {
     </div>
     <Introduction
     avatar={
-      darkMode ? modalavatar : avatar
+      avatar
     }
       onOpen={openModal}
       modalOpen={modalOpen && (
@@ -141,7 +141,7 @@ function App() {
           onClick={openAboutMeModal}
           closeButtonText={languageMode ? "Close" : "Cerrar"}
           >
-            <img src={darkMode ? modalavatar : avatar} alt="Imagen" className={`rounded-full size-48 md:size-80`}/>
+            <img src={avatar} alt="Imagen" className={`rounded-full size-48 md:size-80`}/>
         </ImageModal>
     )}
       nameClass={`${darkMode ? "text-black" : "text-white"}`}
