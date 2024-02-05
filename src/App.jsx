@@ -331,8 +331,8 @@ function App() {
       :
         "Actualmente tengo 19 años, nací en Monterrey, Nuevo León un 31 de agosto del 2004, y soy un estudiante de ingeniería apasionado por el desarrollo web y la programación. A día de hoy me encuentro aprendiendo y perfeccionando nuevas tecnologías y herramientas para el desarrollo de aplicaciones web."}
         aboutMeModalClass={`font-light ${darkMode ? "text-white/80" : "text-black/90"}`}
-        bgClass={`${darkMode ? "opacity-95 bg-gradient-to-tr from-slate-600 via-black to-slate-600" : 
-        "opacity-80 bg-gradient-to-br from-slate-900 via-white to-slate-900"}`}
+        bgClass={`${darkMode ? "opacity-95 bg-gradient-to-br from-slate-600 via-black to-slate-600" : 
+        "opacity-90 bg-gradient-to-tr from-black via-white to-black"}`}
   >
         <img src={coupleavatar} alt ="Imagen" className={`rounded-full size-40 md:size-48`}/>
     </AboutMeModal>
