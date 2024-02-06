@@ -125,15 +125,13 @@ function App() {
 
   const openLanguageModal = () => {
     setLanguageModal(true)
+      closeDarkModal()
   }
 
   const [isSpanish, setIsSpanish] = useState(true)
 
   const onSpanish = () => {
     setIsSpanish(true)
-    if(isEnglish) {
-      setIsEnglish(false)
-    }
   }
 
   const [isEnglish, setIsEnglish] = useState(false)
@@ -145,38 +143,79 @@ function App() {
     }
   }
 
+  const [isDarkModal, setIsDarkModal] = useState(false)
+
+  const openDarkModal = () => {
+    setIsDarkModal(true)
+    document.querySelector("#fade").classList.remove('fade')
+
+    closeLanguageModal()
+  }
+
+  const closeDarkModal = () => {
+    setIsDarkModal(false)
+  }
+
+  const [isDark , setIsDark] = useState(true)
+
+  const dark = () => {
+    setIsDark(true)
+    document.querySelector("#fade").classList.add('fade')
+    if(isLight) {
+      setIsLight(false)
+    }
+  }
+
+  const [isLight, setIsLight] = useState(false)
+
+  const light = () => {
+    setIsLight(true)
+    document.querySelector("#fade").classList.add('fade')
+    if(isDark) {
+      setIsDark(false)
+    }
+  }
+
+  const onCloseModals=() => {
+    if (languageModal) {
+      closeLanguageModal();
+    }
+    if (isDarkModal) {
+      closeDarkModal();
+    }
+  }
+
   return (
     <>
     
         <div className={`absolute w-full h-auto -z-10
-        ${darkMode ? "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-900 via-gray-50 to-gray-900"
-        :
-        "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-600 via-black to-gray-600"
-        }`} onClick={languageModal ? closeLanguageModal : null}
+        ${isDark && "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-600 via-black to-gray-600"}
+        ${isLight && "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-900 via-gray-50 to-gray-900" }`}
+         onClick={onCloseModals}
         >     
     <div className={`z-50 fixed md:right-0 md:left-0 mx-auto ${isMobile ? 'mt-0': 'mt-1'}`}>
       <div className='section flex items-center justify-center mx-auto w-screen mt-1 md:mt-0'>
           <ul className={`backdrop-blur-md bg-black/30 rounded-full flex flex-row gap-x-3 md:gap-x-4 text-[10px] md:text-sm items-center justify-center px-2
-                        ${darkMode ? "text-white" : "text-white/85"}`}>
+                        ${isDark && "text-white/85"} ${isLight && "text-white"}`}>
             <a href="#"><li className={`item px-1 py-2 md:p-3 rounded-full transition-all duration-300 
-                        ${darkMode ? "md:hover:text-[#0a1ca9] " : "md:hover:text-[#5cf0ff] "}`}>
+                        ${isDark && "md:hover:text-[#5cf0ff]"} ${isLight && "md:hover:text-[#0a1ca9]"}`}>
               {[isSpanish && "Inicio" , isEnglish && "Home"]}
               </li></a>
             <a href="#education"><li className={`item px-1 py-2 md:p-3 rounded-full transition-all duration-300 
-                        ${darkMode ? "md:hover:text-[#0a1ca9] " : "md:hover:text-[#5cf0ff] "}`}>
+                        ${isDark && "md:hover:text-[#5cf0ff]"} ${isLight && "md:hover:text-[#0a1ca9]"}`}>
                 {[isSpanish && "Educación" , isEnglish && "Education"]}
               </li></a>
             <a href="#technologies"><li className={`item px-1 py-2 md:p-3 rounded-full transition-all duration-300 
-                        ${darkMode ? "md:hover:text-[#0a1ca9] " : "md:hover:text-[#5cf0ff] "}`}>
+                        ${isDark && "md:hover:text-[#5cf0ff]"} ${isLight && "md:hover:text-[#0a1ca9]"}`}>
                   {[isSpanish && "Tecnologías" , isEnglish && "Technologies"]}
                 </li></a>
             <a href="#projects"><li className={`item px-1 py-2 md:p-3 rounded-full transition-all duration-300 
-                        ${darkMode ? "md:hover:text-[#0a1ca9] " : "md:hover:text-[#5cf0ff] "}`}>
+                        ${isDark && "md:hover:text-[#5cf0ff]"} ${isLight && "md:hover:text-[#0a1ca9]"}`}>
                 {[isSpanish && "Proyectos" , isEnglish && "Projects"]}
               </li></a>
             <a href="#darkmode">
-              <li className={`px-1 py-2 md:p-3 rounded-full transition hover:scale-125`} onClick={handleDarkMode}>
-              {darkMode ? <MdOutlineLightMode className='size-4 md:size-6'/> : <MdDarkMode className='size-4 md:size-6'/>}
+              <li id='fade' className={`px-1 py-2 md:p-3 rounded-full transition hover:scale-125`} onClick={openDarkModal}>
+              {isDark &&  <MdDarkMode className='size-4 md:size-6'/>} {isLight && <MdOutlineLightMode className='size-4 md:size-6'/>}
               </li>
             </a>
             <a href='#language'>
@@ -187,7 +226,7 @@ function App() {
                 <>
                 <div className="absolute right-1 md:right-0 mt-2 p-1 rounded-md border border-gray-600 hover:border-gray-200
                 transition bg-black/40 dark:bg-gray-900/70 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] 
-                backdrop-blur-md text-white/70 text-[12px] md:text-sm"
+                backdrop-blur-xl text-white/70 text-[12px] md:text-sm"
                 onClick={closeLanguageModal}> 
                   <ul className="flex flex-col"> 
                     <li className="px-2 py-1.5 cursor-default hover:bg-black hover:text-white rounded-sm
@@ -197,6 +236,25 @@ function App() {
                     <li className="px-2 py-1.5 cursor-default hover:bg-black hover:text-white rounded-sm
                       transition" onClick={onEnglish}>
                       English 
+                    </li>
+                  </ul> 
+                </div>
+                </>
+              )}
+              {isDarkModal && (
+                <>
+                <div className="absolute right-10 md:right-16 mt-2 p-1 rounded-md border border-gray-600 hover:border-gray-200
+                transition bg-black/40 dark:bg-gray-900/70 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] 
+                backdrop-blur-xl text-white/70 text-[12px] md:text-sm"
+                onClick={closeDarkModal}> 
+                  <ul className="flex flex-col"> 
+                    <li className="px-2 py-1.5 cursor-default hover:bg-black hover:text-white rounded-sm
+                      transition" onClick={dark}> 
+                      <h1>{[isSpanish && "Oscuro" , isEnglish && "Dark"]}</h1>
+                    </li>
+                    <li className="px-2 py-1.5 cursor-default hover:bg-black hover:text-white rounded-sm
+                      transition" onClick={light}>
+                      {[isSpanish && "Claro" , isEnglish && "Light"]}
                     </li>
                   </ul> 
                 </div>
@@ -223,23 +281,24 @@ function App() {
             <img src={avatar} alt="Imagen" className={`rounded-full size-48 md:size-80`}/>
         </ImageModal>
     )}
-      nameClass={`${darkMode ? "text-black" : "text-white"}`}
+      nameClass={`${isLight && "text-black"} ${isDark && "text-white"}`}
       nameText={[isSpanish && "Hola, soy Isaac", isEnglish && "Hello, I'm Isaac"]}
       hireText={[isSpanish && "Contrátame aquí", isEnglish && "Hire me here"]}  
-      introductionClass={`${darkMode ? "text-black/90" : "text-white/90"}`}
+      introductionClass={`${isDark && "text-white/90"} ${isLight && "text-black/90"}`}
       introductionText= {[isSpanish && <h1>
         Desarrollador FrontEnd e Ingeniero en Sistemas. De Nuevo León, México. Contribuyendo al Desarrollo y Programación de Aplicaciones Web.
       </h1>
     , isEnglish && 
         <h1>FrontEnd Developer and Systems Engineer. From Nuevo León, Mexico. Contributing to the Development and Programming of Web Applications.</h1>]} 
-      companyButtonClass={`${darkMode ? "text-white/60 hover:text-white bg-black/80" : "text-white/50 hover:text-white bg-black/50"}`}
+      companyButtonClass={`
+      ${isDark && "text-white/50 hover:text-white bg-black/50"} ${isLight && "text-white/60 hover:text-white bg-black/80"}`}
     />
       <Education
-          containerClass={`${darkMode ? "text-black/90" : "text-white/90"}`}
+          containerClass={`${isDark && "text-white/90"} ${isLight && "text-black/90"}`}
           educationTitle={[isSpanish && "Educación y Experiencia", isEnglish && "Education and Experience"]}
-          timeClass={`${darkMode ? "text-black/80" : "text-white/80"}`}
-          titleClass={`${darkMode ? "text-black" : "text-white"}`}
-          descriptionClass={`${darkMode ? "text-black/70" : "text-white/70"}`}
+          timeClass={`${isDark && "text-white/80"} ${isLight && "text-black/80"}`}
+          titleClass={`${isDark && "text-white"} ${isLight && "text-black"}`}
+          descriptionClass={`${isDark && "text-white/70"} ${isLight && "text-black/70"}`}
           firstTimeText={[isSpanish && "...Actualmente", isEnglish && "...Currently"]}
           firstTitleText={[isSpanish && "Desarrollador y Estudiante" , isEnglish && "Developer and Student"]}
           firstDescriptionText={[isSpanish &&
@@ -264,41 +323,41 @@ function App() {
           ]}
       />
       <Tech
-        containerClass={`${darkMode ? "text-black/90" : "text-white/90"}`}
+        containerClass={`${isDark && "text-white/90"} ${isLight && "text-black/90"}`}
         techTitle={[isSpanish && "Tecnologías y Herramientas", isEnglish && "Technologies and Tools"]}
         techIntroduction={[isSpanish &&
         <p>Las habilidades, herramientas y tecnologías que utilizo para dar vida a tus productos</p>
         , isEnglish &&
         <p>The skills, tools and technologies I use to bring your products to life</p>
       ]}
-        introductionClass={`${darkMode ? "text-black/70" : "text-white/70"}`}
-        cardClass={`${darkMode ? "text-black/70 hover:text-black border-black/50 hover:border-black/70 hover:bg-white" : 
-                                "text-white/60 hover:text-white border-white/30 hover:border-white/30 hover:bg-black"}`}
+        introductionClass={`${isDark && "text-white/70"} ${isLight && "text-black/70"}`}
+        cardClass={`${isDark && "text-white/60 hover:text-white border-white/30 hover:border-white/30 hover:bg-black"}
+                    ${isLight && "text-black/70 hover:text-black border-black/50 hover:border-black/70 hover:bg-white" }`}
         currentlyTitle={[isSpanish && "Actualmente trabajando en:" , isEnglish && "Currently working on:"]}
         currentlyText={[isSpanish && 
         <p>Desarrollo de un sitio web E-commerce con React, TailwindCSS y Firebase, donde puedes comprar accesorios de joyería (aún en proceso)</p>
         , isEnglish &&
         <p>Development of an E-commerce website with React, TailwindCSS and Firebase, where you can buy jewelry accessories (still in process)</p>]}
 
-        currentlyTitleClass={`${darkMode ? "text-black" : "text-white"}`}
-        currentlyTextClass={`${darkMode ? "text-black/60" : "text-white/60"}`}
+        currentlyTitleClass={`${isDark && "text-white"} ${isLight && "text-black"}`}
+        currentlyTextClass={`${isLight && "text-black/60"} ${isDark && "text-white/60"}`}
       />
 
   <div id='projects' className='section flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] px-2 mt-32'>
-      <div className={`flex flex-row gap-x-2 mb-4 items-center justify-center ${darkMode ? "text-black/90" : "text-white/90"}`}>
+      <div className={`flex flex-row gap-x-2 mb-4 items-center justify-center ${isDark && "text-white/90"} ${isLight && "text-black/90"}`}>
       <FaProjectDiagram className='size-6'/>
         <h1 className={`font-semibold text-xl md:text-2xl xl:text-3xl`} data-translate='education'>
           {[isSpanish && "Proyectos" , isEnglish && "Projects"]}
         </h1>
       </div>
-      <p className={`mb-6 text-xs md:text-base ${darkMode ? "text-black/70" : "text-white/70"}`}>
+      <p className={`mb-6 text-xs md:text-base ${isDark && "text-white/70"} ${isLight && "text-black/70"}`}>
           {[isSpanish && "Algunos de los proyectos que he desarrollado y contribuido" , isEnglish && "Some of the projects I have developed and contributed"]}
       </p>
       <Projects
         projectImg={firstProject}
-        techTitleClass={`${darkMode ? "text-black/90" : "text-white/90"}`}
+        techTitleClass={`${isDark && "text-white/90"} ${isLight && "text-black/90"}`}
         projectName={[isSpanish && "Mariana Accesorios - Sitio Web E-commerce" , isEnglish && "Mariana Accesorios - E-commerce Website"]}
-        techDescriptionClass={`${darkMode ? "text-black/60" : "text-white/70"}`}
+        techDescriptionClass={`${isDark && "text-white/70"} ${isLight && "text-black/60"}`}
         projectDescription={[isSpanish && 
         <p>Sitio web E-commerce desarrollado con React, TailwindCSS y Firebase, donde puedes comprar accesorios de joyeria (aún en proceso)</p>
         , isEnglish &&
@@ -346,9 +405,9 @@ function App() {
     <Projects
         projectClass={`mt-10`}
         projectImg={secondProject}
-        techTitleClass={`${darkMode ? "text-black/90" : "text-white/90"}`}
+        techTitleClass={`${isDark && "text-white/90"} ${isLight && "text-black/90"}`}
         projectName="Asteroid Game"
-        techDescriptionClass={`${darkMode ? "text-black/60" : "text-white/70"}`}
+        techDescriptionClass={`${isDark && "text-white/70"} ${isLight && "text-black/60"}`}
         projectDescription={[isSpanish && "Juego de Asteroides de proyecto para la universidad, en la materia de programación orientada a objetos en Java"
           , isEnglish && "Asteroid Game project for the university, in the object-oriented programming subject in Java"]}
         ViewButtons={
@@ -380,20 +439,20 @@ function App() {
       </Projects>
   </div>
   <Footer
-      className={darkMode ? "text-black/70" : "text-white/70"}
+      className={isDark && "text-white/70" || isLight && "text-black/70"}
       footerText={[isSpanish && "© 2024 Isaac Frias. Derechos Reservados" , isEnglish && "© 2024 Isaac Frias. All Rights Reserved"]}
       aboutRef={"#AboutMeModal"}
       contactRef={"mailto:isaacfrias868@gmal.com"}
       about={[isSpanish && "Cónoceme más" , isEnglish && "Know me more"]}
       meModal={openAboutMeModal}
       contact={[isSpanish && "Contáctame" , isEnglish && "Contact me"]}
-      aboutClass={`hover:underline ${darkMode ? "text-black/70 hover:text-black" : "text-white/70 hover:text-white"}`}
+      aboutClass={`hover:underline ${isDark && "text-white/70 hover:text-white"} ${isLight && "text-black/70 hover:text-black"}`}
   />
   {isAboutMeModal && (
     <AboutMeModal
         onClose={closeAboutMeModal}
         img={avatar}
-        presentationClass={`font-bold ${darkMode ? "text-white" : "text-black"}`}
+        presentationClass={`${isDark && "text-black"} ${isLight && "text-white"}`}
         aboutMeClass={`fade-in`}
         presentationText={[isSpanish && "Hola, mi nombre es Isaac Frias", isEnglish && "Hello, my name is Isaac Frias"]}
         aboutMeText=
@@ -408,9 +467,10 @@ function App() {
             I am currently 19 years old, I was born in Monterrey, Nuevo León on August 31, 2004, and I am a student of engineering passionate about
              web development and programming. Nowadays I am learning new and mastering technologies and tools for the development of web applications.
             </p>]}
-        aboutMeModalClass={`font-light ${darkMode ? "text-white/80" : "text-black/90"}`}
-        bgClass={`${darkMode ? "opacity-95 bg-gradient-to-br from-slate-600 via-black to-slate-600" : 
-        "opacity-90 bg-gradient-to-tr from-black via-white to-black"}`}
+        aboutMeModalClass={`font-light ${isDark && "text-black/90"} ${isLight && "text-white/80"}`}
+        bgClass={`
+        ${isDark && "opacity-90 bg-gradient-to-tr from-black via-white to-black"}
+        ${isLight && "opacity-95 bg-gradient-to-br from-slate-600 via-black to-slate-600"}`}
     >
           <img src={coupleavatar} alt ="Imagen" className={`rounded-full size-40 md:size-48`}/>
     </AboutMeModal>
