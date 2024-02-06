@@ -145,25 +145,6 @@ function App() {
         >     
     <div className={`z-50 fixed top-0 md:right-0 md:left-0 mx-auto
                    ${isMobile ? 'mt-0': 'mt-1'}`}>
-        {isMobile ?
-        <>
-        <MenuModal
-          onClick={handleMenuModal}
-          buttonsvg={isMenu ? <RiMenuFoldLine className='size-6'/> : <RiMenuUnfoldFill className='size-6'/>}
-          containerClass={`${isMenu ? "bg-transparent" : "backdrop-blur-md"} ${darkMode ? "text-black" : "text-white/85"}`}
-          onClose={handleMenuModal}
-          home={languageMode ? "Home" : "Inicio"}
-          education={languageMode ? "Education" : "Educación"}
-          technologies={languageMode ? "Technologies" : "Tecnologias"}
-          projects={languageMode ? "Projects" : "Proyectos"}
-          handleDarkMode={handleDarkMode}
-          handleLanguage={handleLanguage}
-          darkmodeLogo={darkMode ? <MdOutlineLightMode className='size-6'/> : <MdDarkMode className='size-6'/>}
-          languageLogo={languageMode ? <TbLanguage className='size-6'/> : <TbLanguageOff className='size-6'/>}
-          listHover={`${darkMode ? "hover:bg-black/40" : "hover:bg-gray-500/85"}`}
-        />
-    </>
-        :
         <>
         <Menu
           listDarkMode={`${darkMode ? "text-white" : "text-white/85"}`}
@@ -172,12 +153,11 @@ function App() {
           education={languageMode ? "Education" : "Educación"}
           technologies={languageMode ? "Technologies" : "Tecnologias"}
           projects={languageMode ? "Projects" : "Proyectos"}
-          darkModeLogo={darkMode ? <MdOutlineLightMode className='size-6'/> : <MdDarkMode className='size-6'/>}
-          languageLogo={languageMode ? <TbLanguage className='size-6'/> : <TbLanguageOff className='size-6'/>}
+          darkModeLogo={darkMode ? <MdOutlineLightMode className='size-4 md:size-6'/> : <MdDarkMode className='size-4 md:size-6'/>}
+          languageLogo={languageMode ? <TbLanguage className='size-4 md:size-6'/> : <TbLanguageOff className='size-4 md:size-6'/>}
           handleDarkMode={handleDarkMode}
           handleLanguage={handleLanguage}/>
       </>
-      }
     </div>
     <Introduction
       avatar={avatar}
