@@ -91,7 +91,7 @@ function App() {
           var top = section.offsetTop;
           var bottom = top + section.offsetHeight;
   
-          if (window.scrollY + 50 >= top && window.scrollY < bottom) {
+          if (window.scrollY + 4 >= top && window.scrollY < bottom) {
             navItems.forEach(function(item) {
               item.classList.remove('active-nav-item');
             });
@@ -143,7 +143,7 @@ function App() {
         <>
         <Menu
           listDarkMode={`${darkMode ? "text-white" : "text-white/85"}`}
-          itemsHover={`${darkMode ? "hover:text-[#0a1ca9] " : "hover:text-[#5cf0ff] "}`}
+          itemsHover={`${darkMode ? "md:hover:text-[#0a1ca9] " : "md:hover:text-[#5cf0ff] "}`}
           home={languageMode ? "Home" : "Inicio"}
           education={languageMode ? "Education" : "Educación"}
           technologies={languageMode ? "Technologies" : "Tecnologias"}
