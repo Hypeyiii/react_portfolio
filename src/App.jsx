@@ -132,8 +132,11 @@ function App() {
 
   const onSpanish = () => {
     setIsSpanish(true)
+    if(isEnglish) {
+      setIsEnglish(false)
+    }
   }
-
+  
   const [isEnglish, setIsEnglish] = useState(false)
 
   const onEnglish = () => {
@@ -148,7 +151,6 @@ function App() {
   const openDarkModal = () => {
     setIsDarkModal(true)
     document.querySelector("#fade").classList.remove('fade')
-
     closeLanguageModal()
   }
 
