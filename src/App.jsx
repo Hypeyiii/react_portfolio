@@ -43,66 +43,32 @@ function App() {
     setIsAboutMeModal(false);
   }
 
-
-  const [darkMode, setDarkMode] = useState(false)
-
-  const handleDarkMode = () => {
-    setDarkMode(!darkMode)
-  }
-
   useEffect(() => {
-    if (darkMode === true) {
       const handleScroll = () => {
         var sections = document.querySelectorAll('.section');
         var navItems = document.querySelectorAll('.item');
-  
         sections.forEach(function(section, index) {
           var top = section.offsetTop;
           var bottom = top + section.offsetHeight;
-  
           if (window.scrollY + 128 >= top && window.scrollY < bottom) {
             navItems.forEach(function(item) {
               item.classList.remove('darkMode');
             });
-            navItems[index].classList.add('darkMode');
+            if (isDark === true) {
+              navItems[index].classList.add('darkMode');
+            }
+            if (isLight === true) {
+              navItems[index].classList.add('lightMode');
+            }
           }
         });
       };
-  
       window.addEventListener('scroll', handleScroll);
-  
       return () => {
         window.removeEventListener('scroll', handleScroll);
       };
-    }
-  }, [darkMode]);
+  });
 
-  useEffect(() => {
-    if (darkMode === false) {
-      const handleScroll = () => {
-        var sections = document.querySelectorAll('.section');
-        var navItems = document.querySelectorAll('.item');
-  
-        sections.forEach(function(section, index) {
-          var top = section.offsetTop;
-          var bottom = top + section.offsetHeight;
-  
-          if (window.scrollY + 128 >= top && window.scrollY < bottom) {
-            navItems.forEach(function(item) {
-              item.classList.remove('active-nav-item');
-            });
-            navItems[index].classList.add('active-nav-item');
-          }
-        });
-      };
-  
-      window.addEventListener('scroll', handleScroll);
-  
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }
-  }, [darkMode]);
 
   const [isMobile, setisMobile] = useState(window.innerWidth < 768);
 
@@ -276,7 +242,7 @@ function App() {
           onClose={closeModal}
           img={avatar}
           buttonText={[isSpanish && "Más sobre mí", isEnglish && "More about me"]}
-          buttonClass={`${darkMode ? "hover:bg-black" : "hover:bg-white/5"}`}
+          buttonClass={`${isDark && "hover:bg-white/5"} ${isLight && "hover:bg-black"}`}
           onClick={openAboutMeModal}
           closeButtonText={[isSpanish && "Cerrar", isEnglish && "Close"]}
           >
@@ -369,11 +335,8 @@ function App() {
             <div className='col-span-1'>
               <ViewButton 
                 href={"https://github.com/Hypeyiii/Mariana-Accesorios"}
-                viewButtonClass={
-                  darkMode ? "text-black/60 bg-white/60 hover:bg-white border-white/60 hover:text-black hover:border-black" 
-                  : 
-                  "text-white/40 hover:text-white bg-black/60 hover:bg-black border-black/40"
-                }
+                viewButtonClass={[isDark && "text-white/40 hover:text-white bg-black/60 hover:bg-black border border-black/50 hover:border-white"
+                ,isLight && "text-black/60 bg-white/60 hover:bg-white border-white/60 hover:text-black hover:border-black"]}
                 textViewButton={[isSpanish && "Código" , isEnglish && "Code"]}>
                 <FaGithub className='size-5'/>
               </ViewButton>
@@ -381,11 +344,8 @@ function App() {
               <div className='col-span-1 flex'>
                 <ViewButton 
                   href={"https://mariana-accesorios.vercel.app/"}
-                  viewButtonClass={
-                    darkMode ? "text-black/60 bg-white/60 hover:bg-white border-white/60 hover:text-black hover:border-black" 
-                    : 
-                    "text-white/40 hover:text-white bg-black/60 hover:bg-black border-black/40"
-                  }
+                  viewButtonClass={[isDark && "text-white/40 hover:text-white bg-black/60 hover:bg-black border border-black/50 hover:border-white"
+                  ,isLight && "text-black/60 bg-white/60 hover:bg-white border-white/60 hover:text-black hover:border-black"]}
                   textViewButton={[isSpanish && "Ver" , isEnglish && "View"]}>
                   <IoEye className='size-5'/>
                 </ViewButton>
@@ -393,12 +353,12 @@ function App() {
           </div>
         }>
           <TechButtons
-            className={`text-white/90 bg-[#000000] ${darkMode ? "border-black/20" : "border-white/20"}`} 
+            className={`text-white/90 bg-[#000000] ${isDark && "border-white/20"} ${isLight && "border-black/50"}`} 
             buttonText={"React.Js"}>
             <img src={react} alt="NeatBeans Icon" className='size-5 animate-spin-slow' />
           </TechButtons> 
           <TechButtons
-            className={`bg-[#000000] text-white/90 ${darkMode ? "border-black/50" : "border-white/20"}`} 
+            className={`bg-[#000000] text-white/90 ${isDark && "border-white/20"} ${isLight && "border-black/50"}`} 
             buttonText={"Tailwind"}>
             <SiTailwindcss className='size-5 text-[#2298BD]'/>
           </TechButtons>
@@ -417,11 +377,9 @@ function App() {
             <div className='col-span-1'>
               <ViewButton 
                 href={"https://github.com/Hypeyiii/asteroid-game"}
-                viewButtonClass={
-                  darkMode ? "text-black/60 bg-white/60 hover:bg-white border-white/60 hover:text-black hover:border-black" 
-                  : 
-                  "text-white/40 hover:text-white bg-black/60 hover:bg-black border-black/40"
-                }
+                viewButtonClass={[
+                  isDark && "text-white/40 hover:text-white bg-black/60 hover:bg-black border border-black/50 hover:border-white"
+                 ,isLight && "text-black/60 bg-white/60 hover:bg-white border-white/60 hover:text-black hover:border-black"]}
                 textViewButton={[isSpanish && "Código" , isEnglish && "Code"]}>
                 <FaGithub className='size-5'/>
               </ViewButton>
@@ -429,19 +387,19 @@ function App() {
           </div>
         }>
           <TechButtons
-            className={`text-white/90 bg-[#000000] ${darkMode ? "border-black/50" : "border-white/20"}`} 
+            className={`text-white/90 bg-[#000000] ${isDark && "border-white/20"} ${isLight && "border-black/50"}`} 
             buttonText={"Java"}>
             <img src={Java} alt="Java Icon" className='size-5' />
           </TechButtons> 
           <TechButtons
-            className={`bg-[#000000] text-white/90 ${darkMode ? "border-black/50" : "border-white/20"}`} 
+            className={`bg-[#000000] text-white/90 ${isDark && "border-white/20"} ${isLight && "border-black/50"}`} 
             buttonText={"Netbeans"}>
             <img src={NeatBeans} alt="NeatBeans Icon" className='size-5' />
           </TechButtons>
       </Projects>
   </div>
   <Footer
-      className={isDark && "text-white/70" || isLight && "text-black/70"}
+      className={[isDark && "text-white/70" , isLight && "text-black/70"]}
       footerText={[isSpanish && "© 2024 Isaac Frias. Derechos Reservados" , isEnglish && "© 2024 Isaac Frias. All Rights Reserved"]}
       aboutRef={"#AboutMeModal"}
       contactRef={"mailto:isaacfrias868@gmal.com"}
