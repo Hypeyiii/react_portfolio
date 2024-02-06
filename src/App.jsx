@@ -91,7 +91,7 @@ function App() {
           var top = section.offsetTop;
           var bottom = top + section.offsetHeight;
   
-          if (window.scrollY >= top && window.scrollY < bottom) {
+          if (window.scrollY + 50 >= top && window.scrollY < bottom) {
             navItems.forEach(function(item) {
               item.classList.remove('active-nav-item');
             });
@@ -128,11 +128,6 @@ function App() {
       window.removeEventListener('resize', handleSize);
     };
   }, []);
-  
-  const handleMenuModal = () => {
-    setIsMenu(!isMenu);
-    document.querySelector('.menu').classList.toggle('hidden');
-  }
 
   return (
     <>

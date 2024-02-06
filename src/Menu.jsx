@@ -1,9 +1,9 @@
 function Menu ({listDarkMode, itemsHover, home, education, technologies, projects, darkModeLogo, languageLogo, handleDarkMode, handleLanguage}) {
   return (
-    <div className='flex items-center justify-center mx-auto w-screen mt-1 md:mt-0'>
+    <div className='section flex items-center justify-center mx-auto w-screen mt-1 md:mt-0'>
         <ul className={`backdrop-blur-md bg-black/30 rounded-full flex flex-row gap-x-3 md:gap-x-4 text-[10px] md:text-sm items-center justify-center px-2
                       ${listDarkMode}`}>
-          <a href="#"><li className={`px-1 py-2 md:p-3 rounded-full transition-all duration-300 
+          <a href="#"><li className={`item px-1 py-2 md:p-3 rounded-full transition-all duration-300 
                       ${itemsHover}`}>
              {home}
             </li></a>
