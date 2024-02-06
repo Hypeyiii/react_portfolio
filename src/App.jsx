@@ -7,8 +7,6 @@ import ViewButton from './Components/ViewButton.jsx';
 import Footer from './Footer.jsx';
 import ImageModal from './hooks/ImageModal.jsx';
 import AboutMeModal from './hooks/AboutMeModal.jsx';
-import Menu from './Menu.jsx';
-import MenuModal from './hooks/MenuModal.jsx';
 import Education from './Education.jsx';
 import Tech from './Tech.jsx';
 import Introduction from './Introduction.jsx';
@@ -18,10 +16,9 @@ import coupleavatar from './assets/coupleavatar.jpg'
 import Java from './assets/java.svg'
 import react from './assets/react.svg'
 import NeatBeans from './assets/netbeans.svg'
-import { RiMenuUnfoldFill, RiMenuFoldLine  } from "react-icons/ri";
 import { FaGithub, FaProjectDiagram } from 'react-icons/fa';
 import { MdDarkMode, MdOutlineLightMode} from "react-icons/md";
-import { TbLanguageOff, TbLanguage } from "react-icons/tb";
+import { TbLanguage } from "react-icons/tb";
 import { SiTailwindcss} from "react-icons/si";
 import { IoEye } from "react-icons/io5";
 import { useState, useEffect } from 'react'
@@ -46,7 +43,6 @@ function App() {
     setIsAboutMeModal(false);
   }
 
-  const [isMenu, setIsMenu] = useState(false)
 
   const [darkMode, setDarkMode] = useState(false)
 
@@ -64,7 +60,7 @@ function App() {
           var top = section.offsetTop;
           var bottom = top + section.offsetHeight;
   
-          if (window.scrollY >= top && window.scrollY < bottom) {
+          if (window.scrollY + 128 >= top && window.scrollY < bottom) {
             navItems.forEach(function(item) {
               item.classList.remove('darkMode');
             });
@@ -91,7 +87,7 @@ function App() {
           var top = section.offsetTop;
           var bottom = top + section.offsetHeight;
   
-          if (window.scrollY + 4 >= top && window.scrollY < bottom) {
+          if (window.scrollY + 128 >= top && window.scrollY < bottom) {
             navItems.forEach(function(item) {
               item.classList.remove('active-nav-item');
             });
@@ -107,14 +103,6 @@ function App() {
       };
     }
   }, [darkMode]);
-  
-  
-
-  const [languageMode, setLanguageMode] = useState(false)
-
-  const handleLanguage = () => {
-    setLanguageMode(!languageMode);
-  }
 
   const [isMobile, setisMobile] = useState(window.innerWidth < 768);
 
@@ -129,30 +117,95 @@ function App() {
     };
   }, []);
 
+  const [languageModal, setLanguageModal] = useState(false)
+
+  const closeLanguageModal = () => {
+    setLanguageModal(false)
+  }
+
+  const openLanguageModal = () => {
+    setLanguageModal(true)
+  }
+
+  const [isSpanish, setIsSpanish] = useState(true)
+
+  const onSpanish = () => {
+    setIsSpanish(true)
+    if(isEnglish) {
+      setIsEnglish(false)
+    }
+  }
+
+  const [isEnglish, setIsEnglish] = useState(false)
+
+  const onEnglish = () => {
+    setIsEnglish(true)
+    if(isSpanish) {
+      setIsSpanish(false)
+    }
+  }
+
   return (
     <>
     
-        <div className={`absolute w-full h-auto
+        <div className={`absolute w-full h-auto -z-10
         ${darkMode ? "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-900 via-gray-50 to-gray-900"
         :
         "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-600 via-black to-gray-600"
-        }`}
+        }`} onClick={languageModal ? closeLanguageModal : null}
         >     
-    <div className={`z-50 fixed top-0 md:right-0 md:left-0 mx-auto
-                   ${isMobile ? 'mt-0': 'mt-1'}`}>
-        <>
-        <Menu
-          listDarkMode={`${darkMode ? "text-white" : "text-white/85"}`}
-          itemsHover={`${darkMode ? "md:hover:text-[#0a1ca9] " : "md:hover:text-[#5cf0ff] "}`}
-          home={languageMode ? "Home" : "Inicio"}
-          education={languageMode ? "Education" : "Educación"}
-          technologies={languageMode ? "Technologies" : "Tecnologias"}
-          projects={languageMode ? "Projects" : "Proyectos"}
-          darkModeLogo={darkMode ? <MdOutlineLightMode className='size-4 md:size-6'/> : <MdDarkMode className='size-4 md:size-6'/>}
-          languageLogo={languageMode ? <TbLanguage className='size-4 md:size-6'/> : <TbLanguageOff className='size-4 md:size-6'/>}
-          handleDarkMode={handleDarkMode}
-          handleLanguage={handleLanguage}/>
-      </>
+    <div className={`z-50 fixed md:right-0 md:left-0 mx-auto ${isMobile ? 'mt-0': 'mt-1'}`}>
+      <div className='section flex items-center justify-center mx-auto w-screen mt-1 md:mt-0'>
+          <ul className={`backdrop-blur-md bg-black/30 rounded-full flex flex-row gap-x-3 md:gap-x-4 text-[10px] md:text-sm items-center justify-center px-2
+                        ${darkMode ? "text-white" : "text-white/85"}`}>
+            <a href="#"><li className={`item px-1 py-2 md:p-3 rounded-full transition-all duration-300 
+                        ${darkMode ? "md:hover:text-[#0a1ca9] " : "md:hover:text-[#5cf0ff] "}`}>
+              {[isSpanish && "Inicio" , isEnglish && "Home"]}
+              </li></a>
+            <a href="#education"><li className={`item px-1 py-2 md:p-3 rounded-full transition-all duration-300 
+                        ${darkMode ? "md:hover:text-[#0a1ca9] " : "md:hover:text-[#5cf0ff] "}`}>
+                {[isSpanish && "Educación" , isEnglish && "Education"]}
+              </li></a>
+            <a href="#technologies"><li className={`item px-1 py-2 md:p-3 rounded-full transition-all duration-300 
+                        ${darkMode ? "md:hover:text-[#0a1ca9] " : "md:hover:text-[#5cf0ff] "}`}>
+                  {[isSpanish && "Tecnologías" , isEnglish && "Technologies"]}
+                </li></a>
+            <a href="#projects"><li className={`item px-1 py-2 md:p-3 rounded-full transition-all duration-300 
+                        ${darkMode ? "md:hover:text-[#0a1ca9] " : "md:hover:text-[#5cf0ff] "}`}>
+                {[isSpanish && "Proyectos" , isEnglish && "Projects"]}
+              </li></a>
+            <a href="#darkmode">
+              <li className={`px-1 py-2 md:p-3 rounded-full transition hover:scale-125`} onClick={handleDarkMode}>
+              {darkMode ? <MdOutlineLightMode className='size-4 md:size-6'/> : <MdDarkMode className='size-4 md:size-6'/>}
+              </li>
+            </a>
+            <a href='#language'>
+              <li className={`px-1 py-2 md:p-3 rounded-full transition hover:scale-125`} onClick={openLanguageModal} id='language'>
+              { <TbLanguage className='size-4 md:size-6'/>}
+              </li>
+              {languageModal && (
+                <>
+                <div className="absolute right-1 md:right-0 mt-2 p-1 rounded-md border border-gray-600 hover:border-gray-200
+                transition bg-black/40 dark:bg-gray-900/70 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] 
+                backdrop-blur-md text-white/70 text-[12px] md:text-sm"
+                onClick={closeLanguageModal}> 
+                  <ul className="flex flex-col"> 
+                    <li className="px-2 py-1.5 cursor-default hover:bg-black hover:text-white rounded-sm
+                      transition" onClick={onSpanish}> 
+                      <h1>Español</h1>
+                    </li>
+                    <li className="px-2 py-1.5 cursor-default hover:bg-black hover:text-white rounded-sm
+                      transition" onClick={onEnglish}>
+                      English 
+                    </li>
+                  </ul> 
+                </div>
+                </>
+              )}
+            </a>
+           
+          </ul>
+        </div>
     </div>
     <Introduction
       avatar={avatar}
@@ -162,68 +215,71 @@ function App() {
           animationModal={`modal ${modalOpen ? "modalIn" : "modalOut"}`}
           onClose={closeModal}
           img={avatar}
-          buttonText={
-            languageMode ? "More about me" : "Más sobre mí"
-          
-          }
+          buttonText={[isSpanish && "Más sobre mí", isEnglish && "More about me"]}
           buttonClass={`${darkMode ? "hover:bg-black" : "hover:bg-white/5"}`}
           onClick={openAboutMeModal}
-          closeButtonText={languageMode ? "Close" : "Cerrar"}
+          closeButtonText={[isSpanish && "Cerrar", isEnglish && "Close"]}
           >
             <img src={avatar} alt="Imagen" className={`rounded-full size-48 md:size-80`}/>
         </ImageModal>
     )}
       nameClass={`${darkMode ? "text-black" : "text-white"}`}
-      nameText={languageMode ? "Hello, I'm Isaac" : "Hola, Soy Isaac"}
-      hireText={languageMode ? "Hire me here" : 'Contrátame aquí'}
+      nameText={[isSpanish && "Hola, soy Isaac", isEnglish && "Hello, I'm Isaac"]}
+      hireText={[isSpanish && "Contrátame aquí", isEnglish && "Hire me here"]}  
       introductionClass={`${darkMode ? "text-black/90" : "text-white/90"}`}
-      introductionText={languageMode ? 
-        "FrontEnd Developer and Systems Engineer. From Nuevo León, Mexico. Contributing to the Development and Programming of Web Applications." 
-        :
-        "Desarrollador FrontEnd e Ingeniero en Sistemas. De Nuevo León, México. Contribuyendo al Desarrollo y Programación de Aplicaciones Web."
-      }
+      introductionText= {[isSpanish && <h1>
+        Desarrollador FrontEnd e Ingeniero en Sistemas. De Nuevo León, México. Contribuyendo al Desarrollo y Programación de Aplicaciones Web.
+      </h1>
+    , isEnglish && 
+        <h1>FrontEnd Developer and Systems Engineer. From Nuevo León, Mexico. Contributing to the Development and Programming of Web Applications.</h1>]} 
       companyButtonClass={`${darkMode ? "text-white/60 hover:text-white bg-black/80" : "text-white/50 hover:text-white bg-black/50"}`}
     />
       <Education
           containerClass={`${darkMode ? "text-black/90" : "text-white/90"}`}
-          educationTitle={languageMode ? "Education and Experience" : "Educación y Experiencia"}
+          educationTitle={[isSpanish && "Educación y Experiencia", isEnglish && "Education and Experience"]}
           timeClass={`${darkMode ? "text-black/80" : "text-white/80"}`}
           titleClass={`${darkMode ? "text-black" : "text-white"}`}
           descriptionClass={`${darkMode ? "text-black/70" : "text-white/70"}`}
-          firstTimeText={languageMode ? "Currently..." : "Actualmente..."}
-          firstTitleText={languageMode ? "Developer and Student" : "Desarrollador y Estudiante"}
-          firstDescriptionText={languageMode ? 
-            "Studying the 6th semester in the Systems Administrator Engineer career. Developing websites in a didactic and passionate way." 
-            : 
-            "Cursando 6to semestre en la carrera de Ingeniero Administrador de Sistemas (IAS). Desarrollando Web´ s de manera didactica y apasionada."
-          }
-          learMoreText={languageMode ? "Learn more" : "Saber más"}
-          secondTimeText={languageMode ? "December, 2021" : "Diciembre, 2021"}
-          secondTitleText={languageMode ? "Start of Web Development" : "Inicio del Desarrollo Web"}
-          secondDescriptionText={languageMode ? 
-            "I started to delve into the world of Web Development, taking courses and learning technologies in a didactic way." 
-            : 
-            "Empecé a adentrarme en el mundo del Desarrollo Web, cursando materias y aprendiendo Tecnologías didacticamente."
-          }
-          thirdTimeText={languageMode ? "August, 2021" : "Agosto, 2021"}
-          thirdTitleText={languageMode ? "Entry to the University" : "Ingreso a la Universidad"}
-          thirdDescriptionText={languageMode ? 
-            "I entered the University to study Systems Engineering, where I learned the basics of programming and computer systems." 
-            : 
-            "Ingresé a la Universidad para estudiar Ingeniería en Sistemas, donde aprendí las bases de la programación y sistemas computacionales."
-          }
+          firstTimeText={[isSpanish && "...Actualmente", isEnglish && "...Currently"]}
+          firstTitleText={[isSpanish && "Desarrollador y Estudiante" , isEnglish && "Developer and Student"]}
+          firstDescriptionText={[isSpanish &&
+          <p>Cursando 6to semestre en la carrera de Ingeniero Administrador de Sistemas (IAS). Desarrollando Web´ s de manera didactica y apasionada.</p>
+          , isEnglish && 
+          <p>Studying the 6th semester in the Systems Administrator Engineer career. Developing websites in a didactic and passionate way.</p>]}
+          learMoreText={[isSpanish && "Saber más", isEnglish && "Learn more"]}
+          secondTimeText={[isSpanish && "Diciembre, 2021" , isEnglish && "December, 2021"]}
+          secondTitleText={[isSpanish && "Iniciando en el Desarrollo Web" , isEnglish && "Starting in Web Development"]}
+          secondDescriptionText={[isSpanish &&
+          <p>Empecé a adentrarme en el mundo del Desarrollo Web, cursando materias y aprendiendo tecnologías didacticamente.</p>
+          , isEnglish &&
+          <p>I started to delve into the world of Web Development, taking courses and learning technologies in a didactic way.</p>]}
+
+          thirdTimeText={[isSpanish && "Agosto, 2021" , isEnglish && "August, 2021"]}
+          thirdTitleText={[isSpanish && "Ingresando a la Universidad" , isEnglish && "Entering the University"]}
+          thirdDescriptionText=
+          {[isSpanish &&
+            <p>Ingresé a la Universidad para estudiar Ingeniería en Sistemas, donde aprendí las bases de la programación y sistemas computacionales.</p>
+            , isEnglish &&
+            <p>I entered the University to study Systems Engineering, where I learned the basics of programming and computer systems.</p>
+          ]}
       />
       <Tech
         containerClass={`${darkMode ? "text-black/90" : "text-white/90"}`}
-        techTitle={languageMode ? "Technologies" : "Tecnologías"}
-        techIntroduction={languageMode ? "The skills, tools and technologies I use to bring your products to life" : 
-                                          "Las habilidades, herramientas y tecnologías que utilizo para dar vida a tus productos"}
+        techTitle={[isSpanish && "Tecnologías y Herramientas", isEnglish && "Technologies and Tools"]}
+        techIntroduction={[isSpanish &&
+        <p>Las habilidades, herramientas y tecnologías que utilizo para dar vida a tus productos</p>
+        , isEnglish &&
+        <p>The skills, tools and technologies I use to bring your products to life</p>
+      ]}
         introductionClass={`${darkMode ? "text-black/70" : "text-white/70"}`}
         cardClass={`${darkMode ? "text-black/70 hover:text-black border-black/50 hover:border-black/70 hover:bg-white" : 
                                 "text-white/60 hover:text-white border-white/30 hover:border-white/30 hover:bg-black"}`}
-        currentlyTitle={languageMode ? "Currently working on:" : 'Actualmente trabajando en:'}
-        currentlyText={languageMode ? "I am currently working on a project with React, NodeJS and MySQL, developing a web application for a small business." : 
-                                      "Actualmente estoy trabajando en un proyecto con React, NodeJS y MySQL, desarrollando una aplicación web para un pequeño negocio."}
+        currentlyTitle={[isSpanish && "Actualmente trabajando en:" , isEnglish && "Currently working on:"]}
+        currentlyText={[isSpanish && 
+        <p>Desarrollo de un sitio web E-commerce con React, TailwindCSS y Firebase, donde puedes comprar accesorios de joyería (aún en proceso)</p>
+        , isEnglish &&
+        <p>Development of an E-commerce website with React, TailwindCSS and Firebase, where you can buy jewelry accessories (still in process)</p>]}
+
         currentlyTitleClass={`${darkMode ? "text-black" : "text-white"}`}
         currentlyTextClass={`${darkMode ? "text-black/60" : "text-white/60"}`}
       />
@@ -232,24 +288,21 @@ function App() {
       <div className={`flex flex-row gap-x-2 mb-4 items-center justify-center ${darkMode ? "text-black/90" : "text-white/90"}`}>
       <FaProjectDiagram className='size-6'/>
         <h1 className={`font-semibold text-xl md:text-2xl xl:text-3xl`} data-translate='education'>
-          {languageMode ? "Projects" : "Proyectos"}
+          {[isSpanish && "Proyectos" , isEnglish && "Projects"]}
         </h1>
       </div>
       <p className={`mb-6 text-xs md:text-base ${darkMode ? "text-black/70" : "text-white/70"}`}>
-          {languageMode ? "Some of the projects I have developed and collaborated on"  : "Algunos de los proyectos que he desarrollado y colaborado" }
+          {[isSpanish && "Algunos de los proyectos que he desarrollado y contribuido" , isEnglish && "Some of the projects I have developed and contributed"]}
       </p>
       <Projects
         projectImg={firstProject}
         techTitleClass={`${darkMode ? "text-black/90" : "text-white/90"}`}
-        projectName={
-          languageMode ? "Mariana´ s Accesories - E-commerce Website" : "Mariana Accesorios - Sitio Web E-commerce"
-        }
+        projectName={[isSpanish && "Mariana Accesorios - Sitio Web E-commerce" , isEnglish && "Mariana Accesorios - E-commerce Website"]}
         techDescriptionClass={`${darkMode ? "text-black/60" : "text-white/70"}`}
-        projectDescription={
-          languageMode ? 
-          "E-commerce website developed with React, TailwindCSS and Firebase, where you can buy jewellry accessories (still in process)" :
-          "Sitio web E-commerce desarrollado con React, TailwindCSS y Firebase, donde puedes comprar accesorios de joyeria (aún en proceso)"
-        }
+        projectDescription={[isSpanish && 
+        <p>Sitio web E-commerce desarrollado con React, TailwindCSS y Firebase, donde puedes comprar accesorios de joyeria (aún en proceso)</p>
+        , isEnglish &&
+        <p>E-commerce website developed with React, TailwindCSS and Firebase, where you can buy jewelry accessories (still in process)</p>]}
         ViewButtons={
           <div className='grid grid-cols-3 gap-x-4'>
             <div className='col-span-1'>
@@ -260,9 +313,7 @@ function App() {
                   : 
                   "text-white/40 hover:text-white bg-black/60 hover:bg-black border-black/40"
                 }
-                textViewButton={
-                  languageMode ? "Code" : "Código"
-                }>
+                textViewButton={[isSpanish && "Código" , isEnglish && "Code"]}>
                 <FaGithub className='size-5'/>
               </ViewButton>
             </div>
@@ -274,9 +325,7 @@ function App() {
                     : 
                     "text-white/40 hover:text-white bg-black/60 hover:bg-black border-black/40"
                   }
-                  textViewButton={
-                    languageMode ? "View" : "Ver"
-                  }>
+                  textViewButton={[isSpanish && "Ver" , isEnglish && "View"]}>
                   <IoEye className='size-5'/>
                 </ViewButton>
               </div>
@@ -300,11 +349,8 @@ function App() {
         techTitleClass={`${darkMode ? "text-black/90" : "text-white/90"}`}
         projectName="Asteroid Game"
         techDescriptionClass={`${darkMode ? "text-black/60" : "text-white/70"}`}
-        projectDescription={
-          languageMode ? 
-          "Project Asteroids game for college, in the subject of object-oriented programming" :
-          "Juego de Asteroides de proyecto para la universidad, en la materia de programación orientada a objetos"
-        }
+        projectDescription={[isSpanish && "Juego de Asteroides de proyecto para la universidad, en la materia de programación orientada a objetos en Java"
+          , isEnglish && "Asteroid Game project for the university, in the object-oriented programming subject in Java"]}
         ViewButtons={
           <div className='grid grid-cols-3 gap-x-4'>
             <div className='col-span-1'>
@@ -315,9 +361,7 @@ function App() {
                   : 
                   "text-white/40 hover:text-white bg-black/60 hover:bg-black border-black/40"
                 }
-                textViewButton={
-                  languageMode ? "Code" : "Código"
-                }>
+                textViewButton={[isSpanish && "Código" , isEnglish && "Code"]}>
                 <FaGithub className='size-5'/>
               </ViewButton>
             </div>
@@ -337,12 +381,12 @@ function App() {
   </div>
   <Footer
       className={darkMode ? "text-black/70" : "text-white/70"}
-      footerText={languageMode ? "© 2024 Isaac Frias. All the Rights Reserved" : "© 2024 Isaac Frias. Derechos Reservados "}
+      footerText={[isSpanish && "© 2024 Isaac Frias. Derechos Reservados" , isEnglish && "© 2024 Isaac Frias. All Rights Reserved"]}
       aboutRef={"#AboutMeModal"}
       contactRef={"mailto:isaacfrias868@gmal.com"}
-      about={languageMode ? "Know more about me" : "Cónoceme más"}
+      about={[isSpanish && "Cónoceme más" , isEnglish && "Know me more"]}
       meModal={openAboutMeModal}
-      contact={languageMode ? "Contact" : "Contacto"}
+      contact={[isSpanish && "Contáctame" , isEnglish && "Contact me"]}
       aboutClass={`hover:underline ${darkMode ? "text-black/70 hover:text-black" : "text-white/70 hover:text-white"}`}
   />
   {isAboutMeModal && (
@@ -351,19 +395,19 @@ function App() {
         img={avatar}
         presentationClass={`font-bold ${darkMode ? "text-white" : "text-black"}`}
         aboutMeClass={`fade-in`}
-        presentationText={languageMode ? "Hello, my name is Isaac Frias " : "Hola, mi nombre es Isaac Frias "}
+        presentationText={[isSpanish && "Hola, mi nombre es Isaac Frias", isEnglish && "Hello, my name is Isaac Frias"]}
         aboutMeText=
-          {languageMode ?
-           <p>
-              I am currently 19 years old, I was born in Monterrey, Nuevo León on August 31, 2004, and I am a student of engineering passionate about web development
-              and programming. Today I am learning new and mastering technologies and tools for the development of web applications.
-           </p>
-        :
+          {[isSpanish && 
             <p>
-              Actualmente tengo 19 años, nací en Monterrey, Nuevo León el 31 de Agosto del 2004, y soy estudiante de ingeniería apasionado por el desarrollo web y la programación. 
-              Hoy en día estoy aprendiendo nuevas y dominando tecnologías y herramientas para el desarrollo de aplicaciones web.
-            </p>
-          }
+            Actualmente tengo 19 años, nací en Monterrey, Nuevo León el 31 de Agosto del 2004, y soy estudiante de ingeniería apasionado 
+            por el desarrollo web y la programación. 
+            Hoy en día estoy aprendiendo nuevas y dominando tecnologías y herramientas para el desarrollo de aplicaciones web.
+          </p>
+          , isEnglish &&
+          <p>
+            I am currently 19 years old, I was born in Monterrey, Nuevo León on August 31, 2004, and I am a student of engineering passionate about
+             web development and programming. Nowadays I am learning new and mastering technologies and tools for the development of web applications.
+            </p>]}
         aboutMeModalClass={`font-light ${darkMode ? "text-white/80" : "text-black/90"}`}
         bgClass={`${darkMode ? "opacity-95 bg-gradient-to-br from-slate-600 via-black to-slate-600" : 
         "opacity-90 bg-gradient-to-tr from-black via-white to-black"}`}
