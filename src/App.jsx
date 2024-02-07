@@ -187,12 +187,12 @@ function App() {
                 {[isSpanish && "Proyectos" , isEnglish && "Projects"]}
               </li></a>
             <a href="#darkmode">
-              <li id='fade' className={`px-1 py-2 md:p-3 rounded-full transition hover:scale-125`} onClick={openDarkModal}>
+              <li id='fade' className={`px-1 py-2 md:p-3 rounded-full transition md:hover:scale-125`} onClick={openDarkModal}>
               {isDark &&  <MdDarkMode className='size-4 md:size-6'/>} {isLight && <MdOutlineLightMode className='size-4 md:size-6'/>}
               </li>
             </a>
             <a href='#language'>
-              <li id='fadeLanguage' className={`px-1 py-2 md:p-3 rounded-full transition hover:scale-125 text-lg`} onClick={openLanguageModal}>
+              <li id='fadeLanguage' className={`px-1 py-2 md:p-3 rounded-full transition md:hover:scale-125 text-sm md:text-lg`} onClick={openLanguageModal}>
                 {isSpanish && <p>Es</p> }
                 {isEnglish && <p>En</p> }
               </li>
