@@ -15,7 +15,7 @@ const AboutMeModal = ({ onClose, children, aboutMeText , aboutMeModalClass, bgCl
               </button>
           </div>
               <div className="col-span-12 md:col-span-8 flex flex-col items-start justify-center">
-              <h1 className={`${presentationClass} text-sm sm:text-xl`}>{presentationText}</h1>
+              <h1 className={`${presentationClass} text-sm sm:text-xl font-bold`}>{presentationText}</h1>
               <h1>{aboutMeText}</h1>
               <ul className="flex items-center justify-start gap-x-4 mt-1">
                 <li><FaReact className="size-4 md:size-6 animate-spin-slow"/></li>

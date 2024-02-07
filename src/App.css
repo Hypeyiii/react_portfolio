@@ -104,6 +104,18 @@ body{
     transform: scale(0.0);
   }
   to {
-    transform: scale(1.02);
+    transform: scale(1);
   }
 }
+.fadeLanguage{
+  animation: fadeLanguage 0.2s ease-out;
+}
+@keyframes fadeLanguage {
+  from {
+    transform: scale(0.0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+  
