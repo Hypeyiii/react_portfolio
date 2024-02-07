@@ -13,15 +13,11 @@ import Introduction from './Introduction.jsx';
 import firstProject from './assets/Projects-1.png'
 import secondProject from './assets/Project-2.png'
 import coupleavatar from './assets/coupleavatar.jpg'
-import esIcon from './assets/spanish-language-code-icon.svg'
-import enIcon from './assets/english-language-code-icon.svg'
 import Java from './assets/java.svg'
 import react from './assets/react.svg'
 import NeatBeans from './assets/netbeans.svg'
 import { FaGithub, FaProjectDiagram } from 'react-icons/fa';
 import { MdDarkMode, MdOutlineLightMode} from "react-icons/md";
-import { TbLanguage } from "react-icons/tb";
-import { RiEnglishInput } from "react-icons/ri";
 import { SiTailwindcss} from "react-icons/si";
 import { IoEye } from "react-icons/io5";
 import { useState, useEffect } from 'react'
