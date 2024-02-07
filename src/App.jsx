@@ -31,9 +31,11 @@ function App() {
 
   const openModal = () => {
     setModalOpen(true);
+      document.querySelector("body").classList.add("overflow-hidden")
   }
   const closeModal = () => {
     setModalOpen(false);
+    document.querySelector("body").classList.remove("overflow-hidden")
   };
   const openAboutMeModal = () => {
       setIsAboutMeModal(true);
@@ -41,6 +43,7 @@ function App() {
   }
   const closeAboutMeModal = () => {
     setIsAboutMeModal(false);
+    document.querySelector("body").classList.remove("overflow-hidden")
   }
 
   useEffect(() => {
@@ -163,8 +166,8 @@ function App() {
         >     
     <div className={`z-50 fixed md:right-0 md:left-0 mx-auto ${isMobile ? 'mt-0': 'mt-1'}`}>
       <div className='section flex items-center justify-center mx-auto w-screen mt-1 md:mt-0'>
-          <ul className={`backdrop-blur-md bg-black/30 rounded-full flex flex-row gap-x-3 md:gap-x-4 text-[10px] md:text-sm items-center justify-center px-2
-                        ${isDark && "text-white/85"} ${isLight && "text-white"}`}>
+          <ul className={`backdrop-blur-md bg-black/30 rounded-full flex flex-row gap-x-3 md:gap-x-4 text-[10px] md:text-sm items-center 
+          justify-center px-2 ${isDark && "text-white/85"} ${isLight && "text-white"}`}>
             <a href="#"><li className={`item px-1 py-2 md:p-3 rounded-full transition-all duration-300 
                         ${isDark && "md:hover:text-[#5cf0ff]"} ${isLight && "md:hover:text-[#0a1ca9]"}`}>
               {[isSpanish && "Inicio" , isEnglish && "Home"]}
@@ -229,7 +232,6 @@ function App() {
                 </>
               )}
             </a>
-           
           </ul>
         </div>
     </div>
@@ -319,7 +321,8 @@ function App() {
         </h1>
       </div>
       <p className={`mb-6 text-xs md:text-base ${isDark && "text-white/70"} ${isLight && "text-black/70"}`}>
-          {[isSpanish && "Algunos de los proyectos que he desarrollado y contribuido" , isEnglish && "Some of the projects I have developed and contributed"]}
+          {[isSpanish && "Algunos de los proyectos que he desarrollado y contribuido" , 
+            isEnglish && "Some of the projects I have developed and contributed"]}
       </p>
       <Projects
         projectImg={firstProject}
@@ -399,7 +402,7 @@ function App() {
       </Projects>
   </div>
   <Footer
-      className={[isDark && "text-white/70" , isLight && "text-black/70"]}
+      className={`${isDark && "text-white"} , ${isLight && "text-black/70"}`}
       footerText={[isSpanish && "© 2024 Isaac Frias. Derechos Reservados" , isEnglish && "© 2024 Isaac Frias. All Rights Reserved"]}
       aboutRef={"#AboutMeModal"}
       contactRef={"mailto:isaacfrias868@gmal.com"}
