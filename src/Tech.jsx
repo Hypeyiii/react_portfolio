@@ -3,17 +3,16 @@ import Technologie from "./Components/Technologie";
 import { FaBootstrap, FaCss3Alt, FaGitAlt, FaHtml5, FaJava, FaNode, FaReact } from "react-icons/fa";
 import { SiJavascript, SiMysql, SiTailwindcss } from "react-icons/si";
 
-function Tech ({techTitle, techIntroduction, introductionClass, cardClass, currentlyTitle, 
-                currentlyText, currentlyTitleClass, currentlyTextClass, containerClass}) {
+function Tech ({techTitle, techIntroduction, cardClass, currentlyTitle, currentlyText}) {
   return (
     <div id='technologies' className='section flex flex-col items-start justify-center mx-auto w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] px-2 mt-32'>
-      <div className={`flex flex-row gap-x-2 mb-4 items-center justify-center ${containerClass}`}>
+      <div className={`flex flex-row gap-x-2 mb-4 items-center justify-center dark:text-white/90 text-black/90`}>
         <MdBiotech className='size-8'/>
           <h1 className={`font-semibold text-xl md:text-2xl xl:text-3xl`} data-translate='education'>
             {techTitle}
           </h1>
       </div>
-      <p className={`mb-4 text-xs md:text-base ${introductionClass}`}>
+      <p className={`mb-4 text-xs md:text-base text-black/70 dark:text-white/70`}>
             {techIntroduction}
           </p>
       <div className='grid grid-cols-4 md:grid-cols-5 auto-rows-auto gap-x-4 w-full gap-y-4 mb-4'>
@@ -69,10 +68,10 @@ function Tech ({techTitle, techIntroduction, introductionClass, cardClass, curre
           </Technologie>
       </div>
         <div className='flex flex-col gap-y-2'>
-        <h1 className={`font-bold text-base md:text-2xl ${currentlyTitleClass}`}>
+        <h1 className={`font-bold text-base md:text-2xl text-black/90 dark:text-white/90`}>
               {currentlyTitle}
         </h1>
-        <p className={`text-xs md:text-sm ${currentlyTextClass}`}>
+        <p className={`text-xs md:text-sm text-black/60 dark:text-white/60`}>
           {currentlyText}
         </p>
         </div>

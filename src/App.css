@@ -5,6 +5,9 @@ body{
   font-family: 'Onest', sans-serif;
   text-wrap: pretty;
 }
+:root{
+  color-scheme: light dark;
+}
 
 .entrance {
     -webkit-animation: entrance 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -116,6 +119,28 @@ body{
   }
   to {
     transform: scale(1);
+  }
+}
+.fadeModal{
+  animation: fadeModal 0.1s ease-out;
+}
+@keyframes fadeModal {
+  from {
+    transform: scale(0.6);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.fadeModalOut{
+  animation: fadeModalOut 0.1s ease-out;
+}
+@keyframes fadeModalOut {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.8);
   }
 }
   

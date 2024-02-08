@@ -2,9 +2,9 @@ import { FaNode, FaReact } from "react-icons/fa";
 import { SiExpress, SiPostgresql, SiSocketdotio } from "react-icons/si";
 import { TiDelete } from "react-icons/ti";
 
-const AboutMeModal = ({ onClose, children, aboutMeText , aboutMeModalClass, bgClass, presentationText, presentationClass, aboutMeClass}) => {
+const AboutMeModal = ({ onClose, children, aboutMeText , bgClass, presentationText, aboutMeClass}) => {
     return (
-      <div className={`z-40 fixed inset-0 ${aboutMeModalClass} w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] mx-auto fixed inset-0 bg-none 
+      <div className={`z-40 text-white/90 dark:text-black/80 w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] mx-auto fixed inset-0 bg-none 
       px-2 flex justify-center items-center`}>
         <div className={`fixed inset-0 ${bgClass}`} onClick={onClose}></div>
         <div className={`${aboutMeClass} z-50 flex justify-center items-center gap-4`}>
@@ -15,7 +15,7 @@ const AboutMeModal = ({ onClose, children, aboutMeText , aboutMeModalClass, bgCl
               </button>
           </div>
               <div className="col-span-12 md:col-span-8 flex flex-col items-start justify-center">
-              <h1 className={`${presentationClass} text-sm sm:text-xl font-bold`}>{presentationText}</h1>
+              <h1 className={`text-white dark:text-black text-sm sm:text-xl font-bold`}>{presentationText}</h1>
               <h1>{aboutMeText}</h1>
               <ul className="flex items-center justify-start gap-x-4 mt-1">
                 <li><FaReact className="size-4 md:size-6 animate-spin-slow"/></li>
