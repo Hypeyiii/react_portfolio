@@ -366,7 +366,7 @@ function App() {
         footerText={[isSpanish && "© 2024 Isaac Frias. Derechos Reservados" , isEnglish && "© 2024 Isaac Frias. All Rights Reserved"]}
         aboutRef={"#AboutMeModal"}
         contactRef={"mailto:isaacfrias868@gmal.com"}
-        about={[isSpanish && "Cónoceme más" , isEnglish && "Know me more"]}
+        about={[isSpanish && "Sobre mi" , isEnglish && "About me"]}
         meModal={openAboutMeModal}
         contact={[isSpanish && "Contáctame" , isEnglish && "Contact me"]}
     />
@@ -389,7 +389,7 @@ function App() {
               web development and programming. Nowadays I am learning new and mastering technologies and tools for the development of web applications.
               </p>]}
             bgClass={"dark:opacity-90 dark:bg-gradient-to-tr dark:from-black dark:via-white dark:to-black opacity-95 bg-gradient-to-br from-slate-600 via-black to-slate-600"}
-      >
+            >
              <img src={coupleavatar} alt ="Imagen" className={`rounded-full size-40 md:size-48`}/>
       </AboutMeModal>
                       )}

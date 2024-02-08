@@ -8,12 +8,12 @@ const LanguageModal = ({closeLanguageModal, onSpanish, onEnglish}) => {
         backdrop-blur-xl text-white/70 text-[12px] md:text-sm"
         onClick={closeLanguageModal}> 
           <ul className="flex flex-col"> 
-            <li className="p-1.5 md:p-3 rounded-t-lg hover:bg-black hover:text-white
+            <li className="px-2 py-2.5 md:p-3 rounded-t-lg hover:bg-black hover:text-white
               transition flex flex-row gap-x-1 items-center justify-start text-xs md:text-sm cursor-pointer" onClick={onSpanish}>
               <img src={mexico} alt="Mexico Flag" className='size-2 md:size-3'/> 
               Español
             </li>
-            <li className="p-1.5 md:p-3 rounded-b-lg hover:bg-black hover:text-white
+            <li className="p-2 md:p-3 rounded-b-lg hover:bg-black hover:text-white
               transition flex flex-row gap-x-1 justify-start items-center text-xs md:text-sm cursor-pointer" onClick={onEnglish}>
               <img src={usa} alt="Usa Flag" className='size-2 md:size-3'/>
               English
