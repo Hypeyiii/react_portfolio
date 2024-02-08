@@ -154,14 +154,16 @@ function App() {
     setIsSystemMode(true)
     setIsDarkMode(false)
     setIsLightMode(false)
-    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      isDarkMode
+  }
+
+  if (isSystemMode) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.querySelector("body").classList.add('dark')  
     } else {
-      isLightMode
+      document.querySelector("body").classList.remove('dark')  
     }
-  }  
-  
+  }
+
   
   return (
     <>
@@ -247,7 +249,7 @@ function App() {
         </h1>
       , isEnglish && 
           <h1>FrontEnd Developer and Systems Engineer. From Nuevo León, Mexico. Contributing to the Development and Programming of Web Applications.</h1>]} 
-        companyButtonClass= {"text-white/50 hover:text-white bg-black/80 dark:text-white/60 dark:bg-black/80"}
+        companyButtonClass= {"text-white/50 hover:text-white bg-black/80 dark:hover:text-white dark:hover:border-white/50 dark:bg-black/80"}
       />
         <Education
             educationTitle={[isSpanish && "Educación y Experiencia", isEnglish && "Education and Experience"]}
