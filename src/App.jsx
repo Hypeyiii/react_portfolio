@@ -10,6 +10,8 @@ import AboutMeModal from './hooks/AboutMeModal.jsx';
 import Education from './Education.jsx';
 import Tech from './Tech.jsx';
 import Introduction from './Introduction.jsx';
+import LanguageModal from './hooks/LanguageModal.jsx';
+import DarkModeModal from './hooks/DarkModeModal.jsx';
 import firstProject from './assets/Projects-1.png'
 import secondProject from './assets/Project-2.png'
 import coupleavatar from './assets/coupleavatar.jpg'
@@ -60,7 +62,7 @@ function App() {
             if (isDarkMode === true) {
               navItems[index].classList.add('darkMode');
             }
-            if (isLightMode === true) {
+            if (isLightMode || isSystemMode === true) {
               navItems[index].classList.add('lightMode');
             }
           }
@@ -71,20 +73,6 @@ function App() {
         window.removeEventListener('scroll', handleScroll);
       };
   });
-
-
-  const [isMobile, setisMobile] = useState(window.innerWidth < 768);
-
-  useEffect(() => {
-    const handleSize = () => {
-      setisMobile(window.innerWidth < 768);
-    };
-    window.addEventListener('resize', handleSize);
-
-    return () => {
-      window.removeEventListener('resize', handleSize);
-    };
-  }, []);
 
   const [languageModal, setLanguageModal] = useState(false)
 
@@ -144,10 +132,9 @@ function App() {
   const onDarkMode = () => {
     document.querySelector("#fade").classList.add('fade')
     setIsDarkMode(true)
-    document.querySelector("body").classList.add('dark')
-    
-      setIsLightMode(false)
-      setIsSystemMode(false)
+    document.querySelector("body").classList.add('dark')  
+    setIsLightMode(false)
+    setIsSystemMode(false)
     
   }
 
@@ -155,14 +142,13 @@ function App() {
   const onLightMode = () => {
     document.querySelector("#fade").classList.add('fade')
     setIsLightMode(true)
-    document.querySelector("body").classList.remove('dark')
-    
-      setIsDarkMode(false)
-      setIsSystemMode(false)
+    document.querySelector("body").classList.remove('dark')  
+    setIsDarkMode(false)
+    setIsSystemMode(false)
     
   }
 
-  const [isSystemMode, setIsSystemMode] = useState(false)
+  const [isSystemMode, setIsSystemMode] = useState(true)
   const onSystemMode = () => {
     document.querySelector("#fade").classList.add('fade')
     setIsSystemMode(true)
@@ -170,9 +156,9 @@ function App() {
     setIsLightMode(false)
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      onDarkMode()
+      isDarkMode
     } else {
-      onLightMode()
+      isLightMode
     }
   }  
   
@@ -183,7 +169,7 @@ function App() {
     dark:from-gray-600 dark:via-black dark:to-gray-600 
     bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-900 via-gray-50 to-gray-900"
     onClick={onCloseModals}>     
-      <div className={`z-50 fixed md:right-0 md:left-0 mx-auto ${isMobile ? 'mt-0': 'mt-1'}`}>
+      <div className={`z-50 fixed md:right-0 md:left-0 mx-auto`}>
         <div className='section flex items-center justify-center mx-auto w-screen mt-1 md:mt-0'>
             <ul className={`backdrop-blur-md bg-black/30 rounded-full flex flex-row gap-x-3 md:gap-x-4 text-[10px] md:text-sm items-center 
                 justify-center px-2 text-white dark:text-white/85`}>
@@ -203,64 +189,37 @@ function App() {
                           md:hover:text-[#5cf0ff] dark:md:hover:text-[#0a1ca9]`}>
                   {[isSpanish && "Proyectos" , isEnglish && "Projects"]}
                 </li></a>
-              <a href="#darkmode">
-                <li id='fade' className={`px-1 py-2 md:p-3 rounded-full transition md:hover:scale-125`} onClick={openDarkModal}>
-                <MdComputer className={`size-4 md:size-6 ${isDarkMode && "hidden"} ${isSystemMode && "hidden"} ${isLightMode && "hidden"}`}/>
-                {isDarkMode && <MdDarkMode className={`size-4 md:size-6`}/>}
-                {isLightMode && <MdOutlineLightMode className={`size-4 md:size-6`}/>}
-                {isSystemMode && <MdComputer className={`size-4 md:size-6`}/>}
+              <a>
+                <li id='fade' className={`px-1 py-2 md:p-3 rounded-full transition md:hover:scale-125 cursor-pointer`} onClick={openDarkModal}>
+                  <MdComputer className={`size-4 md:size-6 ${isDarkMode && "hidden"} ${isSystemMode && "hidden"} ${isLightMode && "hidden"}`}/>
+                  {isDarkMode && <MdDarkMode className={`size-4 md:size-6`}/>}
+                  {isLightMode && <MdOutlineLightMode className={`size-4 md:size-6`}/>}
+                  {isSystemMode && <MdComputer className={`size-4 md:size-6`}/>}
                 </li>
               </a>
-              <a href='#language'>
-                <li id='fadeLanguage' className={`px-1 py-2 md:p-3 rounded-full transition md:hover:scale-125 text-sm md:text-lg`}
+              <a>
+                <li id='fadeLanguage' className={`cursor-pointer px-1 py-2 md:p-3 rounded-full transition md:hover:scale-125 text-sm md:text-lg font-bold`}
                     onClick={openLanguageModal}>
                   {isSpanish && <p>Es</p> }
                   {isEnglish && <p>En</p> }
                 </li>
                 {languageModal && (
-                  <>
-                  <div className="fadeModal absolute right-1 md:right-0 mt-2  rounded-md border border-gray-600 hover:border-white/60
-                  transition bg-black/40 dark:bg-gray-900/70 dark:border-white/60 shadow-[0_3px_10px_rgb(0,0,0,0.2)] 
-                  backdrop-blur-xl text-white/70 text-[12px] md:text-sm"
-                  onClick={closeLanguageModal}> 
-                    <ul className="flex flex-col"> 
-                      <li className="p-1.5 md:p-3 rounded-t-lg cursor-default hover:bg-black hover:text-white
-                        transition" onClick={onSpanish}> 
-                        <h1>Español</h1>
-                      </li>
-                      <li className="p-1.5 md:p-3 rounded-b-lg cursor-default hover:bg-black hover:text-white
-                        transition" onClick={onEnglish}>
-                        English 
-                      </li>
-                    </ul> 
-                  </div>
-                  </>
+                  <LanguageModal
+                  closeLanguageModal={closeLanguageModal}
+                    onSpanish={onSpanish}
+                    onEnglish={onEnglish}
+                  />
                 )}
                 {isDarkModal && (
-                  <>
-                  <div className="fadeModal absolute right-10 md:right-16 mt-2 rounded-md border border-gray-600 hover:border-white/60
-                  transition bg-black/40 dark:bg-gray-900/70 dark:border-white/50 shadow-[0_3px_10px_rgb(0,0,0,0.2)] 
-                  backdrop-blur-xl text-white/70 text-[12px] md:text-sm"
-                  onClick={closeDarkModal}> 
-                    <ul className="flex flex-col items-start justify-start"> 
-                      <li className="p-1.5 md:p-3 rounded-t-lg cursor-default hover:bg-black/60 hover:text-white
-                        transition flex flex-row gap-x-1 items-center justify-start w-full" onClick={onDarkMode}> 
-                        <MdDarkMode className={`size-2 md:size-3`}/>
-                        <h1>{[isSpanish && "Oscuro" , isEnglish && "Dark"]}</h1>
-                      </li>
-                      <li className="p-1.5 md:p-3 cursor-default hover:bg-black hover:bg-black/60 hover:text-white
-                        transition flex flex-row gap-x-1 items-center justify-start w-full" onClick={onLightMode}>
-                          <MdOutlineLightMode className={`size-2 md:size-3`}/>
-                        {[isSpanish && "Claro" , isEnglish && "Light"]}
-                      </li>
-                      <li className="p-1.5 md:p-3 rounded-b-lg cursor-default hover:bg-black hover:bg-black/60 hover:text-white
-                        transition flex flex-row gap-x-1 items-center justify-start w-full" onClick={onSystemMode}>
-                          <MdComputer className={`size-2 md:size-3`}/>
-                        {[isSpanish && "Sistema" , isEnglish && "System"]}
-                      </li>
-                    </ul> 
-                  </div>
-                  </>
+                  <DarkModeModal
+                    closeDarkModal={closeDarkModal}
+                    onDarkMode={onDarkMode}
+                    onLightMode={onLightMode}
+                    onSystemMode={onSystemMode}
+                    darkText={[isSpanish && "Oscuro" , isEnglish && "Dark"]}
+                    lightText={[isSpanish && "Claro" , isEnglish && "Light"]}
+                    systemText={[isSpanish && "Sistema" , isEnglish && "System"]}
+                  />
                 )}
               </a>
             </ul>
