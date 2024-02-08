@@ -169,7 +169,7 @@ function App() {
     dark:from-gray-600 dark:via-black dark:to-gray-600 
     bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-900 via-gray-50 to-gray-900"
     onClick={onCloseModals}>     
-      <div className={`z-50 fixed md:right-0 md:left-0 mx-auto`}>
+      <div className={`z-50 fixed md:right-0 md:left-0 mx-auto mt-1`}>
         <div className='section flex items-center justify-center mx-auto w-screen mt-1 md:mt-0'>
             <ul className={`backdrop-blur-md bg-black/30 rounded-full flex flex-row gap-x-3 md:gap-x-4 text-[10px] md:text-sm items-center 
                 justify-center px-2 text-white dark:text-white/85`}>
@@ -307,7 +307,7 @@ function App() {
           <p>Sitio web E-commerce desarrollado con React, TailwindCSS y Firebase, donde puedes comprar accesorios de joyeria (aún en proceso)</p>
           , isEnglish &&
           <p>E-commerce website developed with React, TailwindCSS and Firebase, where you can buy jewelry accessories (still in process)</p>]}
-          ViewButtons={
+          viewButtons={
             <div className='grid grid-cols-3 gap-x-4'>
               <div className='col-span-1'>
                 <ViewButton 
@@ -327,7 +327,7 @@ function App() {
           }>
             <TechButtons
               buttonText={"React.Js"}>
-              <img src={react} alt="NeatBeans Icon" className='size-5 animate-spin-slow' />
+              <img src={react} alt="NeatBeans Icon" className='size-5 animate-spin-slow'/>
             </TechButtons> 
             <TechButtons
               buttonText={"Tailwind"}>
@@ -341,7 +341,7 @@ function App() {
           projectName="Asteroid Game"
           projectDescription={[isSpanish && "Juego de Asteroides de proyecto para la universidad, en la materia de programación orientada a objetos en Java"
             , isEnglish && "Asteroid Game project for the university, in the object-oriented programming subject in Java"]}
-          ViewButtons={
+            viewButtons={
             <div className='grid grid-cols-3 gap-x-4'>
               <div className='col-span-1'>
                 <ViewButton 

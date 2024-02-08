@@ -3,8 +3,8 @@ import { MdComputer, MdDarkMode, MdOutlineLightMode } from "react-icons/md"
 const DarkModeModal = ({closeDarkModal, onDarkMode, onLightMode, onSystemMode, darkText, lightText, systemText}) => {
     return(
         <div className="fadeModal absolute right-10 md:right-16 mt-2 rounded-md border border-gray-600 hover:border-white/60
-                  transition bg-black/40 dark:black/60 dark:border-white/50 shadow-[0_3px_10px_rgb(0,0,0,0.2)] 
-                  backdrop-blur-xl text-white/70 text-[12px] md:text-sm"
+                  transition dark:border-white/50 shadow-[0_3px_10px_rgb(0,0,0,0.2)] 
+                  bg-black/60 backdrop-blur-xl text-white/70 text-[12px] md:text-sm"
                   onClick={closeDarkModal}> 
             <ul className="flex flex-col items-start justify-start"> 
                 <li className="p-1.5 md:p-3 rounded-t-lg cursor-pointer hover:bg-black/60 hover:text-white
