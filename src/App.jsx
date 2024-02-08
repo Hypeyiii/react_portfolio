@@ -56,13 +56,9 @@ function App() {
           var bottom = top + section.offsetHeight;
           if (window.scrollY + 128 >= top && window.scrollY < bottom) {
             navItems.forEach(function(item) {
-              item.classList.remove('darkMode');
               item.classList.remove('lightMode');
             });
-            if (isDarkMode === true) {
-              navItems[index].classList.add('darkMode');
-            }
-            if (isLightMode || isSystemMode === true) {
+            if (isDarkMode || isSystemMode || isLightMode) {
               navItems[index].classList.add('lightMode');
             }
           }
@@ -157,12 +153,14 @@ function App() {
   }
 
   if (isSystemMode) {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.querySelector("body").classList.add('dark')  
+    const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDarkMode) {
+      document.querySelector("body").classList.add('dark');
     } else {
-      document.querySelector("body").classList.remove('dark')  
+      document.querySelector("body").classList.remove('dark');
     }
   }
+  
 
   
   return (
@@ -176,19 +174,19 @@ function App() {
             <ul className={`backdrop-blur-md bg-black/30 rounded-full flex flex-row gap-x-3 md:gap-x-4 text-[10px] md:text-sm items-center 
                 justify-center px-2 text-white dark:text-white/85`}>
               <a href="#"><li className={`item px-1 py-2 md:p-3 rounded-full transition-all duration-300 
-                          md:hover:text-[#5cf0ff] dark:md:hover:text-[#0a1ca9]`}>
+                          md:hover:text-[#5cf0ff]`}>
                 {[isSpanish && "Inicio" , isEnglish && "Home"]}
                 </li></a>
               <a href="#education"><li className={`item px-1 py-2 md:p-3 rounded-full transition-all duration-300 
-                          md:hover:text-[#5cf0ff] dark:md:hover:text-[#0a1ca9]`}>
+                          md:hover:text-[#5cf0ff]`}>
                   {[isSpanish && "Educación" , isEnglish && "Education"]}
                 </li></a>
               <a href="#technologies"><li className={`item px-1 py-2 md:p-3 rounded-full transition-all duration-300 
-                          md:hover:text-[#5cf0ff] dark:md:hover:text-[#0a1ca9]`}>
+                          md:hover:text-[#5cf0ff]`}>
                     {[isSpanish && "Tecnologías" , isEnglish && "Technologies"]}
                   </li></a>
               <a href="#projects"><li className={`item px-1 py-2 md:p-3 rounded-full transition-all duration-300 
-                          md:hover:text-[#5cf0ff] dark:md:hover:text-[#0a1ca9]`}>
+                          md:hover:text-[#5cf0ff]`}>
                   {[isSpanish && "Proyectos" , isEnglish && "Projects"]}
                 </li></a>
               <a>
