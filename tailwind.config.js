@@ -18,13 +18,9 @@ export default {
         "background-shine": {
           "from": {
             "backgroundPosition": "0 0",
-            "width": "10px",
-            "opacity": "0"
           },
           "to": {
             "backgroundPosition": "-200% 0",
-            "width": "100px",
-            "opacity": "1"
           }
         }
       },
