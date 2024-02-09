@@ -144,14 +144,16 @@ function App() {
     
   }
 
-  const [isSystemMode, setIsSystemMode] = useState(true)
+  const [isSystemMode, setIsSystemMode] = useState(true);
+
   const onSystemMode = () => {
-    document.querySelector("#fade").classList.add('fade')
-    setIsSystemMode(true)
-    setIsDarkMode(false)
-    setIsLightMode(false)
+    document.querySelector("#fade").classList.add('fade');
+    setIsSystemMode(true);
+    setIsDarkMode(false);
+    setIsLightMode(false);
   }
 
+useEffect(() => {
   if (isSystemMode) {
     const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (prefersDarkMode) {
@@ -160,9 +162,7 @@ function App() {
       document.querySelector("body").classList.remove('dark');
     }
   }
-  
-
-  
+}, [isSystemMode]);
   return (
     <>
     <div className="absolute w-full h-auto -z-10
@@ -237,7 +237,7 @@ function App() {
             onClick={openAboutMeModal}
             closeButtonText={[isSpanish && "Cerrar", isEnglish && "Close"]}
             >
-              <img src={avatar} alt="Imagen" className={`rounded-full size-48 md:size-80`}/>
+              <img src={avatar} alt="Imagen" className={`z-50 rounded-full size-48 md:size-80`}/>
           </ImageModal>
       )}
         nameText={[isSpanish && "Hola, soy Isaac", isEnglish && "Hello, I'm Isaac"]}
