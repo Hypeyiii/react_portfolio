@@ -11,6 +11,9 @@
 
 <h4>I made three differents modes, dark, ligh and System, te most interesting button actually is the buttont System, because 
 it detects wich color is the color preferens of the use</h4>
+
+![alt text](src/assets/ReadMeImages/image.png)
+
 </br>
 
 <h4>As well i do for a button to choice the language you prefer, is only in Spanish and English wich are my two main languages</h4>
@@ -38,7 +41,7 @@ it detects wich color is the color preferens of the use</h4>
 
 <h4>Another funfact is that i include an About Me modal, that describes me a little more specific and</h4>
 
-![alt text](image.png)
+![alt text](src/assets/ReadMeImages/image-7.png)
 
 ## Table of Contents
 - [License](#license)

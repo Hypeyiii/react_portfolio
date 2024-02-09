@@ -2,9 +2,10 @@ import ButtonCompany from './Components/Button';
 import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 import { BiLogoGmail } from 'react-icons/bi';
 import { SiMicrosoftteams } from 'react-icons/si';
+import avatar from './assets/avatar.jpg';
 
 
-function Introduction ({ nameText, hireText, introductionText, companyButtonClass, onOpen, modalOpen, avatar}) {
+function Introduction ({ nameText, hireText, introductionText, companyButtonClass, onOpen, modalOpen}) {
 
   return (
     <div id='inicio' className='mt-32 flex w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] mx-auto flex-col px-2'>

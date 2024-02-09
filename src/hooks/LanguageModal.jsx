@@ -6,7 +6,7 @@ const LanguageModal = ({closeLanguageModal, onSpanish, onEnglish}) => {
         <div className="fadeModal absolute right-1 md:right-0 mt-2 rounded-md border border-gray-600 hover:border-white/60
         transition bg-black/60 dark:border-white/60 shadow-[0_3px_10px_rgb(0,0,0,0.2)] 
         backdrop-blur-xl text-white/70 text-[12px] md:text-sm"
-        onClick={closeLanguageModal}> 
+        onClick={closeLanguageModal} onMouseLeave={closeLanguageModal}> 
           <ul className="flex flex-col"> 
             <li className="px-2 py-2.5 md:p-3 rounded-t-lg hover:bg-black hover:text-white
               transition flex flex-row gap-x-1 items-center justify-start text-xs md:text-sm cursor-pointer" onClick={onSpanish}>

@@ -5,7 +5,7 @@ const DarkModeModal = ({closeDarkModal, onDarkMode, onLightMode, onSystemMode, d
         <div className="fadeModal absolute right-10 md:right-16 mt-2 rounded-md border border-gray-600 hover:border-white/60
                   transition dark:border-white/50 shadow-[0_3px_10px_rgb(0,0,0,0.2)] 
                   bg-black/60 backdrop-blur-xl text-white/70 text-[12px] md:text-sm"
-                  onClick={closeDarkModal}> 
+                  onClick={closeDarkModal} onMouseLeave={closeDarkModal}> 
             <ul className="flex flex-col items-start justify-start"> 
                 <li className="p-1.5 md:p-3 rounded-t-lg cursor-pointer hover:bg-black/60 hover:text-white
                     transition flex flex-row gap-x-1 items-center justify-start w-full text-xs md:text-sm" onClick={onDarkMode}> 

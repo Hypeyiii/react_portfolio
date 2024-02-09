@@ -1,12 +1,13 @@
 import { TiDelete } from "react-icons/ti";
+import avatar from "../assets/avatar.jpg";
 
-const ImageModal = ({ onClose, children, animationModal, buttonText, onClick, closeButtonText}) => {
+const ImageModal = ({ onClose, animationModal, buttonText, onClick, closeButtonText}) => {
     return (
       <div className="fixed inset-0 z-40 flex items-center justify-center bg-none mx-auto">
         <div className="fixed inset-0 backdrop-blur-sm bg-none" onClick={onClose}></div>
         <div className={` ${animationModal} gap-y-4 items-center justify-center flex flex-col w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px]`}>
           <div className="w-full flex items-center justify-center">
-          {children}
+          <img src={avatar} alt="Imagen" className={`z-50 rounded-full size-48 md:size-80`}/>
           </div>
           <div className="flex flex-row gap-x-4">
             <a

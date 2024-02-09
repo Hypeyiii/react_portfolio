@@ -10,15 +10,21 @@ export default {
     extend: {
       animation: {
         'spin-slow': 'spin 20s linear infinite',
-        "background-shine": "background-shine 2s linear infinite"
+        "background-shine": "background-shine 2s linear infinite",
+        "background-shine-slow": "background-shine 4s linear infinite",
+        "border-width": "border-width 3s infinite alternate",
       },
       keyframes: {
         "background-shine": {
           "from": {
-            "backgroundPosition": "0 0"
+            "backgroundPosition": "0 0",
+            "width": "10px",
+            "opacity": "0"
           },
           "to": {
-            "backgroundPosition": "-200% 0"
+            "backgroundPosition": "-200% 0",
+            "width": "100px",
+            "opacity": "1"
           }
         }
       },

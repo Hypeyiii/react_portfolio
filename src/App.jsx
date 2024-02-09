@@ -1,6 +1,5 @@
 'use client';
 import './App.css'
-import avatar from './assets/avatar.jpg'
 import Projects from './Components/Project.jsx';
 import TechButtons from './Components/TechButton.jsx';
 import ViewButton from './Components/ViewButton.jsx';
@@ -14,13 +13,12 @@ import LanguageModal from './hooks/LanguageModal.jsx';
 import DarkModeModal from './hooks/DarkModeModal.jsx';
 import firstProject from './assets/Projects-1.png'
 import secondProject from './assets/Project-2.png'
-import coupleavatar from './assets/coupleavatar.jpg'
 import Java from './assets/java.svg'
 import react from './assets/react.svg'
 import NeatBeans from './assets/netbeans.svg'
+import tailwind from './assets/tailwindcss(1).svg'
 import { FaGithub, FaProjectDiagram } from 'react-icons/fa';
 import { MdComputer, MdDarkMode, MdOutlineLightMode} from "react-icons/md";
-import { SiTailwindcss} from "react-icons/si";
 import { IoEye } from "react-icons/io5";
 import { useState, useEffect } from 'react'
 
@@ -168,8 +166,8 @@ useEffect(() => {
     <>
     <div className="absolute w-full h-auto -z-10
     dark:from-gray-600 dark:via-black dark:to-gray-600 
-    bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-900 via-gray-50 to-gray-900"
-    onClick={onCloseModals}>     
+      bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-gray-900 via-gray-50 to-gray-900"
+      onClick={onCloseModals}>     
       <div className={`z-50 fixed md:right-0 md:left-0 mx-auto mt-1`}>
         <div className='section flex items-center justify-center mx-auto w-screen mt-1 md:mt-0'>
             <ul className={`backdrop-blur-md bg-black/30 rounded-full flex flex-row gap-x-3 md:gap-x-4 text-[10px] md:text-sm items-center 
@@ -191,7 +189,8 @@ useEffect(() => {
                   {[isSpanish && "Proyectos" , isEnglish && "Projects"]}
                 </li></a>
               <a>
-                <li id='fade' className={`px-1 py-2 md:p-3 rounded-full transition md:hover:scale-125 cursor-pointer`} onClick={openDarkModal}>
+                <li id='fade' className={`px-1 py-2 md:p-3 rounded-full transition md:hover:scale-125 cursor-pointer`} onMouseEnter={openDarkModal} 
+                onClick={openDarkModal}>
                   <MdComputer className={`size-4 md:size-6 ${isDarkMode && "hidden"} ${isSystemMode && "hidden"} ${isLightMode && "hidden"}`}/>
                   {isDarkMode && <MdDarkMode className={`size-4 md:size-6`}/>}
                   {isLightMode && <MdOutlineLightMode className={`size-4 md:size-6`}/>}
@@ -200,7 +199,7 @@ useEffect(() => {
               </a>
               <a>
                 <li id='fadeLanguage' className={`cursor-pointer px-1 py-2 md:p-3 rounded-full transition md:hover:scale-125 text-sm md:text-lg font-bold`}
-                    onClick={openLanguageModal}>
+                    onClick={openLanguageModal} onMouseEnter={openLanguageModal}>
                   {isSpanish && <p>Es</p> }
                   {isEnglish && <p>En</p> }
                 </li>
@@ -227,20 +226,16 @@ useEffect(() => {
           </div>
       </div>
       <Introduction
-        avatar={avatar}
         onOpen={openModal}
-        modalOpen={modalOpen && (
+        modalOpen={modalOpen && 
           <ImageModal
             animationModal={`modal ${modalOpen ? "modalIn" : "modalOut"}`}
             onClose={closeModal}
-            img={avatar}
             buttonText={[isSpanish && "Más sobre mí", isEnglish && "More about me"]}
             onClick={openAboutMeModal}
             closeButtonText={[isSpanish && "Cerrar", isEnglish && "Close"]}
-            >
-              <img src={avatar} alt="Imagen" className={`z-50 rounded-full size-48 md:size-80`}/>
-          </ImageModal>
-      )}
+            />
+      }
         nameText={[isSpanish && "Hola, soy Isaac", isEnglish && "Hello, I'm Isaac"]}
         hireText={[isSpanish && "Contrátame aquí", isEnglish && "Hire me here"]}  
         introductionText= {[isSpanish && <h1>
@@ -282,7 +277,10 @@ useEffect(() => {
           , isEnglish &&
           <p>The skills, tools and technologies I use to bring your products to life</p>
         ]}
-          cardClass={"dark:text-white/60 dark:hover:text-white dark:border-white/30 dark:hover:border-white/30 dark:hover:bg-black text-black/70 hover:text-black border-black/50 hover:border-black/70 hover:bg-white"}
+          cardClass="dark:text-white/60 dark:hover:text-white dark:hover:border-white/65 dark:border dark:border-white/30
+                    text-black/70 hover:text-black border-black/50 hover:border-black 
+                    animate-background-shine-slow dark:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] 
+                    bg-[linear-gradient(110deg,#dadada,45%,#FFFFFF,55%,#dadada)] bg-[length:200%_100%]"
           currentlyTitle={[isSpanish && "Actualmente trabajando en:" , isEnglish && "Currently working on:"]}
           currentlyText={[isSpanish && 
           <p>Desarrollo de un sitio web E-commerce con React, TailwindCSS y Firebase, donde puedes comprar accesorios de joyería (aún en proceso)</p>
@@ -328,11 +326,11 @@ useEffect(() => {
           }>
             <TechButtons
               buttonText={"React.Js"}>
-              <img src={react} alt="NeatBeans Icon" className='size-5 animate-spin-slow'/>
+              <img src={react} alt="Tailwind Icon" className='size-5 animate-spin-slow'/>
             </TechButtons> 
             <TechButtons
               buttonText={"Tailwind"}>
-              <SiTailwindcss className='size-5 text-[#2298BD]'/>
+              <img src={tailwind} alt="NeatBeans Icon" className='size-5'/>
             </TechButtons>
         </Projects> 
 
@@ -374,7 +372,6 @@ useEffect(() => {
     {isAboutMeModal && (
       <AboutMeModal
           onClose={closeAboutMeModal}
-          img={avatar}
           aboutMeClass={`fade-in`}
           presentationText={[isSpanish && "Hola, mi nombre es Isaac Frias", isEnglish && "Hello, my name is Isaac Frias"]}
           aboutMeText=
@@ -389,11 +386,7 @@ useEffect(() => {
               I am currently 19 years old, I was born in Monterrey, Nuevo León on August 31, 2004, and I am a student of engineering passionate about
               web development and programming. Nowadays I am learning and mastering technologies and tools for the development of web applications.
               </p>]}
-            bgClass={"dark:opacity-90 dark:bg-gradient-to-tr dark:from-black dark:via-white dark:to-black opacity-95 bg-gradient-to-br from-slate-600 via-black to-slate-600"}
-            >
-             <img src={coupleavatar} alt ="Imagen" className={`rounded-full size-40 md:size-48`}/>
-      </AboutMeModal>
-                      )}
+            />)}
     </div>
     </>
   )
