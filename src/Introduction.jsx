@@ -20,9 +20,9 @@ function Introduction ({ nameText, hireText, introductionText, companyButtonClas
             <a href="https://www.linkedin.com/in/isaac-frias-56002428a/" target="_blank" rel="noopener noreferrer"
              className={`p-2 border rounded-lg shadow-lg shadow-white/5 bg-black/80 border-white/20 text-xs 
                         transition-all duration-300 active:scale-105 active:duration-75  text-white/60
-                        hover:text-white hover:bg-black`}>
+                        hover:text-white hover:bg-black animate-background-shine bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%]`}>
                 {hireText}
-            </a >
+            </a>
         </div>
         <div className={`text-black/90 dark:text-white/90 mt-5 font-light text-sm md:text-lg xl:text-xl text-wrap`} data-translate='description'>
           <p>

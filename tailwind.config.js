@@ -10,7 +10,18 @@ export default {
     extend: {
       animation: {
         'spin-slow': 'spin 20s linear infinite',
-      }
+        "background-shine": "background-shine 2s linear infinite"
+      },
+      keyframes: {
+        "background-shine": {
+          "from": {
+            "backgroundPosition": "0 0"
+          },
+          "to": {
+            "backgroundPosition": "-200% 0"
+          }
+        }
+      },
     },
   },
   plugins: [

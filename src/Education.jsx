@@ -16,7 +16,7 @@ function Education ({educationTitle, firstTimeText, firstTitleText, firstDescrip
         <Timeline.Item>
           <Timeline.Point/>
           <Timeline.Content className='md:gap-y-2 flex flex-col items-start justify-center'>
-            <Timeline.Time className={`text-xs md:text-xl text-black/80 dark:text-white/80`}>
+            <Timeline.Time className={`text-xs md:text-xl text-black/80 dark:text-white/80`}z>
               {firstTimeText}
             </Timeline.Time>
             <Timeline.Title className={`text-base md:text-2xl text-dark dark:text-white`}>

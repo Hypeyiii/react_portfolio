@@ -55,7 +55,7 @@ function App() {
           var top = section.offsetTop;
           var bottom = top + section.offsetHeight;
           if (window.scrollY + 128 >= top && window.scrollY < bottom) {
-            navItems.forEach(function(item) {
+              navItems.forEach(function(item) {
               item.classList.remove('lightMode');
             });
             if (isDarkMode || isSystemMode || isLightMode) {
@@ -163,6 +163,7 @@ useEffect(() => {
     }
   }
 }, [isSystemMode]);
+
   return (
     <>
     <div className="absolute w-full h-auto -z-10
@@ -381,12 +382,12 @@ useEffect(() => {
               <p>
               Actualmente tengo 19 años, nací en Monterrey, Nuevo León el 31 de Agosto del 2004, y soy estudiante de ingeniería apasionado 
               por el desarrollo web y la programación. 
-              Hoy en día estoy aprendiendo nuevas y dominando tecnologías y herramientas para el desarrollo de aplicaciones web.
+              Hoy en día estoy aprendiendo y dominando tecnologías y herramientas para el desarrollo de aplicaciones web.
             </p>
             , isEnglish &&
             <p>
               I am currently 19 years old, I was born in Monterrey, Nuevo León on August 31, 2004, and I am a student of engineering passionate about
-              web development and programming. Nowadays I am learning new and mastering technologies and tools for the development of web applications.
+              web development and programming. Nowadays I am learning and mastering technologies and tools for the development of web applications.
               </p>]}
             bgClass={"dark:opacity-90 dark:bg-gradient-to-tr dark:from-black dark:via-white dark:to-black opacity-95 bg-gradient-to-br from-slate-600 via-black to-slate-600"}
             >
