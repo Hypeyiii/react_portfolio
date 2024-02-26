@@ -183,7 +183,6 @@ function App() {
           isEnglish={isEnglish}
           meModal={openAboutMeModal}
         />
-
         <AboutMeModal
           isSpanish={isSpanish}
           isEnglish={isEnglish}
