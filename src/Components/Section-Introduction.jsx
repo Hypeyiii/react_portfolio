@@ -4,47 +4,39 @@ import { BiLogoGmail } from "react-icons/bi";
 import { SiMicrosoftteams } from "react-icons/si";
 import avatar from "../assets/avatar.jpg";
 import ImageModal from "../Modals/ImageModal";
+import useLanguage from "../Hooks/useLanguages";
+import useModal from "../Hooks/useModal";
 
-function Introduction({
-  isSpanish,
-  isEnglish,
-  onOpen,
-  modalOpen,
-  closeModal,
-  openAboutMeModal,
-}) {
+function Introduction() {
+  const { isSpanish, isEnglish } = useLanguage();
+  const { openModal, modalOpen, closeModal, openAboutMeModal } = useModal();
 
-  const companyButtonClass = 'text-white/50 hover:text-white bg-black/80 dark:hover:text-white dark:hover:border-white/50 dark:bg-black/80'
+  const companyButtonClass =
+    "text-white/50 hover:text-white bg-black/80 dark:hover:text-white dark:hover:border-white/50 dark:bg-black/80";
   return (
     <div
       id="inicio"
       className="mt-32 flex w-[350px] sm:w-[500px] md:w-[700px] lg:w-[850px] mx-auto flex-col px-2"
     >
       <div
+        onClick={openModal}
         className="group/item relative flex cursor-pointer size-[100px] md:size-[125px] rounded-full shadow-2xl shadow-white/10
              motion-reduce:animate-pulse"
       >
-        <img
-          src={avatar}
-          alt="Avatar Logo"
-          className="rounded-full"
-          onClick={onOpen}
-        />
+        <img src={avatar} alt="Avatar Logo" className="rounded-full" />
       </div>
-      {
-        modalOpen && (
-          <ImageModal
-                animationModal={`modal ${modalOpen ? "modalIn" : "modalOut"}`}
-                onClose={closeModal}
-                buttonText={[
-                  isSpanish && "Más sobre mí",
-                  isEnglish && "More about me",
-                ]}
-                onClick={openAboutMeModal}
-                closeButtonText={[isSpanish && "Cerrar", isEnglish && "Close"]}
-              />
-        )
-      }
+      {modalOpen && (
+        <ImageModal
+          animationModal={`modal ${modalOpen ? "modalIn" : "modalOut"}`}
+          onClose={closeModal}
+          buttonText={[
+            isSpanish && "Más sobre mí",
+            isEnglish && "More about me",
+          ]}
+          onClick={openAboutMeModal}
+          closeButtonText={[isSpanish && "Cerrar", isEnglish && "Close"]}
+        />
+      )}
       <div className="mt-5 flex flex-row gap-x-5 md:gap-x-8 items-center justify-start">
         <h1
           className={`font-bold text-2xl md:text-3xl lg:text-5xl text-black dark:text-white`}

@@ -2,14 +2,13 @@ import { FaNode, FaReact } from "react-icons/fa";
 import { SiExpress, SiPostgresql, SiSocketdotio } from "react-icons/si";
 import { TiDelete } from "react-icons/ti";
 import coupleavatar from "../assets/coupleavatar.jpg";
+import useLanguage from "../Hooks/useLanguages";
+import useModal from "../Hooks/useModal";
 import "../App.css";
 
-const AboutMeModal = ({
-  onClose,
-  isAboutMeModal,
-  isSpanish,
-  isEnglish,
-}) => {
+const AboutMeModal = () => {
+  const { isSpanish, isEnglish } = useLanguage();
+  const { closeAboutMeModal, isAboutMeModal } = useModal();
   return (
     <>
       {isAboutMeModal && (
@@ -20,7 +19,7 @@ const AboutMeModal = ({
           <div
             className="fixed inset-0 dark:opacity-90 dark:bg-gradient-to-tr dark:from-black dark:via-white dark:to-black opacity-95 
               bg-gradient-to-br from-slate-600 via-black to-slate-600"
-            onClick={onClose}
+            onClick={closeAboutMeModal}
           ></div>
           <div
             className={`fade-in z-50 flex justify-center items-center gap-4`}
@@ -29,7 +28,10 @@ const AboutMeModal = ({
               className={`text-xs sm:text-lg text-pretty gap-y-2 grid grid-cols-12`}
             >
               <div className="col-span-12 items-end justify-end flex">
-                <button className="hover:bg-white/30" onClick={onClose}>
+                <button
+                  className="hover:bg-white/30"
+                  onClick={closeAboutMeModal}
+                >
                   <TiDelete className="size-8 md:size-12 text-white" />
                 </button>
               </div>

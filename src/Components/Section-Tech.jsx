@@ -1,5 +1,6 @@
 import { MdBiotech } from "react-icons/md";
 import Technologie from "./Technologie";
+import useLanguage from "../Hooks/useLanguages";
 import {
   FaBootstrap,
   FaCss3Alt,
@@ -11,11 +12,12 @@ import {
 } from "react-icons/fa";
 import { SiJavascript, SiMysql, SiTailwindcss } from "react-icons/si";
 
-function Tech({ isSpanish, isEnglish}) {
+function Tech() {
+  const {isSpanish, isEnglish} = useLanguage();
   const cardClass = `dark:text-white/60 dark:hover:text-white dark:hover:border-white/65 dark:border dark:border-white/30
                     text-black/70 hover:text-black border-black/50 hover:border-black 
                     animate-background-shine-slow dark:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] 
-                    bg-[linear-gradient(110deg,#dadada,45%,#FFFFFF,55%,#dadada)] bg-[length:200%_100%]`
+                    bg-[linear-gradient(110deg,#dadada,45%,#FFFFFF,55%,#dadada)] bg-[length:200%_100%]`;
   return (
     <div
       id="technologies"

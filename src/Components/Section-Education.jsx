@@ -1,11 +1,11 @@
 import { Timeline } from "flowbite-react";
 import { FaAngleRight } from "react-icons/fa";
 import { IoMdSchool } from "react-icons/io";
+import useLanguage from "../Hooks/useLanguages";
 
-function Education({
-  isSpanish,
-  isEnglish,
-}) {
+function Education() {
+  const { isSpanish, isEnglish } = useLanguage();
+
   return (
     <div
       id="education"

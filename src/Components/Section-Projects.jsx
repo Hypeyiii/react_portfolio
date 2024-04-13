@@ -12,8 +12,10 @@ import secondProject from "../assets/Project-2.png";
 import thirdProject from "../assets/Project-3.png";
 import { SiExpress } from "react-icons/si";
 import typescriptIcon from "../assets/typescript.svg";
+import useLanguage from "../Hooks/useLanguages";
 
-const Project = ({ isEnglish, isSpanish }) => {
+const Project = () => {
+  const { isSpanish, isEnglish } = useLanguage();
   return (
     <>
       <div
@@ -165,7 +167,8 @@ const Project = ({ isEnglish, isSpanish }) => {
             />
           </TechButtons>
           <TechButtons buttonText={"TypeScript"}>
-            <img src={typescriptIcon}
+            <img
+              src={typescriptIcon}
               alt="NeatBeans Icon"
               className="size-4 text-blue-600"
             />

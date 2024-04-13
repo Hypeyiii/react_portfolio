@@ -1,8 +1,9 @@
-const Footer = ({
-  meModal,
-  isSpanish,
-  isEnglish,
-}) => {
+import useLanguage from "../Hooks/useLanguages";
+import useModal from "../Hooks/useModal";
+
+const Footer = () => {
+  const { isSpanish, isEnglish } = useLanguage();
+  const {openAboutMeModal} = useModal();
   return (
     <div
       className={`flex flex-col-reverse md:flex-row items-center md:items-start justify-center md:justify-between mx-auto w-[350px] sm:w-[500px] 
@@ -17,7 +18,7 @@ const Footer = ({
       <div className="flex flex-row gap-x-6 md:gap-x-4 justify-center items-center">
         <a
           href="#AboutMeModal"
-          onClick={meModal}
+          onClick={openAboutMeModal}
           className={`text-black dark:text-white/70 transition-all duration-300 animate-pulse
                     hover:underline`}
         >

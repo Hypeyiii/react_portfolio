@@ -1,25 +1,28 @@
 import { MdComputer, MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 import LanguageModal from "../Modals/LanguageModal";
 import DarkModeModal from "../Modals/DarkModeModal";
+import useDarkModeLight from "../Hooks/useDarkLightMode";
+import useLanguage from "../Hooks/useLanguages";
+import useModal from "../Hooks/useModal";
 
-function Header({
-  isSpanish,
-  isEnglish,
-  isDarkMode,
-  isLightMode,
-  isSystemMode,
-  onDarkMode,
-  onLightMode,
-  onSystemMode,
-  openDarkModal,
-  closeDarkModal,
-  isDarkModal,
-  openLanguageModal,
-  closeLanguageModal,
-  languageModal,
-  onSpanish,
-  onEnglish,
-}) {
+function Header() {
+  const {
+    isDarkMode,
+    isLightMode,
+    isSystemMode,
+    onDarkMode,
+    onLightMode,
+    onSystemMode,
+  } = useDarkModeLight();
+  const { onSpanish, onEnglish, isSpanish, isEnglish } = useLanguage();
+  const {
+    isDarkModal,
+    languageModal,
+    openDarkModal,
+    openLanguageModal,
+    closeDarkModal,
+    closeLanguageModal,
+  } = useModal();
   return (
     <div className={`z-50 fixed md:right-0 md:left-0 mx-auto mt-1`}>
       <div className="section flex items-center justify-center mx-auto w-screen mt-1 md:mt-0">
