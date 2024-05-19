@@ -10,9 +10,13 @@ import Java from "../assets/java.svg";
 import NeatBeans from "../assets/netbeans.svg";
 import secondProject from "../assets/Project-2.png";
 import thirdProject from "../assets/Project-3.png";
+import fouthProject from "../assets/Project-4.png";
 import { SiExpress } from "react-icons/si";
 import typescriptIcon from "../assets/typescript.svg";
 import useLanguage from "../Hooks/useLanguages";
+import csharp from "../assets/c-sharp.svg";
+import dotnet from "../assets/dotnet.svg";
+import sqlserver from "../assets/sqlserver.svg";
 
 const Project = () => {
   const { isSpanish, isEnglish } = useLanguage();
@@ -175,6 +179,42 @@ const Project = () => {
           </TechButtons>
           <TechButtons buttonText={"Tailwind"}>
             <img src={tailwind} alt="NeatBeans Icon" className="size-5" />
+          </TechButtons>
+        </Projects>
+        <Projects
+          projectImg={fouthProject}
+          projectName="Sakura Store - E-commerce"
+          projectDescription={[
+            isSpanish &&
+              "E-commerce desarrollado para la acreditación de la materia de Programación Web.",
+            isEnglish &&
+              "E-commerce developed for the accreditation of the Web Programming subject.",
+          ]}
+          viewButtons={
+            <div className="grid grid-cols-3 gap-x-4">
+              <div className="col-span-1">
+                <ViewButton
+                  href={"https://github.com/Hypeyiii/Tienda-Online"}
+                  textViewButton={[isSpanish && "Código", isEnglish && "Code"]}
+                >
+                  <FaGithub className="size-5" />
+                </ViewButton>
+              </div>
+            </div>
+          }
+        >
+          <TechButtons buttonText={"C#"}>
+            <img src={csharp} alt="C# icon" className="size-5" />
+          </TechButtons>
+          <TechButtons buttonText={".NET CORE"}>
+            <img
+              src={dotnet}
+              alt="Net Core icon"
+              className="size-4 text-blue-600"
+            />
+          </TechButtons>
+          <TechButtons buttonText={"MS SQL"}>
+            <img src={sqlserver} alt="MS SQL Icon" className="size-5" />
           </TechButtons>
         </Projects>
       </div>
