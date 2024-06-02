@@ -6,8 +6,6 @@ import ViewButton from "./ViewButton.jsx";
 import TechButtons from "./TechButton.jsx";
 import react from "../assets/react.svg";
 import tailwind from "../assets/tailwindcss(1).svg";
-import Java from "../assets/java.svg";
-import NeatBeans from "../assets/netbeans.svg";
 import secondProject from "../assets/Project-2.png";
 import thirdProject from "../assets/Project-3.png";
 import fouthProject from "../assets/Project-4.png";
@@ -106,31 +104,39 @@ const Project = () => {
         </Projects>
         <Projects
           projectImg={secondProject}
-          projectName="Asteroid Game"
+          projectName="World Ranks"
           projectDescription={[
             isSpanish &&
-              "Juego de Asteroides de proyecto para la universidad, en la materia de programación orientada a objetos en Java",
+              "Sitio web donde puedes ver la información de los paises. Desarrolado para fines de aprendizaje",
             isEnglish &&
-              "Asteroid Game project for the university, in the object-oriented programming subject in Java",
+              "Website where you can see the information of the countries. Developed for learning purposes",
           ]}
           viewButtons={
             <div className="grid grid-cols-3 gap-x-4">
               <div className="col-span-1">
                 <ViewButton
-                  href={"https://github.com/Hypeyiii/asteroid-game"}
+                  href={"https://github.com/Hypeyiii/World-Ranks"}
                   textViewButton={[isSpanish && "Código", isEnglish && "Code"]}
                 >
                   <FaGithub className="size-5" />
                 </ViewButton>
               </div>
+              <div className="col-span-1 flex">
+                <ViewButton
+                  href={"https://world-ranks-one-mu.vercel.app/"}
+                  textViewButton={[isSpanish && "Ver", isEnglish && "View"]}
+                >
+                  <IoEye className="size-5" />
+                </ViewButton>
+              </div>
             </div>
           }
         >
-          <TechButtons buttonText={"Java"}>
-            <img src={Java} alt="Java Icon" className="size-5" />
+          <TechButtons buttonText={"React.Js"}>
+            <img src={react} alt="Java Icon" className="size-5 animate-spin-slow" />
           </TechButtons>
-          <TechButtons buttonText={"Netbeans"}>
-            <img src={NeatBeans} alt="NeatBeans Icon" className="size-5" />
+          <TechButtons buttonText={"Tailwind"}>
+            <img src={tailwind} alt="NeatBeans Icon" className="size-5" />
           </TechButtons>
         </Projects>
         <Projects

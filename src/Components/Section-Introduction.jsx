@@ -1,7 +1,6 @@
 import ButtonCompany from "./Button";
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { BiLogoGmail } from "react-icons/bi";
-import { SiMicrosoftteams } from "react-icons/si";
 import avatar from "../assets/avatar.jpg";
 import ImageModal from "../Modals/ImageModal";
 import useLanguage from "../Hooks/useLanguages";
@@ -88,13 +87,6 @@ function Introduction() {
             contactBy="GitHub"
           >
             <FaGithub className="size-[15px]" alt="Icon" />
-          </ButtonCompany>
-          <ButtonCompany
-            href={"isaac.friaslns@uanl.edu.mx"}
-            className={`${companyButtonClass}`}
-            contactBy="Teams"
-          >
-            <SiMicrosoftteams className="size-[15px]" alt="Icon" />
           </ButtonCompany>
           <ButtonCompany
             href={"mailto:isaacfrias868@gmail.com"}
