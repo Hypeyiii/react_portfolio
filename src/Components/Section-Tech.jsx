@@ -10,10 +10,11 @@ import {
   FaNode,
   FaReact,
 } from "react-icons/fa";
-import { SiJavascript, SiMysql, SiTailwindcss } from "react-icons/si";
+import { SiJavascript, SiMysql, SiPostgresql, SiTailwindcss, SiTypescript } from "react-icons/si";
+import { TbBrandCSharp, TbBrandNextjs } from "react-icons/tb";
 
 function Tech() {
-  const {isSpanish, isEnglish} = useLanguage();
+  const { isSpanish, isEnglish } = useLanguage();
   const cardClass = `dark:text-white/60 dark:hover:text-white dark:hover:border-white/65 dark:border dark:border-white/30
                     text-black/70 hover:text-black border-black/50 hover:border-black 
                     animate-background-shine-slow dark:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] 
@@ -80,6 +81,13 @@ function Tech() {
         <Technologie
           className={`p-2 rounded-xl bg-transparent 
             ${cardClass}`}
+          techName={"TypeScript"}
+        >
+          <SiTypescript className="size-6 md:size-12" />
+        </Technologie>
+        <Technologie
+          className={`p-2 rounded-xl bg-transparent 
+            ${cardClass}`}
           techName={"Tailwind"}
         >
           <SiTailwindcss className="size-6 md:size-12" />
@@ -99,6 +107,13 @@ function Tech() {
           <FaReact className="size-6 md:size-12 animate-spin-slow" />
         </Technologie>
         <Technologie
+          className={`p-2 rounded-xl bg-transparent
+            ${cardClass}`}
+          techName={"Next"}
+        >
+          <TbBrandNextjs className="size-6 md:size-12" />
+        </Technologie>
+        <Technologie
           className={`p-2 rounded-xl bg-transparent 
             ${cardClass}`}
           techName={"NodeJS"}
@@ -115,6 +130,13 @@ function Tech() {
         <Technologie
           className={`p-2 rounded-xl bg-transparent 
             ${cardClass}`}
+          techName={"PostrgreSQL"}
+        >
+          <SiPostgresql className="size-6 md:size-12" />
+        </Technologie>
+        <Technologie
+          className={`p-2 rounded-xl bg-transparent 
+            ${cardClass}`}
           techName={"Git"}
         >
           <FaGitAlt className="size-6 md:size-12" />
@@ -125,6 +147,13 @@ function Tech() {
           techName={"Java"}
         >
           <FaJava className="size-6 md:size-12" />
+        </Technologie>
+        <Technologie
+          className={`p-2 rounded-xl bg-transparent 
+            ${cardClass}`}
+          techName={"C#"}
+        >
+          <TbBrandCSharp className="size-6 md:size-12" />
         </Technologie>
       </div>
       <div className="flex flex-col gap-y-2">

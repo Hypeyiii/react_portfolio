@@ -1,12 +1,12 @@
-import { FaNodeJs, FaProjectDiagram, FaStripe } from "react-icons/fa";
+import { FaNodeJs, FaProjectDiagram } from "react-icons/fa";
 import { IoEye } from "react-icons/io5";
 import { FaGithub } from "react-icons/fa";
-import firstProject from "../assets/Projects-1.png";
+import firstProject from "../assets/Project-1.png";
 import ViewButton from "./ViewButton.jsx";
 import TechButtons from "./TechButton.jsx";
 import react from "../assets/react.svg";
 import tailwind from "../assets/tailwindcss(1).svg";
-import secondProject from "../assets/Project-2.png";
+import hpProject from "../assets/hp-project.jpg";
 import thirdProject from "../assets/Project-3.png";
 import fouthProject from "../assets/Project-4.png";
 import typescriptIcon from "../assets/typescript.svg";
@@ -14,9 +14,10 @@ import useLanguage from "../Hooks/useLanguages";
 import csharp from "../assets/c-sharp.svg";
 import dotnet from "../assets/dotnet.svg";
 import sqlserver from "../assets/sqlserver.svg";
-import jwt from "../assets/jwt.svg";
 import { MdApi } from "react-icons/md";
-import { DiMysql } from "react-icons/di";
+import { DiMysql, DiPostgresql } from "react-icons/di";
+import next from "../assets/nextjs.svg";
+import java from "../assets/java.svg";
 
 const Project = () => {
   const { isSpanish, isEnglish } = useLanguage();
@@ -47,6 +48,66 @@ const Project = () => {
               "Some of the projects I have developed and contributed",
           ]}
         </p>
+        <Projects
+          projectImg={firstProject}
+          projectName={[
+            isSpanish && "Mariana Accesorios - Sitio Web E-commerce",
+            isEnglish && "Mariana Accesorios - E-commerce Website",
+          ]}
+          projectDescription={[
+            isSpanish && (
+              <p>
+                Sitio web E-commerce para la venta, y visualización de productos
+                de joyería para el negocio Mariana Accesorios, desarrollado con
+                Next.js, Tailwind y Postgres
+              </p>
+            ),
+            isEnglish && (
+              <p>
+                E-commerce website for the sale, and visualization of jewelry
+                products for the Mariana Accesorios business, developed with
+                Next.js, Tailwind and Postgres
+              </p>
+            ),
+          ]}
+          viewButtons={
+            <div className="grid grid-cols-3 gap-x-4">
+              <div className="col-span-1">
+                <ViewButton
+                  href={"https://github.com/Hypeyiii/next-mariana-accesorios"}
+                  textViewButton={[isSpanish && "Código", isEnglish && "Code"]}
+                >
+                  <FaGithub className="size-5" />
+                </ViewButton>
+              </div>
+              <div className="col-span-1 flex">
+                <ViewButton
+                  href={"https://mariana-accesorios.vercel.app/"}
+                  textViewButton={[isSpanish && "Ver", isEnglish && "View"]}
+                >
+                  <IoEye className="size-5" />
+                </ViewButton>
+              </div>
+            </div>
+          }
+        >
+          <TechButtons buttonText={"Next.Js"}>
+            <img src={next} alt="Next Icon" className="size-5" />
+          </TechButtons>
+          <TechButtons buttonText={"Tailwind"}>
+            <img src={tailwind} alt="NeatBeans Icon" className="size-5" />
+          </TechButtons>
+          <TechButtons buttonText={"TypeScript"}>
+            <img
+              src={typescriptIcon}
+              alt="TypeScript Icon"
+              className="size-4 text-blue-600"
+            />
+          </TechButtons>
+          <TechButtons buttonText={"Postgres"}>
+            <DiPostgresql className="size-5 text-[#394a58]" />
+          </TechButtons>
+        </Projects>
         <Projects
           projectImg={thirdProject}
           projectName="Lensmania - Sitio web E-commerce"
@@ -105,112 +166,37 @@ const Project = () => {
           <TechButtons buttonText={"Node"}>
             <FaNodeJs className="size-5 text-[#8CC84B] " />
           </TechButtons>
-          <TechButtons buttonText={"JWT"}>
-            <img src={jwt} alt="JWT Icon" className="size-5" />
-          </TechButtons>
-          <TechButtons buttonText={"Stripe"}>
-            <FaStripe className="size-5 text-[#6772E5] " />
-          </TechButtons>
           <TechButtons buttonText={"MySQL"}>
             <DiMysql className="size-5 text-[#5d87a1] " />
           </TechButtons>
         </Projects>
         <Projects
-          projectImg={firstProject}
-          projectName={[
-            isSpanish && "Mariana Accesorios - Sitio Web E-commerce",
-            isEnglish && "Mariana Accesorios - E-commerce Website",
-          ]}
-          projectDescription={[
-            isSpanish && (
-              <p>
-                Sitio web E-commerce desarrollado con React, TailwindCSS y
-                Firebase, donde puedes comprar accesorios de joyeria (aún en
-                proceso)
-              </p>
-            ),
-            isEnglish && (
-              <p>
-                E-commerce website developed with React, TailwindCSS and
-                Firebase, where you can buy jewelry accessories (still in
-                process)
-              </p>
-            ),
-          ]}
-          viewButtons={
-            <div className="grid grid-cols-3 gap-x-4">
-              <div className="col-span-1">
-                <ViewButton
-                  href={"https://github.com/Hypeyiii/Mariana-Accesorios"}
-                  textViewButton={[isSpanish && "Código", isEnglish && "Code"]}
-                >
-                  <FaGithub className="size-5" />
-                </ViewButton>
-              </div>
-              <div className="col-span-1 flex">
-                <ViewButton
-                  href={"https://mariana-accesorios.vercel.app/"}
-                  textViewButton={[isSpanish && "Ver", isEnglish && "View"]}
-                >
-                  <IoEye className="size-5" />
-                </ViewButton>
-              </div>
-            </div>
-          }
-        >
-          <TechButtons buttonText={"React.Js"}>
-            <img
-              src={react}
-              alt="Tailwind Icon"
-              className="size-5 animate-spin-slow"
-            />
-          </TechButtons>
-          <TechButtons buttonText={"Tailwind"}>
-            <img src={tailwind} alt="NeatBeans Icon" className="size-5" />
-          </TechButtons>
-          <TechButtons buttonText={"Node"}>
-            <FaNodeJs className="size-5 text-[#8CC84B] " />
-          </TechButtons>
-        </Projects>
-        <Projects
-          projectImg={secondProject}
-          projectName="World Ranks"
+          projectImg={hpProject}
+          projectName="HP - Incidents Sofware"
           projectDescription={[
             isSpanish &&
-              "Sitio web donde puedes ver la información de los paises. Desarrolado para fines de aprendizaje",
+              "Software de gestión de incidentes desarrollado para la empresa HP, proyecto de Universidad.",
             isEnglish &&
-              "Website where you can see the information of the countries. Developed for learning purposes",
+              "Incident management software developed for HP, University project.",
           ]}
           viewButtons={
             <div className="grid grid-cols-3 gap-x-4">
               <div className="col-span-1">
                 <ViewButton
-                  href={"https://github.com/Hypeyiii/World-Ranks"}
+                  href={"https://github.com/Hypeyiii/incidents-software"}
                   textViewButton={[isSpanish && "Código", isEnglish && "Code"]}
                 >
                   <FaGithub className="size-5" />
                 </ViewButton>
               </div>
-              <div className="col-span-1 flex">
-                <ViewButton
-                  href={"https://world-ranks-one-mu.vercel.app/"}
-                  textViewButton={[isSpanish && "Ver", isEnglish && "View"]}
-                >
-                  <IoEye className="size-5" />
-                </ViewButton>
-              </div>
             </div>
           }
         >
-          <TechButtons buttonText={"React.Js"}>
-            <img
-              src={react}
-              alt="Java Icon"
-              className="size-5 animate-spin-slow"
-            />
+          <TechButtons buttonText={"Java"}>
+            <img src={java} alt="Java Icon" className="size-5" />
           </TechButtons>
-          <TechButtons buttonText={"Tailwind"}>
-            <img src={tailwind} alt="NeatBeans Icon" className="size-5" />
+          <TechButtons buttonText={"MSSQL"}>
+            <img src={sqlserver} alt="MS SQL Icon" className="size-5" />
           </TechButtons>
         </Projects>
         <Projects
