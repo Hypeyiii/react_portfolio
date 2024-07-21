@@ -19,8 +19,7 @@ function Introduction() {
     >
       <div
         onClick={openModal}
-        className="group/item relative flex cursor-pointer size-[100px] md:size-[125px] rounded-full shadow-2xl shadow-white/10
-             motion-reduce:animate-pulse"
+        className="group/item relative flex cursor-pointer size-[100px] md:size-[125px] rounded-full shadow-2xl shadow-white/10"
       >
         <img src={avatar} alt="Avatar Logo" className="rounded-full" />
       </div>

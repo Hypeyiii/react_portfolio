@@ -114,15 +114,12 @@ function Education() {
             <Timeline.Time
               className={`text-xs md:text-xl text-black/80 dark:text-white/80`}
             >
-              {[isSpanish && "Agosto, 2021", isEnglish && "August, 2021"]}
+              {[isSpanish && "Agosto, 2023", isEnglish && "August, 2023"]}
             </Timeline.Time>
             <Timeline.Title
               className={`text-base md:text-2xl text-dark dark:text-white`}
             >
-              {[
-                isSpanish && "Ingresando a la Universidad",
-                isEnglish && "Entering the University",
-              ]}
+              {[isSpanish && "Freelancer", isEnglish && "Freelancer"]}
             </Timeline.Title>
             <Timeline.Body
               className={`text-sm md:text-lg text-black/70 dark:text-white/70`}
@@ -130,15 +127,16 @@ function Education() {
               {[
                 isSpanish && (
                   <p>
-                    Ingresé a la Universidad para estudiar Ingeniería en
-                    Sistemas, donde aprendí las bases de la programación y
-                    sistemas computacionales.
+                    Empecé a ofrecer mis servicios como desarrollador de
+                    software de manera independiente. Trabajando con negocios
+                    locales y pequeñas empresas.
                   </p>
                 ),
                 isEnglish && (
                   <p>
-                    I entered the University to study Systems Engineering, where
-                    I learned the basics of programming and computer systems.
+                    I started offering my services as a software developer
+                    independently. Working with local businesses and small
+                    businesses.
                   </p>
                 ),
               ]}

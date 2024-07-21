@@ -1,17 +1,7 @@
 import { MdBiotech } from "react-icons/md";
 import Technologie from "./Technologie";
 import useLanguage from "../Hooks/useLanguages";
-import {
-  FaBootstrap,
-  FaCss3Alt,
-  FaGitAlt,
-  FaHtml5,
-  FaJava,
-  FaNode,
-  FaReact,
-} from "react-icons/fa";
-import { SiJavascript, SiMysql, SiPostgresql, SiTailwindcss, SiTypescript } from "react-icons/si";
-import { TbBrandCSharp, TbBrandNextjs } from "react-icons/tb";
+import { technologies } from "../lib/data";
 
 function Tech() {
   const { isSpanish, isEnglish } = useLanguage();
@@ -57,104 +47,16 @@ function Tech() {
         ]}
       </p>
       <div className="grid grid-cols-4 md:grid-cols-5 auto-rows-auto gap-x-4 w-full gap-y-4 mb-4">
-        <Technologie
-          className={`p-2 rounded-xl bg-transparent
+        {technologies.map((tech, index) => (
+          <Technologie
+            key={index}
+            className={`p-2 rounded-xl bg-transparent
                ${cardClass}`}
-          techName={"HTML"}
-        >
-          <FaHtml5 className="size-6 md:size-12" />
-        </Technologie>
-        <Technologie
-          className={`p-2 rounded-xl bg-transparent 
-            ${cardClass}`}
-          techName={"CSS"}
-        >
-          <FaCss3Alt className="size-6 md:size-12" />
-        </Technologie>
-        <Technologie
-          className={`p-2 rounded-xl bg-transparent 
-            ${cardClass}`}
-          techName={"JavaScript"}
-        >
-          <SiJavascript className="size-6 md:size-12" />
-        </Technologie>
-        <Technologie
-          className={`p-2 rounded-xl bg-transparent 
-            ${cardClass}`}
-          techName={"TypeScript"}
-        >
-          <SiTypescript className="size-6 md:size-12" />
-        </Technologie>
-        <Technologie
-          className={`p-2 rounded-xl bg-transparent 
-            ${cardClass}`}
-          techName={"Tailwind"}
-        >
-          <SiTailwindcss className="size-6 md:size-12" />
-        </Technologie>
-        <Technologie
-          className={`p-2 rounded-xl bg-transparent 
-            ${cardClass}`}
-          techName={"Bootstrap"}
-        >
-          <FaBootstrap className="size-6 md:size-12" />
-        </Technologie>
-        <Technologie
-          className={`p-2 rounded-xl bg-transparent
-            ${cardClass}`}
-          techName={"React"}
-        >
-          <FaReact className="size-6 md:size-12 animate-spin-slow" />
-        </Technologie>
-        <Technologie
-          className={`p-2 rounded-xl bg-transparent
-            ${cardClass}`}
-          techName={"Next"}
-        >
-          <TbBrandNextjs className="size-6 md:size-12" />
-        </Technologie>
-        <Technologie
-          className={`p-2 rounded-xl bg-transparent 
-            ${cardClass}`}
-          techName={"NodeJS"}
-        >
-          <FaNode className="size-6 md:size-12" />
-        </Technologie>
-        <Technologie
-          className={`p-2 rounded-xl bg-transparent 
-            ${cardClass}`}
-          techName={"MySQL"}
-        >
-          <SiMysql className="size-6 md:size-12" />
-        </Technologie>
-        <Technologie
-          className={`p-2 rounded-xl bg-transparent 
-            ${cardClass}`}
-          techName={"PostrgreSQL"}
-        >
-          <SiPostgresql className="size-6 md:size-12" />
-        </Technologie>
-        <Technologie
-          className={`p-2 rounded-xl bg-transparent 
-            ${cardClass}`}
-          techName={"Git"}
-        >
-          <FaGitAlt className="size-6 md:size-12" />
-        </Technologie>
-        <Technologie
-          className={`p-2 rounded-xl bg-transparent 
-            ${cardClass}`}
-          techName={"Java"}
-        >
-          <FaJava className="size-6 md:size-12" />
-        </Technologie>
-        <Technologie
-          className={`p-2 rounded-xl bg-transparent 
-            ${cardClass}`}
-          techName={"C#"}
-        >
-          <TbBrandCSharp className="size-6 md:size-12" />
-        </Technologie>
+            techName={tech.name}
+          >
+            {tech.icon}
+          </Technologie>
+        ))}
       </div>
       <div className="flex flex-col gap-y-2">
         <h1
