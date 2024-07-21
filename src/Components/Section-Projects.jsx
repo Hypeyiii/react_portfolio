@@ -9,6 +9,7 @@ import tailwind from "../assets/tailwindcss(1).svg";
 import hpProject from "../assets/hp-project.jpg";
 import thirdProject from "../assets/Project-3.png";
 import fouthProject from "../assets/Project-4.png";
+import fifthProject from "../assets/Project-5.png";
 import typescriptIcon from "../assets/typescript.svg";
 import useLanguage from "../Hooks/useLanguages";
 import csharp from "../assets/c-sharp.svg";
@@ -80,14 +81,60 @@ const Project = () => {
                   <FaGithub className="size-5" />
                 </ViewButton>
               </div>
-              <div className="col-span-1 flex">
-                <ViewButton
-                  href={"https://mariana-accesorios.vercel.app/"}
-                  textViewButton={[isSpanish && "Ver", isEnglish && "View"]}
-                >
-                  <IoEye className="size-5" />
-                </ViewButton>
-              </div>
+              <ViewButton
+                href={"https://marianaaccesorios.vercel.app/"}
+                textViewButton={[isSpanish && "Ver", isEnglish && "View"]}
+              >
+                <IoEye className="size-5" />
+              </ViewButton>
+            </div>
+          }
+        >
+          <TechButtons buttonText={"Next.Js"}>
+            <img src={next} alt="Next Icon" className="size-5" />
+          </TechButtons>
+          <TechButtons buttonText={"Tailwind"}>
+            <img src={tailwind} alt="NeatBeans Icon" className="size-5" />
+          </TechButtons>
+          <TechButtons buttonText={"TypeScript"}>
+            <img
+              src={typescriptIcon}
+              alt="TypeScript Icon"
+              className="size-4 text-blue-600"
+            />
+          </TechButtons>
+          <TechButtons buttonText={"Postgres"}>
+            <DiPostgresql className="size-5 text-[#394a58]" />
+          </TechButtons>
+        </Projects>
+        <Projects
+          projectImg={fifthProject}
+          projectName={[
+            isSpanish && "Mariana Accesorios - Dashboard Administrativo",
+            isEnglish && "Mariana Accesorios - Admin Dashboard",
+          ]}
+          projectDescription={[
+            isSpanish && (
+              <p>
+                Dashboard administrativo para la gestión de productos y ventas
+                de la tienda Mariana Accesorios, desarrollado con Next.js.
+              </p>
+            ),
+            isEnglish && (
+              <p>
+                Administrative dashboard for the management of products and
+                sales of the Mariana Accesorios store, developed with Next.js.
+              </p>
+            ),
+          ]}
+          viewButtons={
+            <div className="grid grid-cols-3 gap-x-4">
+              <ViewButton
+                href={"https://github.com/Hypeyiii/mariana-accesorios-dashboard"}
+                textViewButton={[isSpanish && "Código", isEnglish && "Code"]}
+              >
+                <FaGithub className="size-5" />
+              </ViewButton>
             </div>
           }
         >
@@ -110,7 +157,7 @@ const Project = () => {
         </Projects>
         <Projects
           projectImg={thirdProject}
-          projectName="Lensmania - Sitio web E-commerce"
+          projectName= "Lensmania - E-commerce"
           projectDescription={[
             isSpanish &&
               "E-commerce página web para la venta de lentes, desarrollada para un pequeño negocio de lentes, en proceso de desarrollo",
