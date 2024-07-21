@@ -30,14 +30,17 @@ function Education() {
             <Timeline.Time
               className={`text-xs md:text-xl text-black/80 dark:text-white/80`}
             >
-              {[isSpanish && "...Actualmente", isEnglish && "...Currently"]}
+              {[
+                isSpanish && "Agosto 2023 - Actualmente",
+                isEnglish && "August 2023 - Currently",
+              ]}
             </Timeline.Time>
             <Timeline.Title
               className={`text-base md:text-2xl text-dark dark:text-white`}
             >
               {[
-                isSpanish && "Desarrollador y Estudiante",
-                isEnglish && "Developer and Student",
+                isSpanish && "Frelancer y Estudiante",
+                isEnglish && "Freelancer and Student",
               ]}
             </Timeline.Title>
             <Timeline.Body
@@ -46,28 +49,28 @@ function Education() {
               {[
                 isSpanish && (
                   <p>
-                    Cursando 6to semestre en la carrera de Ingeniero
-                    Administrador de Sistemas (IAS). Desarrollando Web´ s de
-                    manera didactica y apasionada.
+                    Empecé a ofrecer mis servicios como desarrollador de
+                    software de manera independiente. Trabajando con negocios
+                    locales y pequeñas empresas.
                   </p>
                 ),
                 isEnglish && (
                   <p>
-                    Studying the 6th semester in the Systems Administrator
-                    Engineer career. Developing websites in a didactic and
-                    passionate way.
+                    I started offering my services as a software developer
+                    independently. Working with local businesses and small
+                    businesses.
                   </p>
                 ),
               ]}
             </Timeline.Body>
             <a
-              href="https://www.uanl.mx/oferta/ingeniero-administrador-de-sistemas/"
+              href="https://github.com/Hypeyiii?tab=repositories"
               target="_blank"
               rel="noopener noreferrer"
               className={`flex flex-row gap-x-1 items-center justify-center p-2 bg-black border border-white/20 rounded-xl
               transition-all duration-300 text-white/60 hover:text-white active:scale-105 active:duration-75 text-xs md:text-sm`}
             >
-              {[isSpanish && "Saber más", isEnglish && "Learn more"]}
+              {[isSpanish && "Mira todos mis proyectos", isEnglish && "See all my projects"]}
               <FaAngleRight />
             </a>
           </Timeline.Content>
@@ -114,12 +117,15 @@ function Education() {
             <Timeline.Time
               className={`text-xs md:text-xl text-black/80 dark:text-white/80`}
             >
-              {[isSpanish && "Agosto, 2023", isEnglish && "August, 2023"]}
+              {[isSpanish && "Agosto, 2021", isEnglish && "August, 2021"]}
             </Timeline.Time>
             <Timeline.Title
               className={`text-base md:text-2xl text-dark dark:text-white`}
             >
-              {[isSpanish && "Freelancer", isEnglish && "Freelancer"]}
+              {[
+                isSpanish && "Estudiante de universidad",
+                isEnglish && "University Student",
+              ]}
             </Timeline.Title>
             <Timeline.Body
               className={`text-sm md:text-lg text-black/70 dark:text-white/70`}
@@ -127,16 +133,14 @@ function Education() {
               {[
                 isSpanish && (
                   <p>
-                    Empecé a ofrecer mis servicios como desarrollador de
-                    software de manera independiente. Trabajando con negocios
-                    locales y pequeñas empresas.
+                    Ingresé a la carrera de Ingeniería en Administración de
+                    Sistemas en la Universidad Autónoma de Nuevo León.
                   </p>
                 ),
                 isEnglish && (
                   <p>
-                    I started offering my services as a software developer
-                    independently. Working with local businesses and small
-                    businesses.
+                    I entered the Systems Administration Engineering career at
+                    the Autonomous University of Nuevo León.
                   </p>
                 ),
               ]}
