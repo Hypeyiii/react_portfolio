@@ -19,6 +19,7 @@ import { MdApi } from "react-icons/md";
 import { DiMysql, DiPostgresql } from "react-icons/di";
 import next from "../assets/nextjs.svg";
 import java from "../assets/java.svg";
+import ihomeimage from "../assets/ihome-project.png";
 
 const Project = () => {
   const { isSpanish, isEnglish } = useLanguage();
@@ -73,14 +74,6 @@ const Project = () => {
           ]}
           viewButtons={
             <div className="grid grid-cols-3 gap-x-4">
-              <div className="col-span-1">
-                <ViewButton
-                  href={"https://github.com/Hypeyiii/next-mariana-accesorios"}
-                  textViewButton={[isSpanish && "Código", isEnglish && "Code"]}
-                >
-                  <FaGithub className="size-5" />
-                </ViewButton>
-              </div>
               <ViewButton
                 href={"https://marianaaccesorios.vercel.app/"}
                 textViewButton={[isSpanish && "Ver", isEnglish && "View"]}
@@ -127,16 +120,7 @@ const Project = () => {
               </p>
             ),
           ]}
-          viewButtons={
-            <div className="grid grid-cols-3 gap-x-4">
-              <ViewButton
-                href={"https://github.com/Hypeyiii/mariana-accesorios-dashboard"}
-                textViewButton={[isSpanish && "Código", isEnglish && "Code"]}
-              >
-                <FaGithub className="size-5" />
-              </ViewButton>
-            </div>
-          }
+          viewButtons={""}
         >
           <TechButtons buttonText={"Next.Js"}>
             <img src={next} alt="Next Icon" className="size-5" />
@@ -156,8 +140,53 @@ const Project = () => {
           </TechButtons>
         </Projects>
         <Projects
+          projectImg={ihomeimage}
+          projectName={[
+            isSpanish && "ihome - inteligencia inmobiliara",
+            isEnglish && "ihome - real estate intelligence",
+          ]}
+          projectDescription={[
+            isSpanish && (
+              <p>
+                Sitio web para la empresa ihome, desarrollado con Next.js y
+                Tailwind CSS.
+              </p>
+            ),
+            isEnglish && (
+              <p>
+                Website for the company ihome, developed with Next.js and
+                Tailwind CSS.
+              </p>
+            ),
+          ]}
+          viewButtons={
+            <div className="col-span-1 flex">
+              <ViewButton
+                href={"https://ihome.mx"}
+                textViewButton={[isSpanish && "Ver", isEnglish && "View"]}
+              >
+                <IoEye className="size-5" />
+              </ViewButton>
+            </div>
+          }
+        >
+          <TechButtons buttonText={"Next.Js"}>
+            <img src={next} alt="Next Icon" className="size-5" />
+          </TechButtons>
+          <TechButtons buttonText={"Tailwind"}>
+            <img src={tailwind} alt="NeatBeans Icon" className="size-5" />
+          </TechButtons>
+          <TechButtons buttonText={"TypeScript"}>
+            <img
+              src={typescriptIcon}
+              alt="TypeScript Icon"
+              className="size-4 text-blue-600"
+            />
+          </TechButtons>
+        </Projects>
+        <Projects
           projectImg={thirdProject}
-          projectName= "Lensmania - E-commerce"
+          projectName="Lensmania - E-commerce"
           projectDescription={[
             isSpanish &&
               "E-commerce página web para la venta de lentes, desarrollada para un pequeño negocio de lentes, en proceso de desarrollo",

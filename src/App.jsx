@@ -7,6 +7,7 @@ import Tech from "./Components/Section-Tech.jsx";
 import Introduction from "./Components/Section-Introduction.jsx";
 import Header from "./Components/Section-Header.jsx";
 import useModal from "./Hooks/useModal";
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   const { onCloseModals } = useModal();
@@ -25,6 +26,7 @@ function App() {
         <Projects />
         <Footer />
         <AboutMeModal />
+        <Analytics />
       </div>
     </>
   );
