@@ -24,6 +24,44 @@ function Education() {
         </h2>
       </div>
       <Timeline className="text-black ml-[6px]">
+      <Timeline.Item>
+          <Timeline.Point />
+          <Timeline.Content className="md:gap-y-2 flex flex-col items-start justify-center">
+            <Timeline.Time
+              className={`text-xs md:text-xl text-black/80 dark:text-white/80`}
+            >
+              {[
+                isSpanish && "Agosto 2024 - Actualmente",
+                isEnglish && "August 2024 - Currently",
+              ]}
+            </Timeline.Time>
+            <Timeline.Title
+              className={`text-base md:text-2xl text-dark dark:text-white`}
+            >
+              {[
+                isSpanish && "Practicante de IT",
+                isEnglish && "IT Intern",
+              ]}
+            </Timeline.Title>
+            <Timeline.Body
+              className={`text-sm md:text-lg text-black/70 dark:text-white/70`}
+            >
+              {[
+                isSpanish && (
+                  <p>
+                    Comencé a trabajar en el departamento de IT en la empresa de Polaris
+                    Industries.
+                  </p>
+                ),
+                isEnglish && (
+                  <p>
+                    I started working in the IT department at Polaris Industries.
+                  </p>
+                ),
+              ]}
+            </Timeline.Body>
+          </Timeline.Content>
+        </Timeline.Item>
         <Timeline.Item>
           <Timeline.Point />
           <Timeline.Content className="md:gap-y-2 flex flex-col items-start justify-center">
@@ -31,8 +69,8 @@ function Education() {
               className={`text-xs md:text-xl text-black/80 dark:text-white/80`}
             >
               {[
-                isSpanish && "Agosto 2023 - Actualmente",
-                isEnglish && "August 2023 - Currently",
+                isSpanish && "Agosto 2023",
+                isEnglish && "August 2023",
               ]}
             </Timeline.Time>
             <Timeline.Title
@@ -105,42 +143,6 @@ function Education() {
                   <p>
                     I started to delve into the world of Web Development, taking
                     courses and learning technologies in a didactic way.
-                  </p>
-                ),
-              ]}
-            </Timeline.Body>
-          </Timeline.Content>
-        </Timeline.Item>
-        <Timeline.Item>
-          <Timeline.Point />
-          <Timeline.Content className="md:gap-y-2 flex flex-col items-start justify-center">
-            <Timeline.Time
-              className={`text-xs md:text-xl text-black/80 dark:text-white/80`}
-            >
-              {[isSpanish && "Agosto, 2021", isEnglish && "August, 2021"]}
-            </Timeline.Time>
-            <Timeline.Title
-              className={`text-base md:text-2xl text-dark dark:text-white`}
-            >
-              {[
-                isSpanish && "Estudiante de universidad",
-                isEnglish && "University Student",
-              ]}
-            </Timeline.Title>
-            <Timeline.Body
-              className={`text-sm md:text-lg text-black/70 dark:text-white/70`}
-            >
-              {[
-                isSpanish && (
-                  <p>
-                    Ingresé a la carrera de Ingeniería en Administración de
-                    Sistemas en la Universidad Autónoma de Nuevo León.
-                  </p>
-                ),
-                isEnglish && (
-                  <p>
-                    I entered the Systems Administration Engineering career at
-                    the Autonomous University of Nuevo León.
                   </p>
                 ),
               ]}
